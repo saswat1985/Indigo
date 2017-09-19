@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Effigy  datatable</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
+
+	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	<script type="text/javascript" src="assets/js/pages/datatables_basic.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+
+	
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				
+
+				<!-- Content area -->
+				<div class="content">
+<!-- Horizontal form options -->
+					<div class="row">
+						<div class="col-md-12">
+
+							<!-- Basic layout-->
+							<form action="#" class="form-horizontal">
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h5 class="panel-title">Add Fields</h5>
+										<div class="heading-elements">
+											<ul class="icons-list">
+						                		<li><a data-action="collapse"></a></li>
+						                		<li><a data-action="reload"></a></li>
+						                		<li><a data-action="close"></a></li>
+						                	</ul>
+					                	</div>
+									</div>
+
+									<div class="panel-body">
+										<div class="form-group">
+											<label class="col-lg-3 control-label">Name:</label>
+											<div class="col-lg-9">
+												<input type="text" class="form-control" placeholder="Enter Name ">
+											</div>
+										</div>
+
+										
+										<div class="text-right">
+											<button type="submit" class="btn btn-primary">Submit form <i class="icon-arrow-right14 position-right"></i></button>
+											<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal_form_vertical">Open Popup <i class="icon-play3 position-right"></i></button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- /basic layout -->
+
+						</div>
+
+						</div>
+					<!-- /vertical form options -->
+
+
+					<!-- Pagination types -->
+					<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title">Datatable Sample</h5>
+							<div class="heading-elements">
+								<ul class="icons-list">
+			                		<li><a data-action="collapse"></a></li>
+			                		<li><a data-action="reload"></a></li>
+			                		<li><a data-action="close"></a></li>
+			                	</ul>
+		                	</div>
+						</div>
+
+						<div class="panel-body">
+							
+						</div>
+
+						<table class="table datatable-pagination">
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Job Title</th>
+									<th>DOB</th>
+									<th>Status</th>
+									<th class="text-center">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Marth</td>
+									<td><a href="#" data-toggle="modal" data-target="#modal_form_vertical">Saswat Gupta</a></td>
+									<td>Traffic Court Referee</td>
+									<td>22 Jun 1972</td>
+									<td><span class="label label-success">Active</span></td>
+									<td class="text-center">
+										<a href="#" data-toggle="modal" data-target="#modal_form_vertical"><i class="icon-pencil"></i></a>
+									</td>
+								</tr>
+								<tr>
+									<td>anil</td>
+									<td><a href="#" data-toggle="modal" data-target="#modal_form_vertical"><i class="icon-eye"></i></a></td>
+									<td><a href="#">Airline Transport Pilot</a></td>
+									<td>3 Oct 1981</td>
+									<td><span class="label label-default">Inactive</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Aura</td>
+									<td>Hard</td>
+									<td>Business Services Sales Representative</td>
+									<td>19 Apr 1969</td>
+									<td><span class="label label-danger">Suspended</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Nathalie</td>
+									<td><a href="#">Pretty</a></td>
+									<td>Drywall Stripper</td>
+									<td>13 Dec 1977</td>
+									<td><span class="label label-info">Pending</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Sharan</td>
+									<td>Leland</td>
+									<td>Aviation Tactical Readiness Officer</td>
+									<td>30 Dec 1991</td>
+									<td><span class="label label-default">Inactive</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Maxine</td>
+									<td><a href="#">Woldt</a></td>
+									<td><a href="#">Business Services Sales Representative</a></td>
+									<td>17 Oct 1987</td>
+									<td><span class="label label-info">Pending</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Sylvia</td>
+									<td><a href="#">Mcgaughy</a></td>
+									<td>Hemodialysis Technician</td>
+									<td>11 Nov 1983</td>
+									<td><span class="label label-danger">Suspended</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Lizzee</td>
+									<td><a href="#">Goodlow</a></td>
+									<td>Technical Services Librarian</td>
+									<td>1 Nov 1961</td>
+									<td><span class="label label-danger">Suspended</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Kennedy</td>
+									<td>Haley</td>
+									<td>Senior Marketing Designer</td>
+									<td>18 Dec 1960</td>
+									<td><span class="label label-success">Active</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Chantal</td>
+									<td><a href="#">Nailor</a></td>
+									<td>Technical Services Librarian</td>
+									<td>10 Jan 1980</td>
+									<td><span class="label label-default">Inactive</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Delma</td>
+									<td>Bonds</td>
+									<td>Lead Brand Manager</td>
+									<td>21 Dec 1968</td>
+									<td><span class="label label-info">Pending</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Roland</td>
+									<td>Salmos</td>
+									<td><a href="#">Senior Program Developer</a></td>
+									<td>5 Jun 1986</td>
+									<td><span class="label label-default">Inactive</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Coy</td>
+									<td>Wollard</td>
+									<td>Customer Service Operator</td>
+									<td>12 Oct 1982</td>
+									<td><span class="label label-success">Active</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Maxwell</td>
+									<td>Maben</td>
+									<td>Regional Representative</td>
+									<td>25 Feb 1988</td>
+									<td><span class="label label-danger">Suspended</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td>Cicely</td>
+									<td>Sigler</td>
+									<td><a href="#">Senior Research Officer</a></td>
+									<td>15 Mar 1960</td>
+									<td><span class="label label-info">Pending</span></td>
+									<td class="text-center">
+										<ul class="icons-list">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-menu9"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+													<li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+													<li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+												</ul>
+											</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /pagination types -->
+
+
+					
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+	 <!-- Vertical form modal -->
+					<div id="modal_form_vertical" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h5 class="modal-title">Master form</h5>
+								</div>
+
+								<form action="#">
+									<div class="modal-body">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label>First name</label>
+													<input type="text" placeholder="Eugene" class="form-control">
+												</div>
+
+												<div class="col-sm-6">
+													<label>Last name</label>
+													<input type="text" placeholder="Kopyov" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label>Address line 1</label>
+													<input type="text" placeholder="Ring street 12" class="form-control">
+												</div>
+
+												<div class="col-sm-6">
+													<label>Address line 2</label>
+													<input type="text" placeholder="building D, flat #67" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label>City</label>
+													<input type="text" placeholder="Munich" class="form-control">
+												</div>
+
+												<div class="col-sm-4">
+													<label>State/Province</label>
+													<input type="text" placeholder="Bayern" class="form-control">
+												</div>
+
+												<div class="col-sm-4">
+													<label>ZIP code</label>
+													<input type="text" placeholder="1031" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label>Email</label>
+													<input type="text" placeholder="eugene@kopyov.com" class="form-control">
+													<span class="help-block">name@domain.com</span>
+												</div>
+
+												<div class="col-sm-6">
+													<label>Phone #</label>
+													<input type="text" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" class="form-control">
+													<span class="help-block">+99-99-9999-9999</span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">Submit form</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- /vertical form modal -->
+
+
+</body>
+</html>
