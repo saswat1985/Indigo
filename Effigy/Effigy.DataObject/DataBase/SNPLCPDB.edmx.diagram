@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ca4063ce1d54bc29d8bfeb91e096435" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_Roles" Width="1.5" PointX="10.75" PointY="5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="13" PointY="5.25" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstBankMaster" Width="1.5" PointX="10.75" PointY="9.875" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="6" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="1.5" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="16" PointY="5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="3" PointY="2.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserBankDetail" Width="1.5" PointX="13" PointY="9.25" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="8.25" PointY="6.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="8.75" PointY="13" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserMaster" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="5.25" PointY="17.25" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_MstCity_MstState" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserDetail_MstCity" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_MstState_MstCountry" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserMaster_MstLanguage" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_MstMenuMaster" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserCategoryMapping_MstUserWorkCategory" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserCategoryMapping_tblMstUserMaster" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserDetail_tblMstUserMaster" />
+        <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserTreeStructure_tblMstUserMaster" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
