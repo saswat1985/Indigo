@@ -1,0 +1,3 @@
+</connectionStrings>
+  <appSettings configSource="Config\App.config"></appSettings>
+  <system.web>
