@@ -1,0 +1,6 @@
+22 Aug 2017 23:27:51,656 [6] ERROR ErrorLog - Attempted to divide by zero.
+System.DivideByZeroException: Attempted to divide by zero.
+   at Effigy.Web.Login.Page_Load(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 24
+22 Aug 2017 23:28:30,641 [9] ERROR ErrorLog - Attempted to divide by zero.
+System.DivideByZeroException: Attempted to divide by zero.
+   at Effigy.Web.Login.Page_Load(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 24

@@ -1,0 +1,72 @@
+17 Sep 2017 12:58:04,684 [9] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 13:06:19,466 [10] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 13:12:07,876 [5] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 13:20:12,762 [25] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 13:22:46,122 [28] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 13:29:37,241 [5] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 15:43:16,833 [7] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
+17 Sep 2017 15:44:10,978 [6] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in d:\Aakash\Projects\SNPLCP\Effigy\Effigy.Web\Login.aspx.cs:line 51
