@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="shortcut icon" href="style/images/favicon.png" />
-    <title>Effigy | Data Feeding and Management </title>
+    <title>Effigy | Data Feeding and Management Sunil </title>
     <link rel="stylesheet" type="text/css" href="style/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style/css/plugins.css" />
     <link rel="stylesheet" type="text/css" href="style/revolution/css/settings.css" />
