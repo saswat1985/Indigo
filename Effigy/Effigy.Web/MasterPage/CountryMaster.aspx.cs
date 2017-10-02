@@ -18,6 +18,7 @@ namespace Effigy.Web.MasterPage
             {
                 if (!IsPostBack)
                 {
+                    //this is a test comment
                 }
             }
             catch (Exception ex)
