@@ -15,7 +15,7 @@ namespace Effigy.Web.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //bank master
         }
 
         [WebMethod]
