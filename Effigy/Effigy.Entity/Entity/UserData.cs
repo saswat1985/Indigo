@@ -22,5 +22,10 @@ namespace Effigy.Entity
         public Nullable<DateTime> UserEntryDate { get; set; }
         public double TimeRemaining { get; set; }
 
+        public string CurrentAddress { get; set; }
+        public int CityId { get; set; }
+        public int StateId { get; set; }
+        public int CountryId { get; set; }
+
     }
 }

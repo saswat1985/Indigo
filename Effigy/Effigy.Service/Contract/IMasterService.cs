@@ -47,6 +47,7 @@ namespace Effigy.Service
          IList<MstBankMaster> GetAllBanks();
 
          T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
+        IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class;
 
     }
 }

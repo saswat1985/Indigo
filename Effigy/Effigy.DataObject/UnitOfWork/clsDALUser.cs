@@ -47,7 +47,7 @@ namespace Effigy.DataObject.UnitOfWork
                     new SqlParameter("@OutRes",SqlDbType.Int),
                     new SqlParameter("@CultureID",SqlDbType.NVarChar,180),
                     new SqlParameter("@UserEntryDateTime",SqlDbType.DateTime),
-                
+
                 };
                 sqlParam[3].Direction = ParameterDirection.Output;
                 sqlParam[4].Direction = ParameterDirection.Output;
@@ -130,6 +130,7 @@ namespace Effigy.DataObject.UnitOfWork
                 objUserDetail.UserId = objUserMaster.UserId;
                 SaveUserDetail(objUserDetail);
                 categoryMapping.UserId = objUserMaster.UserId;
+                SaveBankDetail(objUserBankDetail);
                 SaveUserCategoryDetail(categoryMapping);
                 userTreeStructure.UserId = objUserMaster.UserId;
                 SaveUserGenology(userTreeStructure);
@@ -146,22 +147,19 @@ namespace Effigy.DataObject.UnitOfWork
         {
             try
             {
-                using (_context = new SNPLCPDBEntities())
+                if (objUserMaster != null)
                 {
-                    if (objUserMaster != null)
+                    if (objUserMaster.UserId > 0)
                     {
-                        var userMaster = _context.tblMstUserMasters.Where(k => k.UserId == objUserMaster.UserId).FirstOrDefault();
-                        if (userMaster != null)
-                        {
-                            //update will take care later
-                        }
-                        else
-                        {
-                            _context.tblMstUserMasters.Add(objUserMaster);
-                            _context.SaveChanges();
-                        }
+                        _context.Entry(objUserMaster).State = System.Data.EntityState.Modified;
                     }
+                    else
+                    {
+                        _context.tblMstUserMasters.Add(objUserMaster);
+                    }
+                    _context.SaveChanges();
                 }
+
 
             }
             catch (Exception)
@@ -175,22 +173,48 @@ namespace Effigy.DataObject.UnitOfWork
         {
             try
             {
-                using (_context = new SNPLCPDBEntities())
+
+                if (objUserDetail != null)
                 {
-                    if (objUserDetail != null)
+
+                    if (objUserDetail.UserId > 0 && objUserDetail.Id > 0)
                     {
-                        var userDetail = _context.tblMstUserDetails.Where(k => k.UserId == objUserDetail.UserId).FirstOrDefault();
-                        if (userDetail != null)
-                        {
-                            //update will take care later
-                        }
-                        else
-                        {
-                            _context.tblMstUserDetails.Add(objUserDetail);
-                            _context.SaveChanges();
-                        }
+                        _context.Entry(objUserDetail).State = System.Data.EntityState.Modified;
                     }
+                    else
+                    {
+                        _context.tblMstUserDetails.Add(objUserDetail);
+
+                    }
+                    _context.SaveChanges();
                 }
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void SaveBankDetail(tblMstUserBankDetail objBankDetail)
+        {
+            try
+            {
+
+                if (objBankDetail != null)
+                {
+                    if (objBankDetail.Id > 0)
+                    {
+                        _context.Entry(objBankDetail).State = System.Data.EntityState.Modified;
+                    }
+                    else
+                    {
+                        _context.tblMstUserBankDetails.Add(objBankDetail);
+                    }
+                    _context.SaveChanges();
+                }
+
             }
             catch (Exception)
             {
@@ -346,6 +370,11 @@ namespace Effigy.DataObject.UnitOfWork
 
                     }).ToList();
 
+        }
+
+        public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
+        {
+            return _context.Set<T>().FirstOrDefault(predicate);
         }
     }
 }
