@@ -65,7 +65,8 @@ namespace Effigy.Service
                 objMaster.UserName = objMaster.UserCode = objDal.GetNextUserCode();
                 objMaster.AcceptTermCondition = objUserData.AcceptTermCondition;
                 objMaster.Language = 1;
-                objMaster.Password = UtilityMethods.CreatePassword(8);//for generate random password
+                objMaster.Password = UtilityMethods.CreatePassword(8);//for generate random password 
+                //change
                 objMaster.IsActive = true;
                 objMaster.UserEntryId = 0;
                 objMaster.UserEffectedDate = objMaster.UserEntryDate = DateTime.Now;
