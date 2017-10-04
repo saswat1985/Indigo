@@ -4,80 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SNPLCPDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="SNPLCPDBModelStoreContainer">
-          <EntitySet Name="aspnet_Roles" EntityType="SNPLCPDBModel.Store.aspnet_Roles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="aspnet_UsersInRoles" EntityType="SNPLCPDBModel.Store.aspnet_UsersInRoles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstBankMaster" EntityType="SNPLCPDBModel.Store.MstBankMaster" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstCity" EntityType="SNPLCPDBModel.Store.MstCity" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstCountry" EntityType="SNPLCPDBModel.Store.MstCountry" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstLanguage" EntityType="SNPLCPDBModel.Store.MstLanguage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstMenuMaster" EntityType="SNPLCPDBModel.Store.MstMenuMaster" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstMenuRoleMaster" EntityType="SNPLCPDBModel.Store.MstMenuRoleMaster" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstState" EntityType="SNPLCPDBModel.Store.MstState" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MstUserWorkCategory" EntityType="SNPLCPDBModel.Store.MstUserWorkCategory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="SNPLCPDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblMstUserBankDetail" EntityType="SNPLCPDBModel.Store.tblMstUserBankDetail" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblMstUserCategoryMapping" EntityType="SNPLCPDBModel.Store.tblMstUserCategoryMapping" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblMstUserDetail" EntityType="SNPLCPDBModel.Store.tblMstUserDetail" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblMstUserLoginDetail" EntityType="SNPLCPDBModel.Store.tblMstUserLoginDetail" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblMstUserMaster" EntityType="SNPLCPDBModel.Store.tblMstUserMaster" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblMstUserTreeStructure" EntityType="SNPLCPDBModel.Store.tblMstUserTreeStructure" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_aspnet_UsersInRoles_aspnet_Roles" Association="SNPLCPDBModel.Store.FK_aspnet_UsersInRoles_aspnet_Roles">
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MstCity_MstState" Association="SNPLCPDBModel.Store.FK_MstCity_MstState">
-            <End Role="MstState" EntitySet="MstState" />
-            <End Role="MstCity" EntitySet="MstCity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MstMenuRoleMaster_aspnet_Roles" Association="SNPLCPDBModel.Store.FK_MstMenuRoleMaster_aspnet_Roles">
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-            <End Role="MstMenuRoleMaster" EntitySet="MstMenuRoleMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MstMenuRoleMaster_MstMenuMaster" Association="SNPLCPDBModel.Store.FK_MstMenuRoleMaster_MstMenuMaster">
-            <End Role="MstMenuMaster" EntitySet="MstMenuMaster" />
-            <End Role="MstMenuRoleMaster" EntitySet="MstMenuRoleMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MstState_MstCountry" Association="SNPLCPDBModel.Store.FK_MstState_MstCountry">
-            <End Role="MstCountry" EntitySet="MstCountry" />
-            <End Role="MstState" EntitySet="MstState" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserBankDetail_MstBankMaster" Association="SNPLCPDBModel.Store.FK_tblMstUserBankDetail_MstBankMaster">
-            <End Role="MstBankMaster" EntitySet="MstBankMaster" />
-            <End Role="tblMstUserBankDetail" EntitySet="tblMstUserBankDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserCategoryMapping_MstUserWorkCategory" Association="SNPLCPDBModel.Store.FK_tblMstUserCategoryMapping_MstUserWorkCategory">
-            <End Role="MstUserWorkCategory" EntitySet="MstUserWorkCategory" />
-            <End Role="tblMstUserCategoryMapping" EntitySet="tblMstUserCategoryMapping" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserCategoryMapping_tblMstUserMaster" Association="SNPLCPDBModel.Store.FK_tblMstUserCategoryMapping_tblMstUserMaster">
-            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
-            <End Role="tblMstUserCategoryMapping" EntitySet="tblMstUserCategoryMapping" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserDetail_MstCity" Association="SNPLCPDBModel.Store.FK_tblMstUserDetail_MstCity">
-            <End Role="MstCity" EntitySet="MstCity" />
-            <End Role="tblMstUserDetail" EntitySet="tblMstUserDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserDetail_tblMstUserMaster" Association="SNPLCPDBModel.Store.FK_tblMstUserDetail_tblMstUserMaster">
-            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
-            <End Role="tblMstUserDetail" EntitySet="tblMstUserDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserMaster_MstLanguage" Association="SNPLCPDBModel.Store.FK_tblMstUserMaster_MstLanguage">
-            <End Role="MstLanguage" EntitySet="MstLanguage" />
-            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblMstUserTreeStructure_tblMstUserMaster" Association="SNPLCPDBModel.Store.FK_tblMstUserTreeStructure_tblMstUserMaster">
-            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
-            <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructure" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="SNPLCPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aspnet_Roles">
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserEntryID" Type="int" />
@@ -89,7 +22,7 @@
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="PkID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="UserEntryID" Type="int" />
@@ -100,7 +33,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BankName" Type="nvarchar" MaxLength="200" />
           <Property Name="UserEntryDate" Type="datetime" />
           <Property Name="UserEffectedDate" Type="datetime" />
@@ -110,7 +43,7 @@
           <Key>
             <PropertyRef Name="CityId" />
           </Key>
-          <Property Name="CityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="StateId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -123,7 +56,7 @@
           <Key>
             <PropertyRef Name="CountryId" />
           </Key>
-          <Property Name="CountryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CountryPhoneCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CountryName" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" />
@@ -136,7 +69,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LanguageName" Type="nvarchar" MaxLength="100" />
           <Property Name="LanguageCode" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
@@ -145,7 +78,7 @@
           <Key>
             <PropertyRef Name="MenuId" />
           </Key>
-          <Property Name="MenuId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MenuText" Type="varchar" MaxLength="100" />
           <Property Name="MenuDesc" Type="varchar" MaxLength="100" />
           <Property Name="NavigateURL" Type="varchar" MaxLength="256" />
@@ -161,7 +94,7 @@
           <Key>
             <PropertyRef Name="MR_SNo" />
           </Key>
-          <Property Name="MR_SNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MR_SNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MM_MenuId" Type="int" />
           <Property Name="AR_RoleId" Type="int" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
@@ -174,7 +107,7 @@
           <Key>
             <PropertyRef Name="StateID" />
           </Key>
-          <Property Name="StateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StateName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CountryID" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
@@ -183,15 +116,23 @@
           <Property Name="ModifiedBy" Type="int" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="MstUserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="MstUserWorkCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CategoryName" Type="nvarchar(max)" />
           <Property Name="CategoryDesc" Type="nvarchar(max)" />
-          <Property Name="CategoryPrice" Type="decimal" Scale="2" />
+          <Property Name="CategoryPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CatIntroPercentage" Type="int" />
           <Property Name="CatWorkPercentage" Type="int" />
           <Property Name="UserEntryId" Type="int" />
@@ -202,9 +143,9 @@
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
@@ -212,7 +153,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="BankId" Type="int" />
           <Property Name="BranchName" Type="nvarchar(max)" />
@@ -229,7 +170,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="UserEntryDate" Type="datetime" />
@@ -238,7 +179,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="500" />
           <Property Name="LastName" Type="nvarchar" MaxLength="500" />
@@ -264,7 +205,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="AuthId" Type="uniqueidentifier" />
           <Property Name="BrowserType" Type="nvarchar" MaxLength="500" />
@@ -279,7 +220,7 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserCode" Type="varchar" MaxLength="50" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
@@ -294,14 +235,42 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="ParentId" Type="int" />
           <Property Name="EntryDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblRawUniqueURL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" />
+          <Property Name="UniqueURL" Type="nvarchar(max)" />
+          <Property Name="IsValidate" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblRawURL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URLEntryCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserEntryId" Type="int" />
+          <Property Name="UserEntryDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRawURLDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="IsUnique" Type="bit" />
+          <Property Name="UserEntryDate" Type="datetime" />
+        </EntityType>
         <Association Name="FK_aspnet_UsersInRoles_aspnet_Roles">
-          <End Role="aspnet_Roles" Type="SNPLCPDBModel.Store.aspnet_Roles" Multiplicity="1" />
-          <End Role="aspnet_UsersInRoles" Type="SNPLCPDBModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Roles">
               <PropertyRef Name="RoleId" />
@@ -312,8 +281,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MstCity_MstState">
-          <End Role="MstState" Type="SNPLCPDBModel.Store.MstState" Multiplicity="1" />
-          <End Role="MstCity" Type="SNPLCPDBModel.Store.MstCity" Multiplicity="*" />
+          <End Role="MstState" Type="Self.MstState" Multiplicity="1" />
+          <End Role="MstCity" Type="Self.MstCity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstState">
               <PropertyRef Name="StateID" />
@@ -324,8 +293,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MstMenuRoleMaster_aspnet_Roles">
-          <End Role="aspnet_Roles" Type="SNPLCPDBModel.Store.aspnet_Roles" Multiplicity="0..1" />
-          <End Role="MstMenuRoleMaster" Type="SNPLCPDBModel.Store.MstMenuRoleMaster" Multiplicity="*" />
+          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="0..1" />
+          <End Role="MstMenuRoleMaster" Type="Self.MstMenuRoleMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Roles">
               <PropertyRef Name="RoleId" />
@@ -336,8 +305,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MstMenuRoleMaster_MstMenuMaster">
-          <End Role="MstMenuMaster" Type="SNPLCPDBModel.Store.MstMenuMaster" Multiplicity="0..1" />
-          <End Role="MstMenuRoleMaster" Type="SNPLCPDBModel.Store.MstMenuRoleMaster" Multiplicity="*" />
+          <End Role="MstMenuMaster" Type="Self.MstMenuMaster" Multiplicity="0..1" />
+          <End Role="MstMenuRoleMaster" Type="Self.MstMenuRoleMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstMenuMaster">
               <PropertyRef Name="MenuId" />
@@ -348,8 +317,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MstState_MstCountry">
-          <End Role="MstCountry" Type="SNPLCPDBModel.Store.MstCountry" Multiplicity="1" />
-          <End Role="MstState" Type="SNPLCPDBModel.Store.MstState" Multiplicity="*" />
+          <End Role="MstCountry" Type="Self.MstCountry" Multiplicity="1" />
+          <End Role="MstState" Type="Self.MstState" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstCountry">
               <PropertyRef Name="CountryId" />
@@ -360,8 +329,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserBankDetail_MstBankMaster">
-          <End Role="MstBankMaster" Type="SNPLCPDBModel.Store.MstBankMaster" Multiplicity="0..1" />
-          <End Role="tblMstUserBankDetail" Type="SNPLCPDBModel.Store.tblMstUserBankDetail" Multiplicity="*" />
+          <End Role="MstBankMaster" Type="Self.MstBankMaster" Multiplicity="0..1" />
+          <End Role="tblMstUserBankDetail" Type="Self.tblMstUserBankDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstBankMaster">
               <PropertyRef Name="Id" />
@@ -372,8 +341,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserCategoryMapping_MstUserWorkCategory">
-          <End Role="MstUserWorkCategory" Type="SNPLCPDBModel.Store.MstUserWorkCategory" Multiplicity="0..1" />
-          <End Role="tblMstUserCategoryMapping" Type="SNPLCPDBModel.Store.tblMstUserCategoryMapping" Multiplicity="*" />
+          <End Role="MstUserWorkCategory" Type="Self.MstUserWorkCategory" Multiplicity="0..1" />
+          <End Role="tblMstUserCategoryMapping" Type="Self.tblMstUserCategoryMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstUserWorkCategory">
               <PropertyRef Name="Id" />
@@ -384,8 +353,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserCategoryMapping_tblMstUserMaster">
-          <End Role="tblMstUserMaster" Type="SNPLCPDBModel.Store.tblMstUserMaster" Multiplicity="0..1" />
-          <End Role="tblMstUserCategoryMapping" Type="SNPLCPDBModel.Store.tblMstUserCategoryMapping" Multiplicity="*" />
+          <End Role="tblMstUserMaster" Type="Self.tblMstUserMaster" Multiplicity="0..1" />
+          <End Role="tblMstUserCategoryMapping" Type="Self.tblMstUserCategoryMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblMstUserMaster">
               <PropertyRef Name="UserId" />
@@ -396,8 +365,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserDetail_MstCity">
-          <End Role="MstCity" Type="SNPLCPDBModel.Store.MstCity" Multiplicity="0..1" />
-          <End Role="tblMstUserDetail" Type="SNPLCPDBModel.Store.tblMstUserDetail" Multiplicity="*" />
+          <End Role="MstCity" Type="Self.MstCity" Multiplicity="0..1" />
+          <End Role="tblMstUserDetail" Type="Self.tblMstUserDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstCity">
               <PropertyRef Name="CityId" />
@@ -408,8 +377,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserDetail_tblMstUserMaster">
-          <End Role="tblMstUserMaster" Type="SNPLCPDBModel.Store.tblMstUserMaster" Multiplicity="0..1" />
-          <End Role="tblMstUserDetail" Type="SNPLCPDBModel.Store.tblMstUserDetail" Multiplicity="*" />
+          <End Role="tblMstUserMaster" Type="Self.tblMstUserMaster" Multiplicity="0..1" />
+          <End Role="tblMstUserDetail" Type="Self.tblMstUserDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblMstUserMaster">
               <PropertyRef Name="UserId" />
@@ -420,8 +389,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserMaster_MstLanguage">
-          <End Role="MstLanguage" Type="SNPLCPDBModel.Store.MstLanguage" Multiplicity="0..1" />
-          <End Role="tblMstUserMaster" Type="SNPLCPDBModel.Store.tblMstUserMaster" Multiplicity="*" />
+          <End Role="MstLanguage" Type="Self.MstLanguage" Multiplicity="0..1" />
+          <End Role="tblMstUserMaster" Type="Self.tblMstUserMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MstLanguage">
               <PropertyRef Name="Id" />
@@ -432,8 +401,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMstUserTreeStructure_tblMstUserMaster">
-          <End Role="tblMstUserMaster" Type="SNPLCPDBModel.Store.tblMstUserMaster" Multiplicity="0..1" />
-          <End Role="tblMstUserTreeStructure" Type="SNPLCPDBModel.Store.tblMstUserTreeStructure" Multiplicity="*" />
+          <End Role="tblMstUserMaster" Type="Self.tblMstUserMaster" Multiplicity="0..1" />
+          <End Role="tblMstUserTreeStructure" Type="Self.tblMstUserTreeStructure" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblMstUserMaster">
               <PropertyRef Name="UserId" />
@@ -455,7 +424,7 @@
           <Parameter Name="CultureID" Type="nvarchar" Mode="InOut" />
           <Parameter Name="UserEntryDateTime" Type="datetime" Mode="InOut" />
         </Function>
-        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -525,6 +494,77 @@
           <Parameter Name="SelectedItems" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="CreatedBy" Type="int" Mode="In" />
         </Function>
+        <EntityContainer Name="SNPLCPDBModelStoreContainer">
+          <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstBankMaster" EntityType="Self.MstBankMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstCity" EntityType="Self.MstCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstCountry" EntityType="Self.MstCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstLanguage" EntityType="Self.MstLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstMenuMaster" EntityType="Self.MstMenuMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstMenuRoleMaster" EntityType="Self.MstMenuRoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstState" EntityType="Self.MstState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstUserType" EntityType="Self.MstUserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstUserWorkCategory" EntityType="Self.MstUserWorkCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserBankDetail" EntityType="Self.tblMstUserBankDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserCategoryMapping" EntityType="Self.tblMstUserCategoryMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserDetail" EntityType="Self.tblMstUserDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserLoginDetail" EntityType="Self.tblMstUserLoginDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserMaster" EntityType="Self.tblMstUserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserTreeStructure" EntityType="Self.tblMstUserTreeStructure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRawUniqueURL" EntityType="Self.tblRawUniqueURL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRawURL" EntityType="Self.tblRawURL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRawURLDetail" EntityType="Self.tblRawURLDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_aspnet_UsersInRoles_aspnet_Roles" Association="Self.FK_aspnet_UsersInRoles_aspnet_Roles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MstCity_MstState" Association="Self.FK_MstCity_MstState">
+            <End Role="MstState" EntitySet="MstState" />
+            <End Role="MstCity" EntitySet="MstCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MstMenuRoleMaster_aspnet_Roles" Association="Self.FK_MstMenuRoleMaster_aspnet_Roles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="MstMenuRoleMaster" EntitySet="MstMenuRoleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MstMenuRoleMaster_MstMenuMaster" Association="Self.FK_MstMenuRoleMaster_MstMenuMaster">
+            <End Role="MstMenuMaster" EntitySet="MstMenuMaster" />
+            <End Role="MstMenuRoleMaster" EntitySet="MstMenuRoleMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MstState_MstCountry" Association="Self.FK_MstState_MstCountry">
+            <End Role="MstCountry" EntitySet="MstCountry" />
+            <End Role="MstState" EntitySet="MstState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserBankDetail_MstBankMaster" Association="Self.FK_tblMstUserBankDetail_MstBankMaster">
+            <End Role="MstBankMaster" EntitySet="MstBankMaster" />
+            <End Role="tblMstUserBankDetail" EntitySet="tblMstUserBankDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserCategoryMapping_MstUserWorkCategory" Association="Self.FK_tblMstUserCategoryMapping_MstUserWorkCategory">
+            <End Role="MstUserWorkCategory" EntitySet="MstUserWorkCategory" />
+            <End Role="tblMstUserCategoryMapping" EntitySet="tblMstUserCategoryMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserCategoryMapping_tblMstUserMaster" Association="Self.FK_tblMstUserCategoryMapping_tblMstUserMaster">
+            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
+            <End Role="tblMstUserCategoryMapping" EntitySet="tblMstUserCategoryMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserDetail_MstCity" Association="Self.FK_tblMstUserDetail_MstCity">
+            <End Role="MstCity" EntitySet="MstCity" />
+            <End Role="tblMstUserDetail" EntitySet="tblMstUserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserDetail_tblMstUserMaster" Association="Self.FK_tblMstUserDetail_tblMstUserMaster">
+            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
+            <End Role="tblMstUserDetail" EntitySet="tblMstUserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserMaster_MstLanguage" Association="Self.FK_tblMstUserMaster_MstLanguage">
+            <End Role="MstLanguage" EntitySet="MstLanguage" />
+            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserTreeStructure_tblMstUserMaster" Association="Self.FK_tblMstUserTreeStructure_tblMstUserMaster">
+            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
+            <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructure" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -614,6 +654,7 @@
           <EntitySet Name="MstMenuMasters" EntityType="SNPLCPDBModel.MstMenuMaster" />
           <EntitySet Name="MstMenuRoleMasters" EntityType="SNPLCPDBModel.MstMenuRoleMaster" />
           <EntitySet Name="MstStates" EntityType="SNPLCPDBModel.MstState" />
+          <EntitySet Name="MstUserTypes" EntityType="SNPLCPDBModel.MstUserType" />
           <EntitySet Name="MstUserWorkCategories" EntityType="SNPLCPDBModel.MstUserWorkCategory" />
           <EntitySet Name="sysdiagrams" EntityType="SNPLCPDBModel.sysdiagram" />
           <EntitySet Name="tblMstUserBankDetails" EntityType="SNPLCPDBModel.tblMstUserBankDetail" />
@@ -621,6 +662,9 @@
           <EntitySet Name="tblMstUserDetails" EntityType="SNPLCPDBModel.tblMstUserDetail" />
           <EntitySet Name="tblMstUserLoginDetails" EntityType="SNPLCPDBModel.tblMstUserLoginDetail" />
           <EntitySet Name="tblMstUserTreeStructures" EntityType="SNPLCPDBModel.tblMstUserTreeStructure" />
+          <EntitySet Name="tblRawUniqueURLs" EntityType="SNPLCPDBModel.tblRawUniqueURL" />
+          <EntitySet Name="tblRawURLs" EntityType="SNPLCPDBModel.tblRawURL" />
+          <EntitySet Name="tblRawURLDetails" EntityType="SNPLCPDBModel.tblRawURLDetail" />
           <AssociationSet Name="FK_aspnet_UsersInRoles_aspnet_Roles" Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles">
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
@@ -712,13 +756,13 @@
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsActive" />
-          <Property Type="Int32" Name="UserEntryID" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UserAffectedDate" Precision="3" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UserEntryID" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserAffectedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="aspnet_UsersInRoles" Relationship="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" FromRole="aspnet_Roles" ToRole="aspnet_UsersInRoles" />
           <NavigationProperty Name="MstMenuRoleMasters" Relationship="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" FromRole="aspnet_Roles" ToRole="MstMenuRoleMaster" />
         </EntityType>
@@ -727,37 +771,37 @@
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Type="Int32" Name="PkID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="Int32" Name="RoleId" Nullable="false" />
-          <Property Type="Int32" Name="UserEntryID" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UserEffectedDate" Precision="3" />
+          <Property Name="PkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserEntryID" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="aspnet_Roles" Relationship="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" FromRole="aspnet_UsersInRoles" ToRole="aspnet_Roles" />
         </EntityType>
         <EntityType Name="MstBankMaster">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="BankName" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UserEffectedDate" Precision="3" />
-          <Property Type="Int32" Name="UserEntryId" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEntryId" Type="Int32" />
           <NavigationProperty Name="tblMstUserBankDetails" Relationship="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" FromRole="MstBankMaster" ToRole="tblMstUserBankDetail" />
         </EntityType>
         <EntityType Name="MstCity">
           <Key>
             <PropertyRef Name="CityId" />
           </Key>
-          <Property Type="Int32" Name="CityId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CityName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="StateId" Nullable="false" />
-          <Property Type="Boolean" Name="IsActive" Nullable="false" />
-          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
-          <Property Type="Int32" Name="ModifiedBy" />
-          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MstState" Relationship="SNPLCPDBModel.FK_MstCity_MstState" FromRole="MstCity" ToRole="MstState" />
           <NavigationProperty Name="tblMstUserDetails" Relationship="SNPLCPDBModel.FK_tblMstUserDetail_MstCity" FromRole="MstCity" ToRole="tblMstUserDetail" />
         </EntityType>
@@ -765,55 +809,55 @@
           <Key>
             <PropertyRef Name="CountryId" />
           </Key>
-          <Property Type="Int32" Name="CountryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CountryPhoneCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CountryName" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsActive" />
-          <Property Type="Int32" Name="CreatedBy" />
-          <Property Type="DateTime" Name="CreatedDate" Precision="3" />
-          <Property Type="Int32" Name="ModifiedBy" />
-          <Property Type="DateTime" Name="ModifyDate" Precision="3" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryPhoneCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MstStates" Relationship="SNPLCPDBModel.FK_MstState_MstCountry" FromRole="MstCountry" ToRole="MstState" />
         </EntityType>
         <EntityType Name="MstLanguage">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="LanguageName" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LanguageCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsActive" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="tblMstUserMasters" Relationship="SNPLCPDBModel.FK_tblMstUserMaster_MstLanguage" FromRole="MstLanguage" ToRole="tblMstUserMaster" />
         </EntityType>
         <EntityType Name="MstMenuMaster">
           <Key>
             <PropertyRef Name="MenuId" />
           </Key>
-          <Property Type="Int32" Name="MenuId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MenuText" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="MenuDesc" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="NavigateURL" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="ParentID" />
-          <Property Type="Int32" Name="OrderNo" />
-          <Property Type="Int32" Name="ApplicationID" />
-          <Property Type="Int32" Name="UserEntryID" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UserAffectedDate" Precision="3" />
-          <Property Type="Boolean" Name="IsActive" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuText" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MenuDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NavigateURL" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="ApplicationID" Type="Int32" />
+          <Property Name="UserEntryID" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserAffectedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="MstMenuRoleMasters" Relationship="SNPLCPDBModel.FK_MstMenuRoleMaster_MstMenuMaster" FromRole="MstMenuMaster" ToRole="MstMenuRoleMaster" />
         </EntityType>
         <EntityType Name="MstMenuRoleMaster">
           <Key>
             <PropertyRef Name="MR_SNo" />
           </Key>
-          <Property Type="Int32" Name="MR_SNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MM_MenuId" />
-          <Property Type="Int32" Name="AR_RoleId" />
-          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="CreatedDate" Precision="3" />
-          <Property Type="String" Name="ModifiedBy" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
-          <Property Type="Boolean" Name="Active_Flag" />
+          <Property Name="MR_SNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MM_MenuId" Type="Int32" />
+          <Property Name="AR_RoleId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active_Flag" Type="Boolean" />
           <NavigationProperty Name="aspnet_Roles" Relationship="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" FromRole="MstMenuRoleMaster" ToRole="aspnet_Roles" />
           <NavigationProperty Name="MstMenuMaster" Relationship="SNPLCPDBModel.FK_MstMenuRoleMaster_MstMenuMaster" FromRole="MstMenuRoleMaster" ToRole="MstMenuMaster" />
         </EntityType>
@@ -821,69 +865,77 @@
           <Key>
             <PropertyRef Name="StateID" />
           </Key>
-          <Property Type="Int32" Name="StateID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="StateName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="CountryID" Nullable="false" />
-          <Property Type="Boolean" Name="IsActive" />
-          <Property Type="Int32" Name="CreatedBy" />
-          <Property Type="DateTime" Name="CreatedDate" Precision="3" />
-          <Property Type="Int32" Name="ModifiedBy" />
-          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MstCities" Relationship="SNPLCPDBModel.FK_MstCity_MstState" FromRole="MstState" ToRole="MstCity" />
           <NavigationProperty Name="MstCountry" Relationship="SNPLCPDBModel.FK_MstState_MstCountry" FromRole="MstState" ToRole="MstCountry" />
+        </EntityType>
+        <EntityType Name="MstUserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="MstUserWorkCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CategoryCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CategoryName" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CategoryDesc" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="CategoryPrice" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="CatIntroPercentage" />
-          <Property Type="Int32" Name="CatWorkPercentage" />
-          <Property Type="Int32" Name="UserEntryId" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UserEffectedDate" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CatIntroPercentage" Type="Int32" />
+          <Property Name="CatWorkPercentage" Type="Int32" />
+          <Property Name="UserEntryId" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblMstUserCategoryMappings" Relationship="SNPLCPDBModel.FK_tblMstUserCategoryMapping_MstUserWorkCategory" FromRole="MstUserWorkCategory" ToRole="tblMstUserCategoryMapping" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="principal_id" Nullable="false" />
-          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="version" />
-          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="tblMstUserBankDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Int32" Name="BankId" />
-          <Property Type="String" Name="BranchName" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="IFSCCode" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="BranchAddress" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ACHolderName" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ACNo" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ACTypeId" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UserEffectedDate" Precision="3" />
-          <Property Type="Int32" Name="UserEntryId" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="BranchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IFSCCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BranchAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACHolderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ACNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACTypeId" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEntryId" Type="Int32" />
           <NavigationProperty Name="MstBankMaster" Relationship="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" FromRole="tblMstUserBankDetail" ToRole="MstBankMaster" />
         </EntityType>
         <EntityType Name="tblMstUserCategoryMapping">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Int32" Name="CategoryId" />
-          <Property Type="DateTime" Name="UserEntryDate" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MstUserWorkCategory" Relationship="SNPLCPDBModel.FK_tblMstUserCategoryMapping_MstUserWorkCategory" FromRole="tblMstUserCategoryMapping" ToRole="MstUserWorkCategory" />
           <NavigationProperty Name="tblMstUserMaster" Relationship="SNPLCPDBModel.FK_tblMstUserCategoryMapping_tblMstUserMaster" FromRole="tblMstUserCategoryMapping" ToRole="tblMstUserMaster" />
         </EntityType>
@@ -891,27 +943,27 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="String" Name="FirstName" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="EmailId" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ContactNo" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AlteranateContact" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsWelcomeMailSend" />
-          <Property Type="Boolean" Name="IsMemberShipTaken" />
-          <Property Type="Int32" Name="UserType" />
-          <Property Type="Int32" Name="PersonalIdType" />
-          <Property Type="String" Name="PersonalIdNo" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UserImage" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CurrentAddress" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PinCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="CityId" />
-          <Property Type="String" Name="RegisterRefrelCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SelfRefrelCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="EntryDate" Precision="3" />
-          <Property Type="DateTime" Name="UpdateDate" Precision="3" />
-          <Property Type="Int32" Name="UserEntryId" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AlteranateContact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsWelcomeMailSend" Type="Boolean" />
+          <Property Name="IsMemberShipTaken" Type="Boolean" />
+          <Property Name="UserType" Type="Int32" />
+          <Property Name="PersonalIdType" Type="Int32" />
+          <Property Name="PersonalIdNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="RegisterRefrelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SelfRefrelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEntryId" Type="Int32" />
           <NavigationProperty Name="MstCity" Relationship="SNPLCPDBModel.FK_tblMstUserDetail_MstCity" FromRole="tblMstUserDetail" ToRole="MstCity" />
           <NavigationProperty Name="tblMstUserMaster" Relationship="SNPLCPDBModel.FK_tblMstUserDetail_tblMstUserMaster" FromRole="tblMstUserDetail" ToRole="tblMstUserMaster" />
         </EntityType>
@@ -919,26 +971,54 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Guid" Name="AuthId" />
-          <Property Type="String" Name="BrowserType" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="IPAddress" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CityName" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Latitude" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Longitude" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="LoginTime" Precision="3" />
-          <Property Type="DateTime" Name="LogoutTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="AuthId" Type="Guid" />
+          <Property Name="BrowserType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LogoutTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMstUserTreeStructure">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Int32" Name="ParentId" />
-          <Property Type="DateTime" Name="EntryDate" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblMstUserMaster" Relationship="SNPLCPDBModel.FK_tblMstUserTreeStructure_tblMstUserMaster" FromRole="tblMstUserTreeStructure" ToRole="tblMstUserMaster" />
+        </EntityType>
+        <EntityType Name="tblRawUniqueURL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="UniqueURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsValidate" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblRawURL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URLEntryCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryId" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblRawURLDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsUnique" Type="Boolean" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_aspnet_UsersInRoles_aspnet_Roles">
           <End Type="SNPLCPDBModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="1" />
@@ -1265,6 +1345,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MstUserTypes">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.MstUserType">
+              <MappingFragment StoreEntitySet="MstUserType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MstUserWorkCategories">
             <EntityTypeMapping TypeName="SNPLCPDBModel.MstUserWorkCategory">
               <MappingFragment StoreEntitySet="MstUserWorkCategory">
@@ -1373,6 +1462,37 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblRawUniqueURLs">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.tblRawUniqueURL">
+              <MappingFragment StoreEntitySet="tblRawUniqueURL">
+                <ScalarProperty Name="IsValidate" ColumnName="IsValidate" />
+                <ScalarProperty Name="UniqueURL" ColumnName="UniqueURL" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRawURLs">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.tblRawURL">
+              <MappingFragment StoreEntitySet="tblRawURL">
+                <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="UserEntryId" ColumnName="UserEntryId" />
+                <ScalarProperty Name="URLEntryCode" ColumnName="URLEntryCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRawURLDetails">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.tblRawURLDetail">
+              <MappingFragment StoreEntitySet="tblRawURLDetail">
+                <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="IsUnique" ColumnName="IsUnique" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1390,6 +1510,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
@@ -1404,6 +1525,7 @@
         <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="3.75" PointY="12.5" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="6" PointY="8.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="10.75" PointY="5.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="8.75" PointY="8" />
         <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserBankDetail" Width="1.5" PointX="12" PointY="1" />
@@ -1411,6 +1533,9 @@
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="7.5" PointY="1.125" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="5.75" PointY="12.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="13.75" PointY="8.75" />
         <AssociationConnector Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" />

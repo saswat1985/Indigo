@@ -77,6 +77,9 @@
     <Compile Include="DBContext\MstState.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\MstUserType.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\MstUserWorkCategory.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
@@ -115,6 +118,15 @@
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBContext\tblMstUserTreeStructure.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\tblRawUniqueURL.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\tblRawURL.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\tblRawURLDetail.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBContext\uspMenuMaster_Result.cs">
