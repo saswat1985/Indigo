@@ -294,6 +294,11 @@ namespace Effigy.Service
         {
             return objMaster.GetSelectedRoles(userId);
         }
+
+        public IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class
+        {
+            return objMaster.GetList<T>(predicate);
+        }
         #endregion
 
 

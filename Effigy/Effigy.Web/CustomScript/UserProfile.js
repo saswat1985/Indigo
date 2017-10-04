@@ -113,18 +113,7 @@ FillDropDown = function (ddl, method, data, key, value) {
     });
 }
 
-FillGridView = function () {
-    $.ajax({
-        type: "POST",
-        url: "UsersListPage.aspx/GetUserList",
-        contentType: "application/json; charset=utf-8",
-        data: "{}",
-        dataType: "json",
-        success: AjaxSucessed,
-        error: AjaxFailed
-    });
 
-}
 AjaxSucessed = function (data) {
     $('#dvGrid').empty();
     $('#dvGrid').show();

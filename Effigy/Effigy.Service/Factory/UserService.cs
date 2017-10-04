@@ -4,6 +4,8 @@ using Effigy.DataObject.UnitOfWork;
 using Effigy.Utility;
 using Effigy.Entity;
 using System.Collections.Generic;
+using Effigy.Entity.Entity;
+using System.Linq.Expressions;
 
 namespace Effigy.Service
 {
@@ -51,40 +53,63 @@ namespace Effigy.Service
 
         }
 
-
-        public void CreateNewUser(Entity.UserData objUserData)
+        public void CreateNewUser(Entity.UserData objUserData, tblMstUserBankDetail objBankDetail = null)
         {
             try
             {
-                tblMstUserMaster objMaster = new tblMstUserMaster();
-                tblMstUserDetail objDetail = new tblMstUserDetail();
-                tblMstUserCategoryMapping objCategory = new tblMstUserCategoryMapping();
-                tblMstUserTreeStructure objUserGenology = new tblMstUserTreeStructure();
+                tblMstUserMaster objMaster = null;
+                tblMstUserDetail objDetail = null;
+
+                tblMstUserCategoryMapping objCategory = null;
+                tblMstUserTreeStructure objUserGenology = null;
+
+                if (objUserData.UserId > 0)
+                {
+                    objMaster = objDal.GetSingleRecord<tblMstUserMaster>(P => P.UserId == objUserData.UserId);
+                    objDetail = objDal.GetSingleRecord<tblMstUserDetail>(P => P.UserId == objUserData.UserId);
+                    objDetail.UserType = (int)EnumLibrary.UserType.InernalUser;
+                }
+                else
+                {
+                    objMaster = new tblMstUserMaster();
+                    objDetail = new tblMstUserDetail();
 
 
-                objMaster.UserName = objMaster.UserCode = objDal.GetNextUserCode();
-                objMaster.AcceptTermCondition = objUserData.AcceptTermCondition;
-                objMaster.Language = 1;
-                objMaster.Password = UtilityMethods.CreatePassword(8);//for generate random password 
-                //change
-                objMaster.IsActive = true;
-                objMaster.UserEntryId = 0;
-                objMaster.UserEffectedDate = objMaster.UserEntryDate = DateTime.Now;
+                    objMaster.UserId = objUserData.UserId ?? 0;
+                    objMaster.UserName = objMaster.UserCode = objDal.GetNextUserCode();
+                    objMaster.AcceptTermCondition = objUserData.AcceptTermCondition;
+                    objMaster.Language = 1;
+                    objMaster.Password = UtilityMethods.CreatePassword(8);//for generate random password
+                    objMaster.IsActive = true;
+                    objMaster.UserEntryId = 0;
+                    objMaster.UserEffectedDate = objMaster.UserEntryDate = DateTime.Now;
 
+                    objDetail.UserId = objUserData.UserId;
+                    objDetail.UserType = (int)EnumLibrary.UserType.ExternalUser;
+
+                    objDetail.RegisterRefrelCode = objUserData.RefrelCode;
+                    objDetail.SelfRefrelCode = UtilityMethods.CoupneCodeGenerator(AppKeyCollection.CoupneCodeLength);
+                    objDetail.IsMemberShipTaken = false;//this will true after payment.
+                    objDetail.IsWelcomeMailSend = false;
+                }
+                
                 objDetail.FirstName = objUserData.FirstName;
                 objDetail.LastName = objUserData.LastName;
                 objDetail.ContactNo = objUserData.ContactNo;
                 objDetail.EmailId = objUserData.EmailId;
-                objDetail.RegisterRefrelCode = objUserData.RefrelCode;
-                objDetail.SelfRefrelCode = UtilityMethods.CoupneCodeGenerator(AppKeyCollection.CoupneCodeLength);
-                objDetail.IsMemberShipTaken = false;//this will true after payment.
-                objDetail.IsWelcomeMailSend = false;
-                objDetail.UserType = (int)EnumLibrary.UserType.ExternalUser;
+                objDetail.CurrentAddress = objUserData.CurrentAddress;
+                objDetail.CityId = objUserData.CityId;
 
-                objCategory.CategoryId = objUserData.UserCategory;
-                objUserGenology.ParentId = objDal.GetUserIdByRefrrelCode(objUserData.RefrelCode);
 
-                objDal.SaveUpdateUserDetail(objMaster, objDetail, null, objCategory, objUserGenology);
+                if (objUserData.UserCategory > 0)
+                {
+                    objCategory = new tblMstUserCategoryMapping();
+                    objUserGenology = new tblMstUserTreeStructure();
+                    objCategory.CategoryId = objUserData.UserCategory;
+                    objUserGenology.ParentId = objDal.GetUserIdByRefrrelCode(objUserData.RefrelCode);
+                }
+
+                objDal.SaveUpdateUserDetail(objMaster, objDetail, objBankDetail, objCategory, objUserGenology);
 
                 UtilityMethods.SendSingleSMS(GetSMSBody(objMaster.UserName, objMaster.Password), objDetail.ContactNo);
             }
@@ -153,6 +178,11 @@ namespace Effigy.Service
             {
                 throw;
             }
+        }
+
+        public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
+        {
+            return objDal.GetSingleRecord<T>(predicate);
         }
     }
 }

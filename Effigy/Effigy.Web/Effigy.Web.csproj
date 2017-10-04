@@ -2326,6 +2326,7 @@
     <Content Include="CustomScript\Dashboard.js" />
     <Content Include="CustomScript\UpdatePassword.js" />
     <Content Include="CustomScript\MenuRoleMapper.js" />
+    <Content Include="CustomScript\UserProfile.js" />
     <Content Include="CustomScript\UserRoleMapper.js" />
     <Content Include="CustomScript\UserRoleMaster.js" />
     <Content Include="CustomScript\MenuMaster.js" />

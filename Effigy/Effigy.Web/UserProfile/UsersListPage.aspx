@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EffigyMaster.Master" AutoEventWireup="true" CodeBehind="UsersListPage.aspx.cs" Inherits="Effigy.Web.UserProfile.UsersListPage" %>
-
+<%@ Register TagPrefix="uc" TagName="UserProfile" Src="~/UserControl/UC_UserProfile.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../CustomScript/UserListPage.js"></script>
     <div class="content">
@@ -11,13 +11,17 @@
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>
                         <li><a onclick="FillGridView();" data-action="reload"></a></li>
-                        <li><a class="icon-plus22" data-toggle="modal" data-target="#modal_form_vertical"></a></li>
+                        <li><a class="icon-plus22" onclick="AddNewProfile();" ></a></li>
                     </ul>
                 </div>
             </div>
             <div id="dvGrid" class="panel-body">
             </div>
+            <div id="dvDetails" >
+                <uc:UserProfile  ID="ucUserProfile" runat="server"/>
+            </div>
         </div>
         <!-- /pagination types -->
     </div>
+    
 </asp:Content>

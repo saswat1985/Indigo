@@ -139,11 +139,14 @@
     <Compile Include="Entity\MenuRenderByRole.cs" />
     <Compile Include="Entity\ClsStateMaster.cs" />
     <Compile Include="Entity\CountryMapper.cs" />
+    <Compile Include="Entity\MstCityData.cs" />
+    <Compile Include="Entity\MstStateData.cs" />
     <Compile Include="Entity\MstUserMaster.cs" />
     <Compile Include="Entity\ProductMapper.cs" />
     <Compile Include="Entity\tblMstUserMaster.cs" />
     <Compile Include="Entity\UserListData.cs" />
     <Compile Include="Entity\UserData.cs" />
+    <Compile Include="Entity\UserProfileData.cs" />
     <Compile Include="Entity\UserRoleMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
