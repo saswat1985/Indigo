@@ -16,6 +16,7 @@ namespace Effigy.DataObject.DataBase
     using System.Data.Objects.DataClasses;
     using System.Linq;
     using Effigy.Entity.DBContext;
+
     public partial class SNPLCPDBEntities : DbContext
     {
         public SNPLCPDBEntities()
@@ -37,6 +38,7 @@ namespace Effigy.DataObject.DataBase
         public DbSet<MstMenuMaster> MstMenuMasters { get; set; }
         public DbSet<MstMenuRoleMaster> MstMenuRoleMasters { get; set; }
         public DbSet<MstState> MstStates { get; set; }
+        public DbSet<MstUserType> MstUserTypes { get; set; }
         public DbSet<MstUserWorkCategory> MstUserWorkCategories { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<tblMstUserBankDetail> tblMstUserBankDetails { get; set; }
@@ -45,6 +47,9 @@ namespace Effigy.DataObject.DataBase
         public DbSet<tblMstUserLoginDetail> tblMstUserLoginDetails { get; set; }
         public DbSet<tblMstUserMaster> tblMstUserMasters { get; set; }
         public DbSet<tblMstUserTreeStructure> tblMstUserTreeStructures { get; set; }
+        public DbSet<tblRawUniqueURL> tblRawUniqueURLs { get; set; }
+        public DbSet<tblRawURL> tblRawURLs { get; set; }
+        public DbSet<tblRawURLDetail> tblRawURLDetails { get; set; }
 
         public virtual ObjectResult<Nullable<int>> chkLogin(string type, string userName, string password, string transactionPwd, Nullable<int> userLoginId, ObjectParameter outRes, ObjectParameter userID, ObjectParameter roleID, ObjectParameter cultureID, ObjectParameter userEntryDateTime)
         {

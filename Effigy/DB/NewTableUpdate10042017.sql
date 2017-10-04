@@ -1,0 +1,93 @@
+USE [SNPLCPDB]
+GO
+
+/****** Object:  Table [dbo].[tblRawUniqueURL]    Script Date: 10/04/2017 10:34:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tblRawUniqueURL](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MasterId] [int] NULL,
+	[UniqueURL] [nvarchar](max) NULL,
+	[IsValidate] [bit] NULL,
+ CONSTRAINT [PK_tblRawUniqueURL] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+USE [SNPLCPDB]
+GO
+
+/****** Object:  Table [dbo].[tblRawURL]    Script Date: 10/04/2017 10:34:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tblRawURL](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[URLEntryCode] [nvarchar](500) NULL,
+	[UserEntryId] [int] NULL,
+	[UserEntryDate] [datetime] NULL,
+ CONSTRAINT [PK_tblRawURL_1] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+USE [SNPLCPDB]
+GO
+
+/****** Object:  Table [dbo].[tblRawURLDetail]    Script Date: 10/04/2017 10:34:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tblRawURLDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MasterId] [int] NULL,
+	[URL] [nvarchar](max) NULL,
+	[IsUnique] [bit] NULL,
+	[UserEntryDate] [datetime] NULL,
+ CONSTRAINT [PK_tblRawURL] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+USE [SNPLCPDB]
+GO
+
+/****** Object:  Table [dbo].[MstUserType]    Script Date: 10/04/2017 10:34:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MstUserType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserType] [nvarchar](50) NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_MstUserType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
