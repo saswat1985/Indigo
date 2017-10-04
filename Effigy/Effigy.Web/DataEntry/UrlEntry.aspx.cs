@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Effigy.Web.DataEntry
 {
-    public partial class UrlEntry : System.Web.UI.Page
+    public partial class UrlEntry : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
