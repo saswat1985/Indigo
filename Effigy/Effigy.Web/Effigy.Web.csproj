@@ -2336,6 +2336,7 @@
     <Content Include="CustomScript\StateMaster.js" />
     <Content Include="CustomScript\UserRegistration.js" />
     <Content Include="DashBoard\DashBoard.aspx" />
+    <Content Include="DataEntry\UrlEntry.aspx" />
     <Content Include="ForgetPassword.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -2842,6 +2843,13 @@
     </Compile>
     <Compile Include="DashBoard\DashBoard.aspx.designer.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataEntry\UrlEntry.aspx.cs">
+      <DependentUpon>UrlEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataEntry\UrlEntry.aspx.designer.cs">
+      <DependentUpon>UrlEntry.aspx</DependentUpon>
     </Compile>
     <Compile Include="EffigyMaster.Master.cs">
       <DependentUpon>EffigyMaster.Master</DependentUpon>
