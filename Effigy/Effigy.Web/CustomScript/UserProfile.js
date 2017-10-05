@@ -1,5 +1,6 @@
 ﻿var Id = 0;
 $(document).ready(function () {
+    UserProfile();
     FillDropDown('ddlCountry', 'GetCountires', null, 'CountryId', 'CountryName');
     FillDropDown('ddlBank', 'GetBanks', null, 'Id', 'BankName');
     ResetForm();
@@ -68,7 +69,7 @@ FillEditControls = function (data) {
 
     if (data.d != null) {
         ResetForm();
-        //Id = Id;
+        Id = data.d['UserId'];
         $('#txtUserCode').val(data.d['UserCode']);
         $('#txtFirstName').val(data.d['FirstName']);
         $('#txtLastName').val(data.d['LastName']);
@@ -155,7 +156,7 @@ ShowHideModel = function (flag) {
     });
 };
 
-function clickNext(flag) {
+clickNext = function(flag) {
     if (flag == 'schedule') {
         $("#schedule").show();
         $("#settings").hide();

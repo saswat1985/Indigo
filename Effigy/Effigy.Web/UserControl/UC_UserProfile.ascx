@@ -38,7 +38,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label>UserCode</label>
-                                                    <input type="text" id="txtUserCode" class="form-control" />
+                                                    <input readonly="readonly" type="text" id="txtUserCode" class="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -53,7 +53,7 @@
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <a  href="#schedule" class="btn btn-primary">Next <i class="icon-arrow-right14 position-right"></i></a>
+                                            <button class="btn btn-primary">Next <i class="icon-arrow-right14 position-right"></i></button>
                                         </div>
                                     </form>
                                 </div>

@@ -67,7 +67,7 @@ namespace Effigy.Service
                 {
                     objMaster = objDal.GetSingleRecord<tblMstUserMaster>(P => P.UserId == objUserData.UserId);
                     objDetail = objDal.GetSingleRecord<tblMstUserDetail>(P => P.UserId == objUserData.UserId);
-                    objDetail.UserType = (int)EnumLibrary.UserType.InernalUser;
+                    //objDetail.UserType = (int)EnumLibrary.UserType.InernalUser;
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace Effigy.Service
                 objDetail.ContactNo = objUserData.ContactNo;
                 objDetail.EmailId = objUserData.EmailId;
                 objDetail.CurrentAddress = objUserData.CurrentAddress;
-                objDetail.CityId = objUserData.CityId;
+                //objDetail.CityId = objUserData.CityId;
 
 
                 if (objUserData.UserCategory > 0)

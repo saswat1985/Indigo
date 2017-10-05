@@ -23,7 +23,7 @@ $(document).ready(function () {
             type: "POST",
             url: "UsersListPage.aspx/GetEditRecord",
             contentType: "application/json; charset=utf-8",
-            data: "{'userId':'" + Id + "', 'isLoggedInUser':" + true + "}",
+            data: "{'userId':'" + Id + "', 'isLoggedInUser':" + false + "}",
             dataType: "json",
             success: FillEditControls,
             error: AjaxFailed

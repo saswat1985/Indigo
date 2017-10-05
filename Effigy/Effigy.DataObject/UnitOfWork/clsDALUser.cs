@@ -152,12 +152,17 @@ namespace Effigy.DataObject.UnitOfWork
                     if (objUserMaster.UserId > 0)
                     {
                         _context.Entry(objUserMaster).State = System.Data.EntityState.Modified;
+                        _context.SaveChanges();
                     }
                     else
                     {
-                        _context.tblMstUserMasters.Add(objUserMaster);
+                        using (_context = new SNPLCPDBEntities())
+                        {
+                            _context.tblMstUserMasters.Add(objUserMaster);
+                            _context.SaveChanges();
+                        }
                     }
-                    _context.SaveChanges();
+                    
                 }
 
 
@@ -180,13 +185,19 @@ namespace Effigy.DataObject.UnitOfWork
                     if (objUserDetail.UserId > 0 && objUserDetail.Id > 0)
                     {
                         _context.Entry(objUserDetail).State = System.Data.EntityState.Modified;
+                        _context.SaveChanges();
                     }
                     else
                     {
-                        _context.tblMstUserDetails.Add(objUserDetail);
+                        using (_context = new SNPLCPDBEntities())
+                        {
+                            _context.tblMstUserDetails.Add(objUserDetail);
+                            _context.SaveChanges();
+                        }
+                            
 
                     }
-                    _context.SaveChanges();
+                    
                 }
 
 

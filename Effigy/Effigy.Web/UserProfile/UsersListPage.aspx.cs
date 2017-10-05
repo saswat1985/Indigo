@@ -110,6 +110,7 @@ namespace Effigy.Web.UserProfile
             IUserService objService = new UserService();
             UserData objUserData = objService.GetUserDataById(userId);
             UserProfileData objData = new UserProfileData();
+            objData.UserId = objUserData.UserId ?? 0;
             objData.FirstName = objUserData.FirstName;
             objData.LastName = objUserData.LastName;
             if (!string.IsNullOrEmpty(objUserData.CurrentAddress))
@@ -121,6 +122,7 @@ namespace Effigy.Web.UserProfile
             objData.CityId = objUserData.CityId;
             objData.StateId = objUserData.StateId;
             objData.CountryId = objUserData.CountryId;
+            
 
             tblMstUserBankDetail objBankDetail = objService.GetSingleRecord<tblMstUserBankDetail>(P => P.UserId == userId);
             if (objBankDetail != null)
