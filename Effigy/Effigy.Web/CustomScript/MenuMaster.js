@@ -19,7 +19,7 @@
             IsActive: ((ddlIsActive == 0) ? false : true)
         }
         SaveData(Menu);
-        
+
     });
 
 });
@@ -51,12 +51,14 @@ FillGridView = function () {
 }
 
 FillParentMenuDdl = function (data) {
-    if (data.d!=null) {
+    if (data.d != null) {
+        $("#ddlParentMenu").empty();
+        $("#ddlParentMenu").append($("<option/>").val('0').text('--Please Select--'));
         $.each(data.d, function () {
             $("#ddlParentMenu").append($("<option     />").val(this["MenuId"]).text(this["MenuText"]));
         });
     }
-    
+
 }
 
 AjaxSucessed = function (data) {
@@ -100,13 +102,13 @@ AjaxFailed = function (e) {
 
 
 ResetControls = function () {
-     $('#txtMenuText').val('');
-     $('#txtMenuDescription').val('');
-     $('#txtNavigateUrl').val();
-     $("#ddlParentMenu option:selected").val('0');
-     $('#hidMenuId').val('0');
-     $('#txtMenuOrder').val('');
-     $("#ddlIsActive option:selected").val('0');
+    $('#txtMenuText').val('');
+    $('#txtMenuDescription').val('');
+    $('#txtNavigateUrl').val();
+    $("#ddlParentMenu option:selected").val('0');
+    $('#hidMenuId').val('0');
+    $('#txtMenuOrder').val('');
+    $("#ddlIsActive option:selected").val('0');
 }
 
 
