@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     FillGridView();
     $('#btnSave').click(function () {
-
         //var countryid = $('#ddlCountry').val();
         //var Stateid = $('#ddlState').Val();
         //var CityName = $('#txtCity').Val();
@@ -14,8 +13,26 @@
         SaveData(City);
         ResetForm();
     });
+    $("#ddlCountry").change(function () {
+        var Countryid = $('#ddlCountry').val();
+        if (Countryid != '0') {
+            FillCityDataByCountryId(Countryid);
+        }
 
+    });
 });
+
+FillCityDataByCountryId = function (countryId) {
+    $.ajax({
+        type: "POST",
+        url: "CityMaster.aspx/GetStateByCountryId",
+        contentType: "application/json; charset=utf-8",
+        data: "{'countryId':" + countryId + "}",
+        dataType: "json",
+        success: AjaxDropDownSuccess,
+        error: AjaxFailed
+    });
+}
 
 SaveData = function (masterData) {
     $.ajax({
@@ -84,5 +101,13 @@ ResetForm = function () {
     $('#txtCity').val('');
 }
 
-
+AjaxDropDownSuccess = function (data) {
+    if (data.d != null) {
+        $("#ddlState").empty();
+        $("#ddlState").append($("<option/>").val('0').text('--Please Select--'));
+        $.each(data.d, function () {
+            $("#ddlState").append($("<option     />").val(this["StateId"]).text(this["StateName"]));
+        });
+    }
+}
 

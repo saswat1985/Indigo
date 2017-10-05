@@ -20,6 +20,8 @@ namespace Effigy.Service
 
         IList<ClsStateMaster> GetState();
 
+        IList<ClsStateMaster> GetState(int countryId);
+
         IList<CityMapper> GetCities();
 
         #endregion
@@ -41,12 +43,12 @@ namespace Effigy.Service
         IList<MstUserMaster> GetUsersBasicDetailList();
         string SaveUserRoleMapping(int userId, string selectedItems, int createdBy);
 
-         int?[] GetSelectedMenus(int roleId);
-         int[] GetSelectedRoles(int userId);
+        int?[] GetSelectedMenus(int roleId);
+        int[] GetSelectedRoles(int userId);
         void InsertBankMaster(MstBankMaster objMstBankMaster);
-         IList<MstBankMaster> GetAllBanks();
+        IList<MstBankMaster> GetAllBanks();
 
-         T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
+        T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
         IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class;
 
     }

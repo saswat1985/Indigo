@@ -18,7 +18,7 @@ namespace Effigy.Service
         {
             objMaster = new ClsDALMaster();
         }
-        
+
         #region  Masters Done By nitin
 
         public IList<ProductMapper> GetUserCategory()
@@ -73,7 +73,30 @@ namespace Effigy.Service
                                                   join country in objMaster.GetCountry() on state.CountryID equals country.CountryId
                                                   select new ClsStateMaster
                                                   {
-                                                      CountryID=country.CountryId,
+                                                      CountryID = country.CountryId,
+                                                      StateID = state.StateID,
+                                                      StateName = state.StateName,
+                                                      CountryName = country.CountryName
+                                                  }).ToList();
+
+                return stateList;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IList<ClsStateMaster> GetState(int countryId)
+        {
+            try
+            {
+                List<ClsStateMaster> stateList = (from state in objMaster.GetState()
+                                                  join country in objMaster.GetCountry() on state.CountryID equals country.CountryId
+                                                  where state.CountryID == countryId
+                                                  select new ClsStateMaster
+                                                  {
+                                                      CountryID = country.CountryId,
                                                       StateID = state.StateID,
                                                       StateName = state.StateName,
                                                       CountryName = country.CountryName
@@ -127,7 +150,8 @@ namespace Effigy.Service
 
         }
 
-        public void InsertBankMaster(MstBankMaster objMstBankMaster) {
+        public void InsertBankMaster(MstBankMaster objMstBankMaster)
+        {
             try
             {
                 objMaster.InsertBankMaster(objMstBankMaster);
@@ -138,7 +162,8 @@ namespace Effigy.Service
             }
         }
 
-        public IList<MstBankMaster> GetAllBanks() {
+        public IList<MstBankMaster> GetAllBanks()
+        {
             try
             {
                 return objMaster.GetAllBanks();
@@ -206,12 +231,12 @@ namespace Effigy.Service
         #endregion
 
 
-            #region Menu
+        #region Menu
         public IList<MenuRenderByRole> GetMenuRender(int userId)
         {
             try
             {
-              return  objMaster.GetMenusByRoleId(userId);
+                return objMaster.GetMenusByRoleId(userId);
             }
             catch (Exception)
             {
@@ -236,7 +261,7 @@ namespace Effigy.Service
         {
             try
             {
-               return objMaster.GetMenuList();
+                return objMaster.GetMenuList();
             }
             catch (Exception)
             {
@@ -244,7 +269,8 @@ namespace Effigy.Service
             }
         }
 
-        public MstMenuMaster GetMenuMaster(int menuId) {
+        public MstMenuMaster GetMenuMaster(int menuId)
+        {
             return objMaster.GetMenuMaster(menuId);
         }
 
@@ -277,12 +303,12 @@ namespace Effigy.Service
 
         public IList<MstUserMaster> GetUsersBasicDetailList()
         {
-           return objMaster.GetUsersBasicDetailList();
+            return objMaster.GetUsersBasicDetailList();
         }
 
         public string SaveUserRoleMapping(int userId, string selectedItems, int createdBy)
         {
-           return objMaster.SaveUserRoleMapping(userId, selectedItems, createdBy);
+            return objMaster.SaveUserRoleMapping(userId, selectedItems, createdBy);
         }
 
         public int?[] GetSelectedMenus(int roleId)

@@ -50,7 +50,7 @@ namespace Effigy.Web.MasterPage
             try
             {
                 IList<Entity.DBContext.ClsStateMaster> objMstState = objMstService.GetState();
-                Common.FillDDL<IList<Entity.DBContext.ClsStateMaster>>(ddlState, objMstState, "StateId", "StateName", true);
+                Common.FillDDL<IList<Entity.DBContext.ClsStateMaster>>(ddlState, null, "StateId", "StateName", true);
             }
             catch (Exception ex)
             {
@@ -59,9 +59,9 @@ namespace Effigy.Web.MasterPage
             }
             finally { Dispose(); }
         }
-       
-        
-       
+
+
+
         [WebMethod]
         public static IList<CityMapper> GetCityList()
         {
@@ -98,10 +98,38 @@ namespace Effigy.Web.MasterPage
             }
             catch (Exception ex)
             {
-
                 Logger.Error(ex);
                 return false;
             }
         }
+
+        [WebMethod]
+        public static IList<MstStateData> GetStateByCountryId(int countryId)
+        {
+            IMasterService objMstService = new MasterService();
+            try
+            {
+                IList<Entity.DBContext.ClsStateMaster> objMstState = objMstService.GetState(countryId);
+                if (objMstState != null)
+                {
+                    var stateList = objMstState.Select(item => new MstStateData
+                    {
+                        StateId = item.StateID,
+                        StateName = item.StateName
+                    });
+                    return stateList.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
+        }
+
     }
 }
