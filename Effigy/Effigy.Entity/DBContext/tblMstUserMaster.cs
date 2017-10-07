@@ -18,6 +18,7 @@ namespace Effigy.Entity.DBContext
         {
             this.tblMstUserCategoryMappings = new HashSet<tblMstUserCategoryMapping>();
             this.tblMstUserDetails = new HashSet<tblMstUserDetail>();
+            this.tblMstUserPaymentDetails = new HashSet<tblMstUserPaymentDetail>();
             this.tblMstUserTreeStructures = new HashSet<tblMstUserTreeStructure>();
         }
     
@@ -35,6 +36,7 @@ namespace Effigy.Entity.DBContext
         public virtual MstLanguage MstLanguage { get; set; }
         public virtual ICollection<tblMstUserCategoryMapping> tblMstUserCategoryMappings { get; set; }
         public virtual ICollection<tblMstUserDetail> tblMstUserDetails { get; set; }
+        public virtual ICollection<tblMstUserPaymentDetail> tblMstUserPaymentDetails { get; set; }
         public virtual ICollection<tblMstUserTreeStructure> tblMstUserTreeStructures { get; set; }
     }
 }

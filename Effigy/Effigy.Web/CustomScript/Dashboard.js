@@ -15,7 +15,6 @@ CheckPayment = function () {
 }
 
 AjaxSucessed = function (data) {
-
     if (data.d.UserType == 2 && data.d.IsMemberShipTaken == false) {
         $('#modal_form_vertical').modal('show');
         if (parseInt(data.d.TimeRemaining) <= 24)
@@ -23,11 +22,7 @@ AjaxSucessed = function (data) {
         else
             $("#btnClose").hide();
     }
-    else {
-    }
-
-
-
+    
 }
 
 AjaxFailed = function (error) {

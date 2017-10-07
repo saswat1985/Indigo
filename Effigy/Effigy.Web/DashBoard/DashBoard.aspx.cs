@@ -25,6 +25,10 @@ namespace Effigy.Web.DashBoard
 
             }
         }
+        protected void btnPayment_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(String.Format("../Payment/PaymentGetway.aspx?UserID={0}", 100));
+        }
         [WebMethod]
         public static UserData CheckPayment()
         {

@@ -46,12 +46,17 @@ namespace Effigy.Web.MasterPage
         }
 
         [WebMethod]
-        public static bool SaveCountry(CountryMapper objCountryMaster)
+        public static bool SaveCountry(CountryMapper objCountryMaster,int CID)
         {
             try
             {
                 IMasterService objMstService = new MasterService();
                 MstCountry objMstCountry = new MstCountry();
+                if (CID > 0)
+                {
+                    objCountryMaster.CountryId = CID;
+                }
+                objMstCountry.CountryPhoneCode = objCountryMaster.CountryPhoneCode;
                 objMstCountry.CountryName = objCountryMaster.CountryName;
                 objMstCountry.CreatedBy = SessionWrapper.UserId;
                 objMstCountry.CreatedDate = DateTime.Now;
@@ -65,5 +70,14 @@ namespace Effigy.Web.MasterPage
                 return false;
             }
         }
+
+        [WebMethod]
+        public static MstCountry GetEditRecord(int CountryId)
+        {
+            IMasterService objMstService = new MasterService();
+            return objMstService.GetSingleRecord<MstCountry>(P => P.CountryId == CountryId);
+        }
+
+
     }
 }

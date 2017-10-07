@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Effigy.Web.Login" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Effigy.Web.Login" %>
 
 <!DOCTYPE html>
 
@@ -132,7 +132,7 @@
         <!-- /page container -->
 
         <!-- Vertical form modal -->
-    <div id="modal_form_vertical" class="modal fade">
+    <%--<div id="modal_form_vertical" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -152,13 +152,13 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button id="btnPayment" type="button" class="btn btn-primary">Payment<i class="icon-arrow-right14 position-right"></i></button>
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>                   
+                   
 
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
     <!-- /vertical form modal -->
 
     </form>

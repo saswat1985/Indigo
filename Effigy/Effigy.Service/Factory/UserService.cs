@@ -132,7 +132,9 @@ namespace Effigy.Service
                     IsMemberShipTaken = user.IsMemberShipTaken ?? false,
                     UserType = user.UserType,
                     UserId = user.UserId,
-                    UserEntryDate = userEntryDateTime
+                    UserEntryDate = userEntryDateTime,
+                    CategoryAmount=10.00,
+                    ProductCategory="CP2"
                 };
 
             }

@@ -117,6 +117,9 @@
     <Compile Include="DBContext\tblMstUserMaster.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\tblMstUserPaymentDetail.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\tblMstUserTreeStructure.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>

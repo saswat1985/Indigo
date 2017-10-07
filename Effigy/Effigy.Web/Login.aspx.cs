@@ -76,35 +76,13 @@ namespace Effigy.Web
             return ipaddress;
         }
 
-        private int CheckPayment(DateTime EntryDate, bool PaymentDone)
-        {
-            int ispaymentdone = 0;
-
-            if (PaymentDone)
-            {
-                ispaymentdone = 2;
-            }
-            else
-            {
-                int allowedHours = Convert.ToInt32(AppKeyCollection.PaymentHours);
-                // int allowedHours = Convert.ToInt32(ConfigurationManager.AppSettings["PaymentHours"]);
-                TimeSpan difference = DateTime.Now - EntryDate;
-                if (difference.TotalHours > 0 && difference.TotalHours < allowedHours)
-                {
-                    ispaymentdone = 1;
-                }
-                else
-                {
-                    ispaymentdone = 0;
-                }
-            }
-            return ispaymentdone;
-
-        }
+        
         public void RegisterScript(Control control, string script)
         {
             ScriptManager.RegisterStartupScript(control, control.GetType(), Guid.NewGuid().ToString(), script, true);
         }
+
+       
 
     }
 }

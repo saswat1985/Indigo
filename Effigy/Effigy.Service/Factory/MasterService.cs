@@ -52,6 +52,7 @@ namespace Effigy.Service
                 {
                     CountryId = item.CountryId,
                     CountryName = item.CountryName,
+                    CountryPhoneCode=item.CountryPhoneCode,
                     IsActive = (bool)item.IsActive
 
                 }).ToList();

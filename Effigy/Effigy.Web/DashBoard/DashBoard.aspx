@@ -23,7 +23,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal" id="btnClose">Close</button>
-                    <button id="btnPayment" type="button" class="btn btn-primary">Payment<i class="icon-arrow-right14 position-right"></i></button>
+                    <asp:Button ID="Button1" runat="server" Text="Payment" CssClass="btn btn-primary" OnClick="btnPayment_Click" />
+                   <%-- <button id="btnPayment" type="button" class="btn btn-primary">Payment<i class="icon-arrow-right14 position-right"></i></button>--%>
 
                 </div>
             </div>

@@ -135,6 +135,7 @@
           <Property Name="CategoryPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CatIntroPercentage" Type="int" />
           <Property Name="CatWorkPercentage" Type="int" />
+          <Property Name="WorkPaymentRate" Type="int" />
           <Property Name="UserEntryId" Type="int" />
           <Property Name="UserEntryDate" Type="datetime" />
           <Property Name="UserEffectedDate" Type="datetime" />
@@ -230,6 +231,16 @@
           <Property Name="UserEntryId" Type="int" />
           <Property Name="UserEntryDate" Type="datetime" />
           <Property Name="UserEffectedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblMstUserPaymentDetail">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransitionID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PaidAmount" Type="money" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMstUserTreeStructure">
           <Key>
@@ -400,6 +411,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblMstUserPaymentDetail_tblMstUserMaster">
+          <End Role="tblMstUserMaster" Type="Self.tblMstUserMaster" Multiplicity="1" />
+          <End Role="tblMstUserPaymentDetail" Type="Self.tblMstUserPaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMstUserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblMstUserPaymentDetail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblMstUserTreeStructure_tblMstUserMaster">
           <End Role="tblMstUserMaster" Type="Self.tblMstUserMaster" Multiplicity="0..1" />
           <End Role="tblMstUserTreeStructure" Type="Self.tblMstUserTreeStructure" Multiplicity="*" />
@@ -425,6 +448,11 @@
           <Parameter Name="UserEntryDateTime" Type="datetime" Mode="InOut" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InsertUserPaymentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TransitionID" Type="varchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="PaidAmount" Type="money" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -465,6 +493,10 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="USP_RawURLEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserEntryId" Type="int" Mode="In" />
+          <Parameter Name="RawURLString" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="uspMenuMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MenuId" Type="int" Mode="In" />
@@ -512,6 +544,7 @@
           <EntitySet Name="tblMstUserDetail" EntityType="Self.tblMstUserDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMstUserLoginDetail" EntityType="Self.tblMstUserLoginDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMstUserMaster" EntityType="Self.tblMstUserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMstUserPaymentDetail" EntityType="Self.tblMstUserPaymentDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMstUserTreeStructure" EntityType="Self.tblMstUserTreeStructure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRawUniqueURL" EntityType="Self.tblRawUniqueURL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRawURL" EntityType="Self.tblRawURL" Schema="dbo" store:Type="Tables" />
@@ -559,6 +592,10 @@
           <AssociationSet Name="FK_tblMstUserMaster_MstLanguage" Association="Self.FK_tblMstUserMaster_MstLanguage">
             <End Role="MstLanguage" EntitySet="MstLanguage" />
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserPaymentDetail_tblMstUserMaster" Association="Self.FK_tblMstUserPaymentDetail_tblMstUserMaster">
+            <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
+            <End Role="tblMstUserPaymentDetail" EntitySet="tblMstUserPaymentDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMstUserTreeStructure_tblMstUserMaster" Association="Self.FK_tblMstUserTreeStructure_tblMstUserMaster">
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMaster" />
@@ -661,6 +698,7 @@
           <EntitySet Name="tblMstUserDetails" EntityType="SNPLCPDBModel.tblMstUserDetail" />
           <EntitySet Name="tblMstUserLoginDetails" EntityType="SNPLCPDBModel.tblMstUserLoginDetail" />
           <EntitySet Name="tblMstUserMasters" EntityType="SNPLCPDBModel.tblMstUserMaster" />
+          <EntitySet Name="tblMstUserPaymentDetails" EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" />
           <EntitySet Name="tblMstUserTreeStructures" EntityType="SNPLCPDBModel.tblMstUserTreeStructure" />
           <EntitySet Name="tblRawUniqueURLs" EntityType="SNPLCPDBModel.tblRawUniqueURL" />
           <EntitySet Name="tblRawURLs" EntityType="SNPLCPDBModel.tblRawURL" />
@@ -709,10 +747,23 @@
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserDetail" EntitySet="tblMstUserDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblMstUserPaymentDetail_tblMstUserMaster" Association="SNPLCPDBModel.FK_tblMstUserPaymentDetail_tblMstUserMaster">
+            <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
+            <End Role="tblMstUserPaymentDetail" EntitySet="tblMstUserPaymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblMstUserTreeStructure_tblMstUserMaster" Association="SNPLCPDBModel.FK_tblMstUserTreeStructure_tblMstUserMaster">
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructures" />
           </AssociationSet>
+          <FunctionImport Name="InsertUserPaymentDetails">
+            <Parameter Name="TransitionID" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_RawURLEntry">
+            <Parameter Name="UserEntryId" Mode="In" Type="Int32" />
+            <Parameter Name="RawURLString" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -876,6 +927,7 @@
           <Property Name="CategoryPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CatIntroPercentage" Type="Int32" />
           <Property Name="CatWorkPercentage" Type="Int32" />
+          <Property Name="WorkPaymentRate" Type="Int32" />
           <Property Name="UserEntryId" Type="Int32" />
           <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
           <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
@@ -980,7 +1032,19 @@
           <NavigationProperty Name="MstLanguage" Relationship="SNPLCPDBModel.FK_tblMstUserMaster_MstLanguage" FromRole="tblMstUserMaster" ToRole="MstLanguage" />
           <NavigationProperty Name="tblMstUserCategoryMappings" Relationship="SNPLCPDBModel.FK_tblMstUserCategoryMapping_tblMstUserMaster" FromRole="tblMstUserMaster" ToRole="tblMstUserCategoryMapping" />
           <NavigationProperty Name="tblMstUserDetails" Relationship="SNPLCPDBModel.FK_tblMstUserDetail_tblMstUserMaster" FromRole="tblMstUserMaster" ToRole="tblMstUserDetail" />
+          <NavigationProperty Name="tblMstUserPaymentDetails" Relationship="SNPLCPDBModel.FK_tblMstUserPaymentDetail_tblMstUserMaster" FromRole="tblMstUserMaster" ToRole="tblMstUserPaymentDetail" />
           <NavigationProperty Name="tblMstUserTreeStructures" Relationship="SNPLCPDBModel.FK_tblMstUserTreeStructure_tblMstUserMaster" FromRole="tblMstUserMaster" ToRole="tblMstUserTreeStructure" />
+        </EntityType>
+        <EntityType Name="tblMstUserPaymentDetail">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransitionID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PaidAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblMstUserMaster" Relationship="SNPLCPDBModel.FK_tblMstUserPaymentDetail_tblMstUserMaster" FromRole="tblMstUserPaymentDetail" ToRole="tblMstUserMaster" />
         </EntityType>
         <EntityType Name="tblMstUserTreeStructure">
           <Key>
@@ -1149,6 +1213,18 @@
             </Principal>
             <Dependent Role="tblMstUserDetail">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMstUserPaymentDetail_tblMstUserMaster">
+          <End Type="SNPLCPDBModel.tblMstUserMaster" Role="tblMstUserMaster" Multiplicity="1" />
+          <End Type="SNPLCPDBModel.tblMstUserPaymentDetail" Role="tblMstUserPaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMstUserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblMstUserPaymentDetail">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1344,6 +1420,7 @@
                 <ScalarProperty Name="UserEffectedDate" ColumnName="UserEffectedDate" />
                 <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
                 <ScalarProperty Name="UserEntryId" ColumnName="UserEntryId" />
+                <ScalarProperty Name="WorkPaymentRate" ColumnName="WorkPaymentRate" />
                 <ScalarProperty Name="CatWorkPercentage" ColumnName="CatWorkPercentage" />
                 <ScalarProperty Name="CatIntroPercentage" ColumnName="CatIntroPercentage" />
                 <ScalarProperty Name="CategoryPrice" ColumnName="CategoryPrice" />
@@ -1452,6 +1529,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblMstUserPaymentDetails">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.tblMstUserPaymentDetail">
+              <MappingFragment StoreEntitySet="tblMstUserPaymentDetail">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TransitionID" ColumnName="TransitionID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblMstUserTreeStructures">
             <EntityTypeMapping TypeName="SNPLCPDBModel.tblMstUserTreeStructure">
               <MappingFragment StoreEntitySet="tblMstUserTreeStructure">
@@ -1493,6 +1581,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertUserPaymentDetails" FunctionName="SNPLCPDBModel.Store.InsertUserPaymentDetails" />
+          <FunctionImportMapping FunctionImportName="USP_RawURLEntry" FunctionName="SNPLCPDBModel.Store.USP_RawURLEntry" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

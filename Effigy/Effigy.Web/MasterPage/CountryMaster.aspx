@@ -11,7 +11,7 @@
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>
                         <li><a onclick="FillGridView();" data-action="reload"></a></li>
-                        <li><a class="icon-plus22" data-toggle="modal" data-target="#modal_form_vertical"></a></li>
+                        <li><a class="icon-plus22" id="lnkNew"></a></li>
                     </ul>
                 </div>
             </div>
@@ -25,12 +25,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h5 class="modal-title">Add Country</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>                   
+                     <h5 class="modal-title" id="headingTitle"></h5>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <div class="row">
+                        <div class="row" style="padding:5px">
+                            <div class="col-sm-3">
+                                <label>Country Phone Code</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input id="txtCountryPhoneCode" name="txtCountryPhoneCode" class="form-control" placeholder="Country Phone Code" type="text" />                                
+                            </div>
+                        </div>
+                        <div class="row" style="padding:5px" >
+
                             <div class="col-sm-3">
                                 <label>Country Name</label>
                             </div>
