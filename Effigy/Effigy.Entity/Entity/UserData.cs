@@ -15,6 +15,7 @@ namespace Effigy.Entity
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string ContactNo { get; set; }
+        public string UserPhoto { get; set; }
         public string RefrelCode { get; set; }
         public int UserCategory { get; set; }
         public bool? IsMemberShipTaken { get; set; }

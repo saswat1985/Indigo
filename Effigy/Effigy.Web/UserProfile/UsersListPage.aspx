@@ -17,7 +17,7 @@
             </div>
             <div id="dvGrid" class="panel-body">
             </div>
-            <div id="dvDetails" >
+            <div id="dvDetails" style="display:none">
                 <uc:UserProfile  ID="ucUserProfile" runat="server"/>
             </div>
         </div>

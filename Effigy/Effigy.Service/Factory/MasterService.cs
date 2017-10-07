@@ -163,7 +163,7 @@ namespace Effigy.Service
             }
         }
 
-        public IList<MstBankMaster> GetAllBanks()
+        public IList<MstBankData> GetAllBanks()
         {
             try
             {

@@ -37,7 +37,7 @@ namespace Effigy.Web.UserProfile
         }
 
         [WebMethod]
-        public static IList<MstBankMaster> GetBanks()
+        public static IList<MstBankData> GetBanks()
         {
             try
             {
@@ -101,39 +101,77 @@ namespace Effigy.Web.UserProfile
         }
 
         [WebMethod]
+        public static string DeleteRecord(int userId)
+        {
+            try
+            {
+                IUserService objService = new UserService();
+                return objService.DeleteFromUserMaster(userId);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
+        }
+
+        [WebMethod]
         public static UserProfileData GetEditRecord(int userId, bool isLoggedInUser)
         {
-            if (isLoggedInUser)
+            try
             {
-                userId = SessionWrapper.UserId;
-            }
-            IUserService objService = new UserService();
-            UserData objUserData = objService.GetUserDataById(userId);
-            UserProfileData objData = new UserProfileData();
-            objData.UserId = objUserData.UserId ?? 0;
-            objData.FirstName = objUserData.FirstName;
-            objData.LastName = objUserData.LastName;
-            if (!string.IsNullOrEmpty(objUserData.CurrentAddress))
-            {
-                objData.AddressLine1 = objUserData.CurrentAddress.Split('|')[0];
-                objData.AddressLine2 = objUserData.CurrentAddress.Split('|')[1];
-            }
+                if (isLoggedInUser)
+                {
+                    userId = SessionWrapper.UserId;
+                }
+                IUserService objService = new UserService();
+                UserData objUserData = objService.GetUserDataById(userId);
+                UserProfileData objData = new UserProfileData();
+                objData.UserId = objUserData.UserId ?? 0;
+                objData.FirstName = objUserData.FirstName;
+                objData.LastName = objUserData.LastName;
+                if (!string.IsNullOrEmpty(objUserData.CurrentAddress))
+                {
+                    objData.AddressLine1 = objUserData.CurrentAddress.Split('|')[0];
+                    objData.AddressLine2 = objUserData.CurrentAddress.Split('|')[1];
+                }
 
-            objData.CityId = objUserData.CityId;
-            objData.StateId = objUserData.StateId;
-            objData.CountryId = objUserData.CountryId;
-            
+                MstCity objCity = objService.GetSingleRecord<MstCity>(P => P.CityId == objUserData.CityId);
+                if (objCity != null)
+                {
 
-            tblMstUserBankDetail objBankDetail = objService.GetSingleRecord<tblMstUserBankDetail>(P => P.UserId == userId);
-            if (objBankDetail != null)
-            {
-                objData.BankId = objBankDetail.BankId ?? 0;
-                objData.ACHolderName = objBankDetail.ACHolderName;
-                objData.ACNo = objBankDetail.ACNo;
-                objData.BranchAddress = objBankDetail.BranchAddress;
-                objData.BranchName = objBankDetail.BranchName;
+                    objData.CityId = objUserData.CityId;
+                    objData.StateId = objCity.StateId;
+                    MstState objState = objService.GetSingleRecord<MstState>(P => P.StateID == objCity.StateId);
+                    if (objState!=null)
+                    {
+                        objData.CountryId = objState.CountryID;
+                    }
+                }
+
+
+                objData.Phone = objUserData.ContactNo;
+                objData.EmailId = objUserData.EmailId;
+                objData.UserPhoto = objUserData.UserPhoto;
+                
+
+                tblMstUserBankDetail objBankDetail = objService.GetSingleRecord<tblMstUserBankDetail>(P => P.UserId == userId);
+                if (objBankDetail != null)
+                {
+                    objData.BankId = objBankDetail.BankId ?? 0;
+                    objData.ACHolderName = objBankDetail.ACHolderName;
+                    objData.ACNo = objBankDetail.ACNo;
+                    objData.BranchAddress = objBankDetail.BranchAddress;
+                    objData.BranchName = objBankDetail.BranchName;
+                    objData.IFSCCode = objBankDetail.IFSCCode;
+                }
+                return objData;
             }
-            return objData;
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
         }
 
         [WebMethod]
@@ -153,7 +191,11 @@ namespace Effigy.Web.UserProfile
                 objUserData.CountryId = objData.CountryId;
                 objUserData.UserId = objData.UserId;
 
-                if (objData.UserId > 0 && objData.BankId > 0)
+                if (!string.IsNullOrEmpty(objData.UserPhoto))
+                {
+                    objUserData.UserPhoto = objData.UserPhoto;
+                }
+                if (objData.BankId > 0)
                 {
                     tblMstUserBankDetail objBankDetail = objService.GetSingleRecord<tblMstUserBankDetail>(P => P.UserId == objData.UserId);
                     if (objBankDetail == null)

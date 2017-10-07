@@ -127,13 +127,27 @@ namespace Effigy.DataObject.UnitOfWork
             try
             {
                 SaveUserMaster(objUserMaster);
+
                 objUserDetail.UserId = objUserMaster.UserId;
                 SaveUserDetail(objUserDetail);
-                categoryMapping.UserId = objUserMaster.UserId;
-                SaveBankDetail(objUserBankDetail);
-                SaveUserCategoryDetail(categoryMapping);
-                userTreeStructure.UserId = objUserMaster.UserId;
-                SaveUserGenology(userTreeStructure);
+
+                if (objUserBankDetail!=null)
+                {
+                    objUserBankDetail.UserId = objUserMaster.UserId;
+                    SaveBankDetail(objUserBankDetail);
+                }
+                
+                if (categoryMapping!=null)
+                {
+                    categoryMapping.UserId = objUserMaster.UserId;
+                    SaveUserCategoryDetail(categoryMapping);
+                }
+                if (userTreeStructure!=null)
+                {
+                    userTreeStructure.UserId = objUserMaster.UserId;
+                    SaveUserGenology(userTreeStructure);
+                }
+                
             }
             catch (Exception)
             {
@@ -162,7 +176,7 @@ namespace Effigy.DataObject.UnitOfWork
                             _context.SaveChanges();
                         }
                     }
-                    
+
                 }
 
 
@@ -194,10 +208,10 @@ namespace Effigy.DataObject.UnitOfWork
                             _context.tblMstUserDetails.Add(objUserDetail);
                             _context.SaveChanges();
                         }
-                            
+
 
                     }
-                    
+
                 }
 
 
@@ -218,12 +232,17 @@ namespace Effigy.DataObject.UnitOfWork
                     if (objBankDetail.Id > 0)
                     {
                         _context.Entry(objBankDetail).State = System.Data.EntityState.Modified;
+                        _context.SaveChanges();
                     }
                     else
                     {
-                        _context.tblMstUserBankDetails.Add(objBankDetail);
+                        using (_context = new SNPLCPDBEntities())
+                        {
+                            _context.tblMstUserBankDetails.Add(objBankDetail);
+                            _context.SaveChanges();
+                        }
                     }
-                    _context.SaveChanges();
+                    
                 }
 
             }
@@ -243,6 +262,25 @@ namespace Effigy.DataObject.UnitOfWork
                 return "SCP-" + nextNumber;
             }
 
+        }
+
+        public string DeleteFromUserMaster(int userId)
+        {
+            try
+            {
+                tblMstUserMaster obj = _userMaster.GetByID(userId);
+                if (obj != null)
+                {
+                    obj.IsActive = false;
+                    _context.Entry(obj).State = System.Data.EntityState.Modified;
+                    _context.SaveChanges();
+                }
+                return "deleted";
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public tblMstUserMaster GetUserMasterById(int userId)
@@ -369,7 +407,7 @@ namespace Effigy.DataObject.UnitOfWork
             return (from a in _context.tblMstUserMasters
                     join b in _context.tblMstUserDetails on a.UserId equals b.UserId into c
                     from d in c.DefaultIfEmpty()
-                    where a.UserId > 0
+                    where a.UserId > 0 && a.IsActive == true
                     select new UserListData
                     {
                         UserId = a.UserId,

@@ -142,6 +142,7 @@
     <Compile Include="Entity\MenuRenderByRole.cs" />
     <Compile Include="Entity\ClsStateMaster.cs" />
     <Compile Include="Entity\CountryMapper.cs" />
+    <Compile Include="Entity\MstBankData.cs" />
     <Compile Include="Entity\MstCityData.cs" />
     <Compile Include="Entity\MstStateData.cs" />
     <Compile Include="Entity\MstUserMaster.cs" />

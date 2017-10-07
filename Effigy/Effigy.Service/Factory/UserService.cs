@@ -98,8 +98,11 @@ namespace Effigy.Service
                 objDetail.ContactNo = objUserData.ContactNo;
                 objDetail.EmailId = objUserData.EmailId;
                 objDetail.CurrentAddress = objUserData.CurrentAddress;
-                //objDetail.CityId = objUserData.CityId;
-
+                objDetail.CityId = objUserData.CityId;
+                if (!string.IsNullOrEmpty (objUserData.UserPhoto))
+                {
+                    objDetail.UserImage = objUserData.UserPhoto;
+                }
 
                 if (objUserData.UserCategory > 0)
                 {
@@ -133,6 +136,11 @@ namespace Effigy.Service
                     UserType = user.UserType,
                     UserId = user.UserId,
                     UserEntryDate = userEntryDateTime,
+					CityId = user.CityId ?? 0,
+                    CurrentAddress = user.CurrentAddress,
+                    ContactNo=user.ContactNo,
+                    EmailId=user.EmailId,
+                    UserPhoto=user.UserImage,
                     CategoryAmount=10.00,
                     ProductCategory="CP2"
                 };
@@ -185,6 +193,18 @@ namespace Effigy.Service
         public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
         {
             return objDal.GetSingleRecord<T>(predicate);
+        }
+
+        public string DeleteFromUserMaster(int userId)
+        {
+            try
+            {
+                return objDal.DeleteFromUserMaster(userId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

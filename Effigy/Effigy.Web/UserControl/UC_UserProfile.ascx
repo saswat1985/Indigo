@@ -6,7 +6,7 @@
         <div class="navbar-collapse collapse" id="navbar-filter">
             <ul class="nav navbar-nav">
                 <li class=""><a href="#activity" data-toggle="tab" aria-expanded="false"><i class="icon-user position-left"></i>Personal Information</a></li>
-                <li class=""><a href="#schedule" data-toggle="tab" aria-expanded="false"><i class="icon-calendar3 position-left"></i>Contact Detail <span class="badge badge-success badge-inline position-right">32</span></a></li>
+                <li class=""><a href="#schedule" data-toggle="tab" aria-expanded="false"><i class="icon-calendar3 position-left"></i>Contact Detail</a></li>
                 <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true"><i class="icon-cog3 position-left"></i>Bank Detail</a></li>
             </ul>
         </div>
@@ -24,23 +24,13 @@
                                 <div class="panel-heading">
                                     <h6 class="panel-title">Personal information</h6>
                                     <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
+                                        
                                     </div>
                                 </div>
 
                                 <div class="panel-body">
                                     <form action="#">
                                         <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>UserCode</label>
-                                                    <input readonly="readonly" type="text" id="txtUserCode" class="form-control" />
-                                                </div>
-                                            </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label>First Name</label>
@@ -66,11 +56,7 @@
                                 <div class="panel-heading">
                                     <h6 class="panel-title">Contact Detail</h6>
                                     <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
+                                        
                                     </div>
                                 </div>
 
@@ -130,14 +116,14 @@
 
                                                 <div class="col-md-6">
                                                     <label class="display-block">Upload profile image</label>
-                                                    <input type="file" class="file-styled">
+                                                    <input type="file" id="filePhoto" onchange="UploadImage(this);" class="file-styled">
                                                     <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right14 position-right"></i></button>
+                                            <button type="button" class="btn btn-primary">Next <i class="icon-arrow-right14 position-right"></i></button>
                                         </div>
                                     </form>
                                 </div>
@@ -155,11 +141,7 @@
                                 <div class="panel-heading">
                                     <h6 class="panel-title">Bank Detail information</h6>
                                     <div class="heading-elements">
-                                        <ul class="icons-list">
-                                            <li><a data-action="collapse"></a></li>
-                                            <li><a data-action="reload"></a></li>
-                                            <li><a data-action="close"></a></li>
-                                        </ul>
+                                       
                                     </div>
                                 </div>
 
@@ -214,17 +196,14 @@
                 <!-- User thumbnail -->
                 <div class="thumbnail">
                     <div class="thumb thumb-rounded thumb-slide">
-                        <img src="assets/images/placeholder.jpg" alt="">
+                        <img id="imgUserPhoto" src="" alt="">
                         <div class="caption">
-                            <span>
-                                <a href="#" class="btn bg-success-400 btn-icon btn-xs" data-popup="lightbox"><i class="icon-plus2"></i></a>
-                                <a href="user_pages_profile.html" class="btn bg-success-400 btn-icon btn-xs"><i class="icon-link"></i></a>
-                            </span>
+                           
                         </div>
                     </div>
 
                     <div class="caption text-center">
-                        <h6 class="text-semibold no-margin">Hanna Dorman <small class="display-block">UX/UI designer</small></h6>
+                        <h6 class="text-semibold no-margin" id="hUserName"> <small class="display-block"></small></h6>
                         <ul class="icons-list mt-15">
                             <li><a href="#" data-popup="tooltip" title="Google Drive"><i class="icon-google-drive"></i></a></li>
                             <li><a href="#" data-popup="tooltip" title="Twitter"><i class="icon-twitter"></i></a></li>

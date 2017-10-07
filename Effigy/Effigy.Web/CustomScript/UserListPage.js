@@ -1,18 +1,37 @@
 ﻿var Id = 0;
+var userImage = "";
 $(document).ready(function () {
     FillGridView();
-    FillDropDown('ddlCountry', 'GetCountires', null, 'CountryId', 'CountryName');
-    FillDropDown('ddlBank', 'GetBanks', null, 'Id', 'BankName');
+    FillDropDown('ddlCountry', 'GetCountires', null, 'CountryId', 'CountryName',0);
+    FillDropDown('ddlBank', 'GetBanks', null, 'Id', 'BankName',0);
     ResetForm();
     $(document).on('change', '#ddlCountry', function () {
         var countryId = $('#' + this.id + ' option:selected').val();
-        FillDropDown('ddlState', 'GetStates', '{"countryId":"' + countryId + '"}', 'StateId', 'StateName');
+        FillDropDown('ddlState', 'GetStates', '{"countryId":"' + countryId + '"}', 'StateId', 'StateName',0);
     });
 
     $(document).on('change', '#ddlState', function () {
         var stateId = $('#' + this.id + ' option:selected').val();
-        FillDropDown('ddlCity', 'GetCities', '{"stateId":"' + stateId + '"}', 'CityId', 'CityName');
+        FillDropDown('ddlCity', 'GetCities', '{"stateId":"' + stateId + '"}', 'CityId', 'CityName',0);
     });
+    $(document).on('click', '.delete', function () {
+        Id = $(this).closest('tr').find('input[type="hidden"]').val();
+        if (confirm("Are you sure to delete record?")) {
+            $.ajax({
+                type: "POST",
+                url: "UsersListPage.aspx/DeleteRecord",
+                contentType: "application/json; charset=utf-8",
+                data: "{'userId':'" + Id + "'}",
+                dataType: "json",
+                success: function () {
+                    FillGridView();
+                    alert('Deleted successfully.');
+                },
+                error: AjaxFailed
+            });
+        }
+    });
+
 
     $(document).on('click', '.edit', function () {
         ResetForm();
@@ -32,7 +51,8 @@ $(document).ready(function () {
     $('#btnSave').click(function () {
         var UserProfileData = {
             'UserId': Id,
-            'UserCode': $('#txtUserCode').val(),
+            //'UserCode': $('#txtUserCode').val(),
+            'UserPhoto':userImage,
             'FirstName': $('#txtFirstName').val(),
             'LastName': $('#txtLastName').val(),
             'AddressLine1': $('#txtAddressLine1').val(),
@@ -62,7 +82,7 @@ SaveData = function (objData) {
         contentType: "application/json; charset=utf-8",
         data: "{'objData':" + JSON.stringify(objData) + "}",
         dataType: "json",
-        success: function (data) { },
+        success: function (data) { FillGridView(); },
         error: AjaxFailed
     });
 }
@@ -70,25 +90,31 @@ SaveData = function (objData) {
 FillEditControls = function (data) {
     if (data.d != null) {
         ResetForm();
-        //Id = Id;
-            $('#txtUserCode').val(data.d['UserCode']);
-            $('#txtFirstName').val(data.d['FirstName']);
-            $('#txtLastName').val(data.d['LastName']);
-            $('#txtAddressLine1').val(data.d['AddressLine1']);
-            $('#txtAddressLine2').val(data.d['AddressLine2']);
-            $('#ddlCity option:selected').val(data.d['CityId']);
-            $('#ddlState option:selected').val(data.d['StateId']);
-            $('#txtZipCode').val(data.d['ZipCode']);
-            $('#txtEmail').val(data.d['EmailId']);
-            $('#ddlCountry option:selected').val(data.d['CountryId']);
-            $('#txtPhone').val(data.d['Phone']);
-            $('#ddlBank option:selected').val(data.d['BankId']);
-            $('#txtBranchName').val(data.d['BranchName']);
-            $('#txtIFSCCode').val(data.d['IFSCCode']);
-            $('#txtBranchAddress').val(data.d['BranchAddress']);
-            $('#txtACHolderName').val(data.d['ACHolderName']);
-            $('#txtAccountNo').val(data.d['ACNo']);
+        FillDropDown('ddlCountry', 'GetCountires', null, 'CountryId', 'CountryName', data.d['CountryId']);
+        FillDropDown('ddlState', 'GetStates', '{"countryId":"' + data.d['CountryId'] + '"}', 'StateId', 'StateName', data.d['StateId']);
+        FillDropDown('ddlCity', 'GetCities', '{"stateId":"' + data.d['StateId'] + '"}', 'CityId', 'CityName', data.d['CityId']);
+        FillDropDown('ddlBank', 'GetBanks', null, 'Id', 'BankName', data.d['BankId']);
+        $('#txtFirstName').val(data.d['FirstName']);
+        $('#txtLastName').val(data.d['LastName']);
+        $('#txtAddressLine1').val(data.d['AddressLine1']);
+        $('#txtAddressLine2').val(data.d['AddressLine2']);
+        $('#txtZipCode').val(data.d['ZipCode']);
+        $('#txtEmail').val(data.d['EmailId']);
+        $('#txtPhone').val(data.d['Phone']);
+        $('#ddlBank option:selected').val(data.d['BankId']);
+        $('#txtBranchName').val(data.d['BranchName']);
+        $('#txtIFSCCode').val(data.d['IFSCCode']);
+        $('#txtBranchAddress').val(data.d['BranchAddress']);
+        $('#txtACHolderName').val(data.d['ACHolderName']);
+        $('#txtAccountNo').val(data.d['ACNo']);
+
+        $('#imgUserPhoto').attr('src', data.d['UserPhoto']);
+        $('#hUserName').empty().append(capitalize(data.d['FirstName']) + ' ' + capitalize(data.d['LastName']));
     }
+}
+
+capitalize=function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 AddNewProfile = function () {
@@ -96,7 +122,7 @@ AddNewProfile = function () {
     $('#dvDetails').show();
 }
 
-FillDropDown = function (ddl, method, data, key, value) {
+FillDropDown = function (ddl, method, data, key, value, selectedValue) {
     $.ajax({
         type: "POST",
         url: "UsersListPage.aspx/" + method,
@@ -109,6 +135,9 @@ FillDropDown = function (ddl, method, data, key, value) {
                 $.each(data.d, function () {
                     $("#" + ddl).append($("<option     />").val(this[key]).text(this[value]));
                 });
+                if (selectedValue > 0) {
+                    $('#' + ddl).val(selectedValue);
+                }
             }
         },
         error: AjaxFailed
@@ -155,7 +184,7 @@ LoadGrid = function (data) {
         item += "<td>" + data.d[i]["FirstName"] + " " + data.d[i]["LastName"] + "</td>";
         item += "<td>" + data.d[i]["ContactNo"] + "</td>";
         item += "<td>" + data.d[i]["EmailId"] + "</td>";
-        item += "<td class='text-center'><a href='#' id='edit-" + data.d[i]["UserId"] + "' class='edit'><i class='icon-pencil'></i></a><input type='hidden' value='" + data.d[i]["UserId"] + "' /></td>";
+        item += "<td class='text-center'><a href='#' id='edit-" + data.d[i]["UserId"] + "' class='edit'><i class='icon-pencil'></i></a><input type='hidden' value='" + data.d[i]["UserId"] + "' /><a href='#' id='delete-" + data.d[i]["UserId"] + "' class='delete'><i class='icon-eraser'></i></a></td>";
         item += "</tr>";
     }
     item += "</tbody></table>";
@@ -167,7 +196,7 @@ AjaxFailed = function (e) {
 }
 
 ResetForm = function () {
-    $('#txtUserCode').val('');
+    //$('#txtUserCode').val('');
     $('#txtFirstName').val('');
     $('#txtLastName').val('');
     $('#txtAddressLine1').val('');
@@ -184,6 +213,8 @@ ResetForm = function () {
     $('#txtBranchAddress').val('');
     $('#txtACHolderName').val('');
     $('#txtAccountNo').val('');
+    $('#imgUserPhoto').attr('src', '');
+    $('#hUserName').empty();
 }
 
 ShowHideModel = function (flag) {
@@ -191,3 +222,14 @@ ShowHideModel = function (flag) {
         show: flag
     });
 };
+
+UploadImage = function (input) {
+    if (input.files && input.files[0]) {
+        var imageDir = new FileReader();
+        imageDir.onload = function (e) {
+            $('#imgUserPhoto').attr('src', e.target.result);
+            userImage = e.target.result;
+        }
+        imageDir.readAsDataURL(input.files[0]);
+    }  
+}

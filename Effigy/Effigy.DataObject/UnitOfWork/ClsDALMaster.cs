@@ -304,9 +304,9 @@ namespace Effigy.DataObject.UnitOfWork
             return _context.Set<T>().Where(predicate).ToList();
         }
 
-        public IList<MstBankMaster> GetAllBanks()
+        public IList<MstBankData> GetAllBanks()
         {
-            return _context.MstBankMasters.ToList();
+            return _context.MstBankMasters.Select(P=> new MstBankData { Id=P.Id,BankName=P.BankName}).ToList();
         }
 
         public void InsertBankMaster(MstBankMaster objMstBankMaster)

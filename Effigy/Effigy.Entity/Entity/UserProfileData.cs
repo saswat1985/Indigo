@@ -28,5 +28,6 @@ namespace Effigy.Entity.Entity
         public string BranchAddress { get; set; }
         public string ACHolderName { get; set; }
         public string ACNo { get; set; }
+        public string UserPhoto { get; set; }
     }
 }

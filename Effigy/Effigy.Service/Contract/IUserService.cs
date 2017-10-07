@@ -26,5 +26,6 @@ namespace Effigy.Service
         /// <returns></returns>
         IList<UserListData> GetUserList();
         T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
+        string DeleteFromUserMaster(int userId);
     }
 }

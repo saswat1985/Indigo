@@ -6,6 +6,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Effigy.Entity.DBContext;
+using Effigy.Entity.Entity;
 using Effigy.Service;
 using Effigy.Utility;
 
@@ -26,7 +27,7 @@ namespace Effigy.Web.MasterPage
         }
 
         [WebMethod]
-        public static IList<MstBankMaster> GetBanks()
+        public static IList<MstBankData> GetBanks()
         {
             try
             {
