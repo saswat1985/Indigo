@@ -1,0 +1,46 @@
+08 Oct 2017 16:08:58,798 [6] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 51
+08 Oct 2017 16:15:08,305 [31] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 160
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:15:12,836 [28] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 160
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:15:16,767 [31] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 160
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:15:21,960 [31] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 160
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:16:36,450 [30] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 160
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:19:32,064 [7] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 160
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:29:08,460 [27] ERROR ErrorLog - Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Effigy.Service.UserService.GetUserDataById(Int32 userId) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Service\Factory\UserService.cs:line 161
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 36
+08 Oct 2017 16:33:00,372 [15] ERROR ErrorLog - Thread was being aborted.
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at Effigy.Web.Login.btnLogin_Click(Object sender, EventArgs e) in D:\Aakash\Projects\Project_SNPL\Effigy\Effigy.Web\Login.aspx.cs:line 51
