@@ -21,6 +21,7 @@ namespace Effigy.DataObject.UnitOfWork
         private GenericRepository<tblMstUserDetail> _userDetail = null;
         private GenericRepository<tblMstUserCategoryMapping> _userCategory = null;
         private GenericRepository<tblMstUserTreeStructure> _userGenology = null;
+             
 
 
         public clsDALUser()
@@ -375,8 +376,6 @@ namespace Effigy.DataObject.UnitOfWork
             }
         }
 
-
-
         public string ChangePassword(int userId, string password)
         {
             tblMstUserMaster obj = _context.tblMstUserMasters.Where(P => P.UserId == userId).FirstOrDefault();
@@ -424,6 +423,11 @@ namespace Effigy.DataObject.UnitOfWork
         public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
         {
             return _context.Set<T>().FirstOrDefault(predicate);
+        }
+
+        public tblMstUserCategoryMapping GetUserWorkCategoryMapping(int userId)
+        {
+            return _context.tblMstUserCategoryMappings.Where(o => o.UserId == userId).FirstOrDefault();
         }
     }
 }

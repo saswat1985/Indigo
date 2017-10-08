@@ -13,7 +13,7 @@ using Effigy.Service;
 
 namespace Effigy.Web.Payment
 {
-    public partial class PaymentGetway : System.Web.UI.Page
+    public partial class PaymentGetway : BasePage
     {
         public string action1 = string.Empty;
         public string hash1 = string.Empty;
@@ -26,7 +26,7 @@ namespace Effigy.Web.Payment
         {
             try
             {
-                key.Value = ConfigurationManager.AppSettings["MERCHANT_KEY"];               
+                key.Value = ConfigurationManager.AppSettings["MERCHANT_KEY"];
                 if (!IsPostBack)
                 {
                     frmError.Visible = false; // error form
@@ -37,7 +37,7 @@ namespace Effigy.Web.Payment
                 }
                 txtProductInfo.Text = "CP2";
                 txtAmount.Text = "10.00";
-                
+
             }
             catch (Exception ex)
             {
@@ -47,18 +47,14 @@ namespace Effigy.Web.Payment
         [WebMethod]
         public static void GetUserDetail()
         {
-            //if (HttpContext.Current.Request.QueryString.HasKeys())
-            //{
-            //    if (HttpContext.Current.Request.QueryString["UserID"] != null)
-            //    {
-                    IUserService objBal = new UserService();
-                    UserData user = objBal.GetUserDataById(10);
-                    Amount = Convert.ToString(user.CategoryAmount);
-                    Product = user.ProductCategory;
-                    MarchantEmail = "nitinjain.mca@hotmail.com";
-                    MarchantMobile = "9810489652";                   
-               // }
-            //}
+
+            IUserService objBal = new UserService();
+            UserData user = objBal.GetUserDataById(SessionWrapper.UserId);
+            Amount = Convert.ToString(user.CategoryAmount);
+            Product = user.ProductCategory;
+            MarchantEmail = "nitinjain.mca@hotmail.com";
+            MarchantMobile = "9810489652";
+
         }
         public string Generatehash512(string text)
         {

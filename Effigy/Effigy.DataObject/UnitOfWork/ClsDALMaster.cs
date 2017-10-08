@@ -89,7 +89,17 @@ namespace Effigy.DataObject.UnitOfWork
                 throw;
             }
         }
-
+        public MstUserWorkCategory GetUserCategoryMaster(int categoryId)
+        {
+            try
+            {
+                return _product.GetAll().Where(p => p.Id == categoryId).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
 
         public void InsertCountryDetail(MstCountry objMstCountryDetail)
@@ -306,7 +316,7 @@ namespace Effigy.DataObject.UnitOfWork
 
         public IList<MstBankData> GetAllBanks()
         {
-            return _context.MstBankMasters.Select(P=> new MstBankData { Id=P.Id,BankName=P.BankName}).ToList();
+            return _context.MstBankMasters.Select(P => new MstBankData { Id = P.Id, BankName = P.BankName }).ToList();
         }
 
         public void InsertBankMaster(MstBankMaster objMstBankMaster)

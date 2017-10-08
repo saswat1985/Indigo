@@ -12,10 +12,12 @@ namespace Effigy.Service
     public class UserService : IUserService
     {
         private readonly clsDALUser objDal;
+        private readonly ClsDALMaster objDalMaster;
 
         public UserService()
         {
             objDal = new clsDALUser();
+            objDalMaster = new ClsDALMaster();
         }
 
         public bool CheckLogin(tblMstUserMaster objVal)
@@ -92,14 +94,14 @@ namespace Effigy.Service
                     objDetail.IsMemberShipTaken = false;//this will true after payment.
                     objDetail.IsWelcomeMailSend = false;
                 }
-                
+
                 objDetail.FirstName = objUserData.FirstName;
                 objDetail.LastName = objUserData.LastName;
                 objDetail.ContactNo = objUserData.ContactNo;
                 objDetail.EmailId = objUserData.EmailId;
                 objDetail.CurrentAddress = objUserData.CurrentAddress;
                 objDetail.CityId = objUserData.CityId;
-                if (!string.IsNullOrEmpty (objUserData.UserPhoto))
+                if (!string.IsNullOrEmpty(objUserData.UserPhoto))
                 {
                     objDetail.UserImage = objUserData.UserPhoto;
                 }
@@ -127,6 +129,12 @@ namespace Effigy.Service
             try
             {
                 DateTime? userEntryDateTime = objDal.GetUserMasterById(userId).UserEntryDate;
+                var userCategoryMapping = objDal.GetUserWorkCategoryMapping(userId);
+                MstUserWorkCategory productCategory = null;
+                if (userCategoryMapping != null)
+                {
+                    productCategory = objDalMaster.GetUserCategoryMaster(userCategoryMapping.CategoryId.Value);
+                }
                 var user = objDal.GetUserDetailById(userId);
                 return new UserData
                 {
@@ -136,13 +144,13 @@ namespace Effigy.Service
                     UserType = user.UserType,
                     UserId = user.UserId,
                     UserEntryDate = userEntryDateTime,
-					CityId = user.CityId ?? 0,
+                    CityId = user.CityId ?? 0,
                     CurrentAddress = user.CurrentAddress,
-                    ContactNo=user.ContactNo,
-                    EmailId=user.EmailId,
-                    UserPhoto=user.UserImage,
-                    CategoryAmount=10.00,
-                    ProductCategory="CP2"
+                    ContactNo = user.ContactNo,
+                    EmailId = user.EmailId,
+                    UserPhoto = user.UserImage,
+                    CategoryAmount = Convert.ToDouble(productCategory.CategoryPrice.Value),
+                    ProductCategory = productCategory.CategoryCode
                 };
 
             }
