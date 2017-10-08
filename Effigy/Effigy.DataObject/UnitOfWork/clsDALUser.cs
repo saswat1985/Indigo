@@ -120,6 +120,11 @@ namespace Effigy.DataObject.UnitOfWork
             }
         }
 
+        public tblMstUserCategoryMapping GetUserWorkCategoryMapping(int userId)
+        {
+            return _userCategory.Get(k => k.UserId == userId);
+        }
+
         public void SaveUpdateUserDetail(tblMstUserMaster objUserMaster, tblMstUserDetail objUserDetail, tblMstUserBankDetail objUserBankDetail,
             tblMstUserCategoryMapping categoryMapping,
             tblMstUserTreeStructure userTreeStructure)
@@ -428,7 +433,6 @@ namespace Effigy.DataObject.UnitOfWork
 
         public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, string urls)
         {
-
             try
             {
 

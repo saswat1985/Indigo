@@ -22,7 +22,7 @@ namespace Effigy.Entity
         public Nullable<bool> AcceptTermCondition { get; set; }
         public Nullable<DateTime> UserEntryDate { get; set; }
         public double TimeRemaining { get; set; }
- public double CategoryAmount { get; set; }
+        public decimal CategoryAmount { get; set; }
         public string ProductCategory { get; set; }
         public string CurrentAddress { get; set; }
         public int CityId { get; set; }

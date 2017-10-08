@@ -150,8 +150,8 @@ namespace Effigy.Service
                     ContactNo = user.ContactNo,
                     EmailId = user.EmailId,
                     UserPhoto = user.UserImage,
-                    CategoryAmount = Convert.ToDouble(productCategory.CategoryPrice.Value),
-                    ProductCategory = productCategory.CategoryCode
+                    CategoryAmount = productCategory != null ? productCategory.CategoryPrice.Value : 0,
+                    ProductCategory = productCategory != null ? productCategory.CategoryCode : string.Empty
                 };
 
             }
@@ -218,7 +218,7 @@ namespace Effigy.Service
 
         #region DataEntry
 
-        public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId,List<string> urls)
+        public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, List<string> urls)
         {
             try
             {
