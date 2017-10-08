@@ -131,23 +131,23 @@ namespace Effigy.DataObject.UnitOfWork
                 objUserDetail.UserId = objUserMaster.UserId;
                 SaveUserDetail(objUserDetail);
 
-                if (objUserBankDetail!=null)
+                if (objUserBankDetail != null)
                 {
                     objUserBankDetail.UserId = objUserMaster.UserId;
                     SaveBankDetail(objUserBankDetail);
                 }
-                
-                if (categoryMapping!=null)
+
+                if (categoryMapping != null)
                 {
                     categoryMapping.UserId = objUserMaster.UserId;
                     SaveUserCategoryDetail(categoryMapping);
                 }
-                if (userTreeStructure!=null)
+                if (userTreeStructure != null)
                 {
                     userTreeStructure.UserId = objUserMaster.UserId;
                     SaveUserGenology(userTreeStructure);
                 }
-                
+
             }
             catch (Exception)
             {
@@ -242,7 +242,7 @@ namespace Effigy.DataObject.UnitOfWork
                             _context.SaveChanges();
                         }
                     }
-                    
+
                 }
 
             }
@@ -424,6 +424,27 @@ namespace Effigy.DataObject.UnitOfWork
         public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
         {
             return _context.Set<T>().FirstOrDefault(predicate);
+        }
+
+        public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, string urls)
+        {
+
+            try
+            {
+
+                IEnumerable<UrlEntriesVarifiedData> UrlEntriesVarifiedDataList = _context.Database.SqlQuery<UrlEntriesVarifiedData>("USP_RawURLEntry @UserEntryId={0},@RawURLString={1}", userId, urls);
+
+                return UrlEntriesVarifiedDataList.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+
         }
     }
 }

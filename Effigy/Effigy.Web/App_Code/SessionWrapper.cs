@@ -16,8 +16,9 @@ namespace Effigy.Web
         private const string m_AuthToken = "AuthToken";
         private const string m_Culture = "Culture";
         private const string m_Usertype = "UserType";
-        
-        
+        private const string m_UserPhoto = "UserType";
+
+
         #endregion "Private Session Key Fields"
 
         public enum Action
@@ -69,6 +70,11 @@ namespace Effigy.Web
             set { SetInSession<int>(m_Usertype,value);}
         }
 
+        public static string UserPhoto
+        {
+            get { return GetFromSession<string>(m_UserPhoto); }
+            set { SetInSession<string>(m_UserPhoto, value); }
+        }
         #endregion "Public Properties"
 
         #region "Private Methods"

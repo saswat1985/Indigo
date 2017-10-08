@@ -22,6 +22,15 @@ namespace Effigy.Web {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// imgUserLoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgUserLoggedIn;
+        
+        /// <summary>
         /// lblUserNameUpper control.
         /// </summary>
         /// <remarks>

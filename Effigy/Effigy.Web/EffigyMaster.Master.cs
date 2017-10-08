@@ -26,6 +26,7 @@ namespace Effigy.Web
                         {
 
                             lblUserNameUpper.Text = lblUserName.Text = SessionWrapper.UserName.TrimString();
+                            imgUserLoggedIn.ImageUrl = SessionWrapper.UserPhoto;
                             // objCommon.PopulateMainMenu(TopMenu, Convert.ToString(SessionWrapper.UserId));
                         }
                         catch (Exception ex)

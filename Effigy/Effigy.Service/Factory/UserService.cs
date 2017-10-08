@@ -6,6 +6,7 @@ using Effigy.Entity;
 using System.Collections.Generic;
 using Effigy.Entity.Entity;
 using System.Linq.Expressions;
+using System.Data;
 
 namespace Effigy.Service
 {
@@ -206,5 +207,28 @@ namespace Effigy.Service
                 throw;
             }
         }
+
+        #region DataEntry
+
+        public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId,List<string> urls)
+        {
+            try
+            {
+                string commaSapratedURLs = string.Empty;
+                foreach (var item in urls)
+                {
+                    commaSapratedURLs += item + ",";
+                }
+                commaSapratedURLs = commaSapratedURLs.Substring(0, commaSapratedURLs.Length - 1);
+                return objDal.ProcessRawUrls(userId, commaSapratedURLs);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        #endregion
     }
 }
