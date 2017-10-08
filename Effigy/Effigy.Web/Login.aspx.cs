@@ -37,7 +37,7 @@ namespace Effigy.Web
                     Session["UserName"] = SessionWrapper.UserName = user.FirstName + " " + user.LastName;
                     Session["AuthToken"] = SessionWrapper.AuthToken = Guid.NewGuid().ToString();
                     Session["UserType"] = SessionWrapper.UserType = (int)user.UserType;
-
+                    Session["UserPhoto"] = SessionWrapper.UserPhoto = user.UserPhoto;
                     SessionWrapper.Culture = objVAL.UserCulture;
                               
                     objVALLoginDetail.UserId = SessionWrapper.UserId;

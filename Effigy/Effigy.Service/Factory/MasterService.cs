@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -52,7 +53,7 @@ namespace Effigy.Service
                 {
                     CountryId = item.CountryId,
                     CountryName = item.CountryName,
-                    CountryPhoneCode=item.CountryPhoneCode,
+                    CountryPhoneCode = item.CountryPhoneCode,
                     IsActive = (bool)item.IsActive
 
                 }).ToList();
@@ -327,7 +328,5 @@ namespace Effigy.Service
             return objMaster.GetList<T>(predicate);
         }
         #endregion
-
-
     }
 }
