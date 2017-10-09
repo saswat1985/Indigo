@@ -29,7 +29,7 @@ $(document).ready(function () {
             type: "POST",
             url: "CountryMaster.aspx/GetEditRecord",
             contentType: "application/json; charset=utf-8",
-            data: "{'CountryId':'" + Id + "'}",
+            data: "{CountryId:" + Id + "}",
             dataType: "json",
             success: FillEditControls,
             error: AjaxFailed
@@ -39,12 +39,12 @@ $(document).ready(function () {
 });
 
 FillEditControls = function (data) {
-    console.log('hi')
-    console.log(data.d);
+    //console.log('hi')
+   console.log(data.d);
     if (data.d != null) {
         ResetForm();
         $('#txtCountryPhoneCode').val(data.d["CountryPhoneCode"]);
-        $('#txtCountryName').val(data.d["txtCountryName"]);
+        $('#txtCountryName').val(data.d["CountryName"]);
     }
 }
 

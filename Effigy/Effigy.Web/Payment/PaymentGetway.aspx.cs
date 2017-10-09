@@ -18,25 +18,32 @@ namespace Effigy.Web.Payment
         public string action1 = string.Empty;
         public string hash1 = string.Empty;
         public string txnid1 = string.Empty;
-        public static string Amount = string.Empty;
-        public static string Product = string.Empty;
-        public static string MarchantEmail = string.Empty;
-        public static string MarchantMobile = string.Empty;
+        public string Amount = string.Empty;
+        public string Product = string.Empty;
+        public string MarchantEmail = string.Empty;
+        public string MarchantMobile = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 key.Value = ConfigurationManager.AppSettings["MERCHANT_KEY"];
-                if (!IsPostBack)
+                if (Request.QueryString["UserID"] != null)
                 {
-                    frmError.Visible = false; // error form
+                    if (!IsPostBack)
+                    {
+                        frmError.Visible = false; // error form
+                        GetUserDetail(Convert.ToInt32(Request.QueryString["UserID"].Trim()));
+                    }
+                    else
+                    {
+                        //frmError.Visible = true;
+                    }
+
                 }
-                else
-                {
-                    //frmError.Visible = true;
-                }
-                txtProductInfo.Text = "CP2";
-                txtAmount.Text = "10.00";
+
+                //txtProductInfo.Text = "CP2";
+                //txtAmount.Text = "10.00";
 
             }
             catch (Exception ex)
@@ -44,16 +51,16 @@ namespace Effigy.Web.Payment
                 Response.Write("<span style='color:red'>" + ex.Message + "</span>");
             }
         }
-        [WebMethod]
-        public static void GetUserDetail()
+
+        public void GetUserDetail(int userid)
         {
 
             IUserService objBal = new UserService();
-            UserData user = objBal.GetUserDataById(SessionWrapper.UserId);
-            Amount = Convert.ToString(user.CategoryAmount);
-            Product = user.ProductCategory;
-            MarchantEmail = "nitinjain.mca@hotmail.com";
-            MarchantMobile = "9810489652";
+            UserData user = objBal.GetUserDataById(userid);
+            txtAmount.Text = Amount = Convert.ToString(user.CategoryAmount);
+            txtProductInfo.Text = Product = user.ProductCategory;
+            MarchantEmail = "saswatwhorule@gmail.com";
+            MarchantMobile = "9643087168";
 
         }
         public string Generatehash512(string text)
@@ -169,7 +176,7 @@ namespace Effigy.Web.Payment
                     //data.Add("abc", hash_string);
                     data.Add("txnid", txnid.Value);
                     data.Add("key", key.Value);
-                    string AmountForm = Convert.ToDecimal("10").ToString("g29");// eliminating trailing zeros
+                    string AmountForm = Convert.ToDecimal(txtAmount.Text.Trim()).ToString("g29");// eliminating trailing zeros
                     txtAmount.Text = AmountForm;
                     data.Add("amount", AmountForm);
                     data.Add("firstname", txtfirstName.Text.Trim());

@@ -46,7 +46,7 @@ namespace Effigy.Web.MasterPage
         }
 
         [WebMethod]
-        public static bool SaveCountry(CountryMapper objCountryMaster,int CID)
+        public static bool SaveCountry(CountryMapper objCountryMaster, int CID)
         {
             try
             {
@@ -72,10 +72,28 @@ namespace Effigy.Web.MasterPage
         }
 
         [WebMethod]
-        public static MstCountry GetEditRecord(int CountryId)
+        public static CountryMapper GetEditRecord(int CountryId)
         {
-            IMasterService objMstService = new MasterService();
-            return objMstService.GetSingleRecord<MstCountry>(P => P.CountryId == CountryId);
+            try
+            {
+                IMasterService objMstService = new MasterService();
+                var countryData = objMstService.GetSingleRecord<MstCountry>(k => k.CountryId == CountryId);
+                if (countryData != null)
+                {
+                    return new CountryMapper()
+                    {
+                        CountryId = countryData.CountryId,
+                        CountryName = countryData.CountryName,
+                        CountryPhoneCode = countryData.CountryPhoneCode
+                    };
+                }
+                else return null;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
         }
 
 

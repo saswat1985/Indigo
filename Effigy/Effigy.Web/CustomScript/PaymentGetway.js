@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {    
-    GetUserDetails();
+   /// GetUserDetails();
 });
 
 GetUserDetails = function () {
