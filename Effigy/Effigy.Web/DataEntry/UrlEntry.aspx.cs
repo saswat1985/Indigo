@@ -24,31 +24,23 @@ namespace Effigy.Web.DataEntry
         {
             try
             {
-                
-                List<string> validUrls = new List<string>();
-                
+                var validUrls = new List<string>();
                 IUserService objService = new UserService();
-
-                IList<UrlEntriesVarifiedData> objUrlEntriesVarifiedDataList = new List<UrlEntriesVarifiedData>();
-
-
-                for (int count = 0; count < rawUrls.Length; count++)
+                var objUrlEntriesVarifiedDataList = new List<UrlEntriesVarifiedData>();
+                foreach (var url in rawUrls)
                 {
-                    if (CheckURLValid(rawUrls[count]))
-                    {
-                        validUrls.Add(rawUrls[count]);
-                    }
-                    else {
-                        objUrlEntriesVarifiedDataList.Add(new UrlEntriesVarifiedData { Url = rawUrls[count], MasterId = 0, urlStatus = "R" });
-                    }
+                    if (UtilityMethods.UrlIsValid(url))
+                        validUrls.Add(url);
+                    else
+                        objUrlEntriesVarifiedDataList.Add(new UrlEntriesVarifiedData { Url = url, MasterId = 0, urlStatus = "R" });
+
                 }
-                IList< UrlEntriesVarifiedData> objVarifiedUrlsList =objService.ProcessRawUrls(SessionWrapper.UserId,validUrls);
-
-                if (objVarifiedUrlsList!=null)
+                if (validUrls.Count > 0)
                 {
-                    foreach (var objVarifiedUrl in objVarifiedUrlsList)
+                    IList<UrlEntriesVarifiedData> objVarifiedUrlsList = objService.ProcessRawUrls(SessionWrapper.UserId, validUrls);
+                    if (objVarifiedUrlsList != null)
                     {
-                        objUrlEntriesVarifiedDataList.Add(objVarifiedUrl);
+                        objUrlEntriesVarifiedDataList.AddRange(objVarifiedUrlsList);
                     }
                 }
 
@@ -61,12 +53,12 @@ namespace Effigy.Web.DataEntry
             }
         }
 
-        public static bool CheckURLValid(string url)
-        {
-            string pattern = @"^(http|https|ftp|)\://|[a-zA-Z0-9\-\.]+\.[a-zA-Z](:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$";
-            Regex reg = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            return reg.IsMatch(url);
-        }
+        //public static bool CheckURLValid(string url)
+        //{
+        //    string pattern = @"^(http|https|ftp|)\://|[a-zA-Z0-9\-\.]+\.[a-zA-Z](:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$";
+        //    Regex reg = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        //    return reg.IsMatch(url);
+        //}
     }
-    
+
 }

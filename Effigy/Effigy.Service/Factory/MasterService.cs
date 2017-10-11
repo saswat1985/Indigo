@@ -31,10 +31,10 @@ namespace Effigy.Service
                     Id = item.Id,
                     CategoryCode = item.CategoryCode,
                     CategoryName = item.CategoryName,
-                    CategoryPrice = item.CategoryPrice.Value,
-                    CatIntroPercentage = item.CatIntroPercentage.Value,
-                    CatWorkPercentage = item.CatWorkPercentage.Value,
-                    WorkPaymentRate = item.WorkPaymentRate.Value
+                    CategoryPrice = item.CategoryPrice,
+                    CatIntroPercentage = item.CatIntroPercentage,
+                    CatWorkPercentage = item.CatWorkPercentage,
+                    WorkPaymentRate = item.WorkPaymentRate
 
                 }).ToList();
 

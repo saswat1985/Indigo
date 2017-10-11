@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace Effigy.Utility
 {
-    public class UtilityMethods
+    public static class UtilityMethods
     {
         private static byte[] saltByte = Encoding.ASCII.GetBytes("o8101982dAtApAtH");
 
@@ -82,7 +82,50 @@ namespace Effigy.Utility
 
         }
 
+        public static bool UrlIsValid(string url)
+        {
+            try
+            {
+                if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
+                {
+                    HttpWebRequest request = HttpWebRequest.Create(url) as HttpWebRequest;
+                    request.Timeout = 5000; //set the timeout to 5 seconds to keep the user from waiting too long for the page to load
+                    request.Method = "HEAD"; //Get only the header information -- no need to download any content
 
+                    HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
+                    int statusCode = (int)response.StatusCode;
+                    if (statusCode >= 100 && statusCode < 400) //Good requests
+                    {
+                        return true;
+                    }
+                    else if (statusCode >= 500 && statusCode <= 510) //Server Errors
+                    {
+                        // log.Warn(String.Format("The remote server has thrown an internal error. Url is not valid: {0}", url));
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.ProtocolError) //400 errors
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // log.Error(String.Format("Could not test url {0}.", url), ex);
+                // return false;
+            }
+            return false;
+        }
 
         #region Encryption Decryption
 
@@ -92,11 +135,11 @@ namespace Effigy.Utility
             if (!string.IsNullOrEmpty(plainText))
             {
                 RijndaelManaged encryptionAlgo = null;
-                
+
 
                 try
                 {
-                   // string secretValue = AppKeyCollection.EncryptionValue;
+                    // string secretValue = AppKeyCollection.EncryptionValue;
                     string secretValue = ConfigurationManager.AppSettings["EncryptionValue"];
                     Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(secretValue, saltByte);
                     encryptionAlgo = new RijndaelManaged();

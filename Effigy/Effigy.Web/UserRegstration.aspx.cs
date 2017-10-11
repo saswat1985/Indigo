@@ -43,12 +43,14 @@ namespace Effigy.Web
             {
                 IUserService objUserService = new UserService();
                 objUserService.CreateNewUser(objUserData);
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
+                return false;
             }
-            return false;
+           
         }
     }
 }

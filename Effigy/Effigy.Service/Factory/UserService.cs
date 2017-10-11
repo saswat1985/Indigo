@@ -101,7 +101,7 @@ namespace Effigy.Service
                 objDetail.ContactNo = objUserData.ContactNo;
                 objDetail.EmailId = objUserData.EmailId;
                 objDetail.CurrentAddress = objUserData.CurrentAddress;
-                objDetail.CityId = objUserData.CityId;
+                objDetail.CityId = objUserData.CityId != 0 ? objUserData.CityId : (int?)null;
                 if (!string.IsNullOrEmpty(objUserData.UserPhoto))
                 {
                     objDetail.UserImage = objUserData.UserPhoto;

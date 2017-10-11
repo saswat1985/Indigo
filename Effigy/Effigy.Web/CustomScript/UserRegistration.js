@@ -30,7 +30,9 @@ SaveUserDetail = function (userData) {
 }
 
 AjaxSucessed = function (data) {
-    alert(data);
+    if (data.d) {
+        alert('User created sucessfully. User Id and Password send through SMS and email');
+    }
 }
 
 AjaxFailed = function (e) {

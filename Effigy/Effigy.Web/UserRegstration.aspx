@@ -156,7 +156,7 @@
 
                                         <div class="text-right">
                                             <a href="Login.aspx" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i>Back to login form</a>
-                                            <button id="btnRegistartion" type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-paperplane"></i></b>Create account</button>
+                                            <button id="btnRegistartion" type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-paperplane"></i></b>Create account</button>
                                         </div>
                                     </div>
                                 </div>
