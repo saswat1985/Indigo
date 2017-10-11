@@ -15,5 +15,6 @@ namespace Effigy.Entity.DBContext
         public Nullable<decimal> CategoryPrice { get; set; }
         public Nullable<int> CatIntroPercentage { get; set; }
         public Nullable<int> CatWorkPercentage { get; set; }
+        public Nullable<int> WorkPaymentRate { get; set; }
     }
 }
