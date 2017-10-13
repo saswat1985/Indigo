@@ -274,5 +274,10 @@ namespace Effigy.Service
                 throw;
             }
         }
+
+        public UserData GetUserByEmail(string email)
+        {
+            return objDal.GetUserByEmail(email);
+        }
     }
 }

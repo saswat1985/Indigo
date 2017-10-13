@@ -78,6 +78,7 @@ namespace Effigy.Service
         /// <returns></returns>
         bool IsDuplicateEmailId(string emailId, int userId = 0);
 
+        UserData GetUserByEmail(string email);
 
     }
 }

@@ -228,12 +228,54 @@ ShowHideModel = function (flag) {
 };
 
 UploadImage = function (input) {
+    $('#fileSpan').empty().append('<img src="../Images/Spinner.gif" />Please wait');
     if (input.files && input.files[0]) {
         var imageDir = new FileReader();
         imageDir.onload = function (e) {
-            $('#imgUserPhoto').attr('src', e.target.result);
             userImage = e.target.result;
+            $('#imgUserPhoto').attr('src', userImage);
+            setTimeout(function () { capitalize($('#fileSpan').empty().append($('#filePhoto').val().split('\\').pop()));  }, 2000);
+
         }
         imageDir.readAsDataURL(input.files[0]);
+    }  
+}
+
+TakePicture = function () {
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+    var mediaConfig = { video: true };
+    var errBack = function (e) {
+        console.log('An error has occurred!', e)
+    };
+
+    // Put video listeners into place
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(mediaConfig).then(function (stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
     }
+
+    document.getElementById('snap').addEventListener('click', function () {
+
+        ShowHideModel('false');
+        context.drawImage(video, 0, 0);
+
+        userImage = canvas.toDataURL('image/jpeg', 1.0);
+        $('#imgUserPhoto').attr('src', userImage);
+        video.style.display = 'none';
+        canvas.style.display = 'block';
+        $("#snap").hide();
+        $("#retake").show();
+    });
+    document.getElementById('retake').addEventListener('click', function () {
+        video.style.display = 'block';
+        canvas.style.display = 'none';
+        $("#snap").show();
+        $("#retake").hide();
+    });
+
+    ShowHideModel('true');
 }

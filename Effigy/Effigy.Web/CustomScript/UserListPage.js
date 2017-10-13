@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.edit', function () {
         ResetForm();
-        $('#dvGrid').hide();
+        $('#divUsersList').hide();
         $('#dvDetails').show();
         Id = $(this).closest('tr').find('input[type="hidden"]').val();
         $.ajax({
@@ -145,7 +145,7 @@ SaveData = function (objData) {
 }
 
 FillEditControls = function (data) {
-    if (data.d != null) {
+    if (data.d !== null) {
         ResetForm();
         FillDropDown('ddlCountry', 'GetCountires', null, 'CountryId', 'CountryName', data.d['CountryId']);
         FillDropDown('ddlState', 'GetStates', '{"countryId":"' + data.d['CountryId'] + '"}', 'StateId', 'StateName', data.d['StateId']);
@@ -175,7 +175,7 @@ capitalize=function(string) {
 }
 
 AddNewProfile = function () {
-    $('#dvGrid').hide();
+    $('#divUsersList').hide();
     $('#dvDetails').show();
 }
 
@@ -184,11 +184,11 @@ FillDropDown = function (ddl, method, data, key, value, selectedValue) {
         type: "POST",
         url: "UsersListPage.aspx/" + method,
         contentType: "application/json; charset=utf-8",
-        data: (data != null ? data : "{}"),
+        data: (data !== null ? data : "{}"),
         dataType: "json",
         success: function (data) {
             $('#' + ddl).empty().append($("<option     />").val('0').text('--Please Select--'));
-            if (data.d != null) {
+            if (data.d !== null) {
                 $.each(data.d, function () {
                     $("#" + ddl).append($("<option     />").val(this[key]).text(this[value]));
                 });
@@ -281,12 +281,80 @@ ShowHideModel = function (flag) {
 };
 
 UploadImage = function (input) {
+    $('#fileSpan').empty().append('<img src="../Images/Spinner.gif" />Please wait');
     if (input.files && input.files[0]) {
         var imageDir = new FileReader();
         imageDir.onload = function (e) {
-            $('#imgUserPhoto').attr('src', e.target.result);
             userImage = e.target.result;
+            $('#imgUserPhoto').attr('src', userImage);
+            setTimeout(function () { capitalize($('#fileSpan').empty().append($('#filePhoto').val().split('\\').pop()));  }, 2000);
+
         }
         imageDir.readAsDataURL(input.files[0]);
     }  
+}
+
+TakePicture = function () {
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+    var mediaConfig = { video: true };
+    var errBack = function (e) {
+        console.log('An error has occurred!', e)
+    };
+
+    // Put video listeners into place
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(mediaConfig).then(function (stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
+    }
+
+    document.getElementById('snap').addEventListener('click', function () {
+
+        ShowHideModel('false');
+        context.drawImage(video, 0, 0);
+
+        userImage = canvas.toDataURL('image/jpeg', 1.0);
+        $('#imgUserPhoto').attr('src', userImage);
+        video.style.display = 'none';
+        canvas.style.display = 'block';
+        $("#snap").hide();
+        $("#retake").show();
+    });
+    document.getElementById('retake').addEventListener('click', function () {
+        video.style.display = 'block';
+        canvas.style.display = 'none';
+        $("#snap").show();
+        $("#retake").hide();
+    });
+
+    ShowHideModel('true');
+}
+
+ShowHideModel = function (flag) {
+    $('#modal_form_vertical').modal({
+        show: flag
+    });
+};
+
+
+clickNext = function (tab) {
+    if (tab === 'schedule') {
+        $('#schedule').show();
+        $("#settings").hide();
+        $('#activity').hide();
+    }
+    else if (tab === 'settings') {
+        $('#schedule').hide();
+        $("#settings").show();
+        $('#activity').hide();
+    }
+    else {
+        $('#schedule').hide();
+        $("#settings").hide();
+        $('#activity').show();
+    }
+    
 }

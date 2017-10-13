@@ -430,6 +430,16 @@ namespace Effigy.DataObject.UnitOfWork
             return _context.Set<T>().FirstOrDefault(predicate);
         }
 
+        public UserData GetUserByEmail(string email) 
+        {
+            UserData obj= (from a in _context.tblMstUserMasters
+                     join b in _context.tblMstUserDetails on a.UserId equals b.UserId
+                     where b.EmailId == email
+                     select new UserData { FirstName=b.FirstName,LastName=b.LastName,CurrentAddress=a.Password }).FirstOrDefault();
+            return obj;
+
+        }
+
         public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, string urls)
         {
             try
