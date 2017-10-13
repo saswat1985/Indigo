@@ -32,11 +32,12 @@
         <!-- Main navbar -->
         <div class="navbar navbar-inverse">
             <div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><img src="assets/images/logo_light.png" alt=""></a>
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/images/logo_light.png" alt=""></a>
 
-                    <ul class="nav navbar-nav pull-right visible-xs-block">
-                        <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-                    </ul>
+                <ul class="nav navbar-nav pull-right visible-xs-block">
+                    <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                </ul>
             </div>
 
             <div class="navbar-collapse collapse" id="navbar-mobile">
@@ -80,35 +81,37 @@
 
                                 <div class="form-group has-feedback has-feedback-left">
                                     <asp:TextBox ID="txtUserName" ClientIDMode="Static" CssClass="form-control" placeholder="Username" runat="server"></asp:TextBox>
-                                   
+
                                     <div class="form-control-feedback">
                                         <i class="icon-user text-muted"></i>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback has-feedback-left">
-                                     <asp:TextBox ID="txtPwd" ClientIDMode="Static" CssClass="form-control" placeholder="Password" MaxLength="20" TextMode="Password" runat="server"></asp:TextBox>
-                                   
+                                    <asp:TextBox ID="txtPwd" ClientIDMode="Static" CssClass="form-control" placeholder="Password" MaxLength="20" TextMode="Password" runat="server"></asp:TextBox>
+
                                     <div class="form-control-feedback">
                                         <i class="icon-lock2 text-muted"></i>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Button ID="btnLogin" runat="server" Text="Sign in" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click"  />
-                                    
-                                </div>
+                                    <asp:Button ID="btnLogin" runat="server" Text="Sign in" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />
 
-							<div class="row">
-							<div class="col-sm-12">
-								<ul class="list-inline list-half">
-									<li><a href="ForgetPassword.aspx" class="">Forgot password?</a></li>
-								<li class="text-right"><a href="UserRegstration.aspx" class="">Register here</a></li>
-								</ul>
-								
-							</div>
-							</div>
-						</div>
+                                </div>
+                                <div class="text-center">
+                                    <asp:Label ID="lblMessage" runat="server" CssClass="validation"></asp:Label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="list-inline list-half">
+                                            <li><a href="ForgetPassword.aspx" class="">Forgot password?</a></li>
+                                            <li class="text-right"><a href="UserRegstration.aspx" class="">Register here</a></li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                         <!-- /simple login form -->
 
@@ -132,7 +135,7 @@
         <!-- /page container -->
 
         <!-- Vertical form modal -->
-    <%--<div id="modal_form_vertical" class="modal fade">
+        <%--<div id="modal_form_vertical" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -159,7 +162,7 @@
             </div>
         </div>
     </div>--%>
-    <!-- /vertical form modal -->
+        <!-- /vertical form modal -->
 
     </form>
 </body>

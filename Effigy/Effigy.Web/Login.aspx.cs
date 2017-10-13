@@ -31,6 +31,7 @@ namespace Effigy.Web
                 objVAL.Password = txtPwd.Text.Trim();
                 if (objBal.CheckLogin(objVAL))
                 {
+                    lblMessage.Text = string.Empty;
                     Session["UserID"] = SessionWrapper.UserId = objVAL.UserId;
                     Session["RoleID"] = SessionWrapper.RoleId = objVAL.RoleId;
                     UserData user = objBal.GetUserDataById(objVAL.UserId);
@@ -48,9 +49,12 @@ namespace Effigy.Web
                     objBal.InsertUserLoginDetail(objVALLoginDetail);
                     // now create a new cookie with this guid value
                     Response.Cookies.Add(new HttpCookie("AuthToken", SessionWrapper.AuthToken));                   
-                    Response.Redirect(@"~/DashBoard/DashBoard.aspx");
-                   
+                    Response.Redirect(@"~/DashBoard/DashBoard.aspx");                  
 
+                }
+                else
+                {
+                    lblMessage.Text= "Invalid user name or password";
                 }
             }
             catch (Exception ex)

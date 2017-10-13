@@ -7792,3 +7792,9 @@ h6.panel-title,
 .navbar-header .navbar-brand > img {
     height: auto;
 }
+.validation {
+    color: red;
+}
+.text-center {
+    text-align: center
+}
