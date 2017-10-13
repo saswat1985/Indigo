@@ -12,13 +12,39 @@ namespace Effigy.Service
 {
     public interface IUserService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_objVal"></param>
+        /// <returns></returns>
         bool CheckLogin(tblMstUserMaster _objVal);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objUserData"></param>
+        /// <param name="objBankDetail"></param>
         void CreateNewUser(Entity.UserData objUserData, tblMstUserBankDetail objBankDetail = null);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objVALLoginDetail"></param>
         void InsertUserLoginDetail(tblMstUserLoginDetail objVALLoginDetail);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         UserData GetUserDataById(int userId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         string ChangePassword(int userId, string password);
 
         /// <summary>
@@ -26,8 +52,21 @@ namespace Effigy.Service
         /// </summary>
         /// <returns></returns>
         IList<UserListData> GetUserList();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         string DeleteFromUserMaster(int userId);
-        IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId,List<string> urls);
+
     }
 }

@@ -10,8 +10,10 @@
         var acceptCondition = $('#chkAccept').is(':checked');
 
         var UserData = new User(firstName, lastName, mobileNo, email, category, refrelCode, acceptCondition);
+        if (PageValidate(UserData)) {
+            SaveUserDetail(UserData);
+        }
 
-        SaveUserDetail(UserData);
     });
 
 });
@@ -46,4 +48,37 @@ User = function (fName, lName, mobNo, email, cat, refrelCode, acceptCondition) {
     this.UserCategory = cat;
     this.RefrelCode = refrelCode;
     this.AcceptTermCondition = acceptCondition;
+}
+
+PageValidate = function (userData) {
+    debugger;
+    // var result = true;
+    if (userData.FirstName === '') {
+        alert('Please Enter First Name');
+        return false;
+    }
+    if (userData.LastName === '') {
+        alert('Please Enter Last Name');
+        return false;
+    }
+    if (userData.ContactNo === '') {
+        alert('Please Enter mobile no');
+        return false;
+    }
+    if (!validateEmail(userData.EmailId)) {
+        alert('Please provide a valid email address');
+        return false;
+    }
+    if (userData.UserCategory === '0') {
+        alert('Please select a work category');
+        return false;
+    }
+
+}
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+
 }

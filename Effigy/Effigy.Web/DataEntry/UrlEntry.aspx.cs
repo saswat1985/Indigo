@@ -25,7 +25,7 @@ namespace Effigy.Web.DataEntry
             try
             {
                 var validUrls = new List<string>();
-                IUserService objService = new UserService();
+                IDataEntry objService = new Service.DataEntry();
                 var objUrlEntriesVarifiedDataList = new List<UrlEntriesVarifiedData>();
                 foreach (var url in rawUrls)
                 {

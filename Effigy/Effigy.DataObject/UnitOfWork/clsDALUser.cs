@@ -381,7 +381,6 @@ namespace Effigy.DataObject.UnitOfWork
         }
 
 
-
         public string ChangePassword(int userId, string password)
         {
             tblMstUserMaster obj = _context.tblMstUserMasters.Where(P => P.UserId == userId).FirstOrDefault();

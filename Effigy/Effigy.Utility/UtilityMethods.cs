@@ -119,7 +119,7 @@ namespace Effigy.Utility
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // log.Error(String.Format("Could not test url {0}.", url), ex);
                 // return false;
