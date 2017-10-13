@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Effigy.Entity;
 using Effigy.DataObject.UnitOfWork;
+using System.Linq.Expressions;
 
 namespace Effigy.Service
 {
-    public class DataEntry : IDataEntry
+    public class DataEntry : BaseFactory, IDataEntry
     {
         private readonly clsDALUser objDal;
 

@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Effigy.Service
 {
-    public class UserService : IUserService
+    public class UserService : BaseFactory, IUserService
     {
         private readonly clsDALUser objDal;
         private readonly ClsDALMaster objDalMaster;
@@ -199,11 +199,6 @@ namespace Effigy.Service
             }
         }
 
-        public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            return objDal.GetSingleRecord<T>(predicate);
-        }
-
         public string DeleteFromUserMaster(int userId)
         {
             try
@@ -216,6 +211,68 @@ namespace Effigy.Service
             }
         }
 
-       
+        public bool IsDuplicateMobileNo(string mobileNo, int userId = 0)
+        {
+            try
+            {
+                bool result = false;
+                if (userId == 0)
+                {
+                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.ContactNo == mobileNo);
+                    if (userData == null)
+                        result = false;
+                    else
+                        result = true;
+
+                }
+                else
+                {
+                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.ContactNo == mobileNo & k.UserId != userId);
+                    if (userData == null)
+                        result = false;
+                    else
+                        result = true;
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public bool IsDuplicateEmailId(string emailId, int userId = 0)
+        {
+
+            try
+            {
+                bool result = false;
+                if (userId == 0)
+                {
+                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.EmailId == emailId);
+                    if (userData == null)
+                        result = false;
+                    else
+                        result = true;
+
+                }
+                else
+                {
+                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.EmailId == emailId & k.UserId != userId);
+                    if (userData == null)
+                        result = false;
+                    else
+                        result = true;
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ using Effigy.Entity.Entity;
 
 namespace Effigy.Service
 {
-    public interface IMasterService
+    public interface IMasterService : IBaseContract
     {
 
         #region  Masters Done By nitin
@@ -47,8 +47,6 @@ namespace Effigy.Service
         int[] GetSelectedRoles(int userId);
         void InsertBankMaster(MstBankMaster objMstBankMaster);
         IList<MstBankData> GetAllBanks();
-
-        T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
         IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class;
 
     }

@@ -10,7 +10,7 @@ using Effigy.Entity.DBContext;
 
 namespace Effigy.Service
 {
-    public interface IUserService
+    public interface IUserService : IBaseContract
     {
         /// <summary>
         /// 
@@ -53,13 +53,7 @@ namespace Effigy.Service
         /// <returns></returns>
         IList<UserListData> GetUserList();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
+
 
         /// <summary>
         /// 
@@ -67,6 +61,23 @@ namespace Effigy.Service
         /// <param name="userId"></param>
         /// <returns></returns>
         string DeleteFromUserMaster(int userId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mobileNo"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        bool IsDuplicateMobileNo(string mobileNo, int userId = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mobileNo"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        bool IsDuplicateEmailId(string emailId, int userId = 0);
+
 
     }
 }
