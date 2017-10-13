@@ -340,21 +340,3 @@ ShowHideModel = function (flag) {
 };
 
 
-clickNext = function (tab) {
-    if (tab === 'schedule') {
-        $('#schedule').show();
-        $("#settings").hide();
-        $('#activity').hide();
-    }
-    else if (tab === 'settings') {
-        $('#schedule').hide();
-        $("#settings").show();
-        $('#activity').hide();
-    }
-    else {
-        $('#schedule').hide();
-        $("#settings").hide();
-        $('#activity').show();
-    }
-    
-}
