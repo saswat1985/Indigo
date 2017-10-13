@@ -10,6 +10,8 @@
         var acceptCondition = $('#chkAccept').is(':checked');
 
         var UserData = new User(firstName, lastName, mobileNo, email, category, refrelCode, acceptCondition);
+
+
         if (PageValidate(UserData)) {
             SaveUserDetail(UserData);
         }
@@ -51,20 +53,34 @@ User = function (fName, lName, mobNo, email, cat, refrelCode, acceptCondition) {
 }
 
 PageValidate = function (userData) {
-    debugger;
     // var result = true;
     if (userData.FirstName === '') {
         alert('Please Enter First Name');
         return false;
     }
+    else if (!userData.FirstName.match('^[a-zA-Z]{3,16}$')) {
+        alert("Enter valid first name");
+        return
+    }
+
     if (userData.LastName === '') {
-        alert('Please Enter Last Name');
+        alert('Please enter last Name');
         return false;
     }
+    else if (!userData.LastName.match('^[a-zA-Z]{3,16}$')) {
+        alert("Enter valid last name");
+        return
+    }
+
     if (userData.ContactNo === '') {
         alert('Please Enter mobile no');
         return false;
     }
+    else if (!userData.ContactNo.match('^[0-9]{3,16}$')) {
+        alert("Enter valid mobile no.");
+        return
+    }
+
     if (!validateEmail(userData.EmailId)) {
         alert('Please provide a valid email address');
         return false;

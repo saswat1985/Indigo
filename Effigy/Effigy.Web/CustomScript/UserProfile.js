@@ -18,30 +18,86 @@ $(document).ready(function () {
 
     $('#btnSave').click(function () {
         var UserProfileData = {
-            'UserId': Id,
+            UserId: Id,
             //'UserCode': $('#txtUserCode').val(),
-            'UserPhoto':userImage,
-            'FirstName': $('#txtFirstName').val(),
-            'LastName': $('#txtLastName').val(),
-            'AddressLine1': $('#txtAddressLine1').val(),
-            'AddressLine2': $('#txtAddressLine2').val(),
-            'CityId': $('#ddlCity option:selected').val(),
-            'StateId': $('#ddlState option:selected').val(),
-            'ZipCode': $('#txtZipCode').val(),
-            'EmailId': $('#txtEmail').val(),
-            'CountryId': $('#ddlCountry option:selected').val(),
-            'Phone': $('#txtPhone').val(),
-            'BankId': $('#ddlBank option:selected').val(),
-            'BranchName': $('#txtBranchName').val(),
-            'IFSCCode': $('#txtIFSCCode').val(),
-            'BranchAddress': $('#txtBranchAddress').val(),
-            'ACHolderName': $('#txtACHolderName').val(),
-            'ACNo': $('#txtAccountNo').val()
+            UserPhoto: userImage,
+            FirstName: $('#txtFirstName').val(),
+            LastName: $('#txtLastName').val(),
+            AddressLine1: $('#txtAddressLine1').val(),
+            AddressLine2: $('#txtAddressLine2').val(),
+            CityId: $('#ddlCity option:selected').val(),
+            StateId: $('#ddlState option:selected').val(),
+            ZipCode: $('#txtZipCode').val(),
+            EmailId: $('#txtEmail').val(),
+            CountryId: $('#ddlCountry option:selected').val(),
+            Phone: $('#txtPhone').val(),
+            BankId: $('#ddlBank option:selected').val(),
+            BranchName: $('#txtBranchName').val(),
+            IFSCCode: $('#txtIFSCCode').val(),
+            BranchAddress: $('#txtBranchAddress').val(),
+            ACHolderName: $('#txtACHolderName').val(),
+            ACNo: $('#txtAccountNo').val()
         };
+        if (UserProfileData.FirstName == null || UserProfileData.FirstName == '') {
+            alert('Enter first name');
+            return;
+        }
+        else if (!UserProfileData.FirstName.match('^[a-zA-Z]{3,16}$')) {
+            alert("Enter valid first name");
+            return
+        }
+
+        if (UserProfileData.LastName == null || UserProfileData.LastName == '') {
+            alert('Enter last name');
+            return;
+        }
+        else if (!UserProfileData.LastName.match('^[a-zA-Z]{3,16}$')) {
+            alert("Enter valid last name");
+            return
+        }
+
+        if (UserProfileData.AddressLine1 == null || UserProfileData.AddressLine1 == '') {
+            alert('Enter address line 1');
+            return;
+        }
+
+        if (UserProfileData.CountryId == null || UserProfileData.CountryId == '0') {
+            alert('Select country');
+            return;
+        }
+
+        if (UserProfileData.StateId === null || UserProfileData.StateId === '0') {
+            alert('Select state');
+            return;
+        }
+
+        if (UserProfileData.CityId === null || UserProfileData.CityId === '0') {
+            alert('Select city');
+            return;
+        }
+
+        if (UserProfileData === null || UserProfileData.StateId === '0') {
+            alert('Select state');
+            return;
+        }
+
+        if (UserProfileData.EmailId === null || UserProfileData.EmailId === '') {
+            alert('Enter email address');
+            return;
+        }
+        else if (!validateEmail(UserProfileData.EmailId)) {
+            alert("Enter valid email address");
+            return;
+        }
 
         SaveData(UserProfileData);
     });
 });
+
+validateEmail = function (email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 SaveData = function (objData) {
     $.ajax({
@@ -50,7 +106,7 @@ SaveData = function (objData) {
         contentType: "application/json; charset=utf-8",
         data: "{'objData':" + JSON.stringify(objData) + "}",
         dataType: "json",
-        success: function (data) {alert("Profile saved successfully.") },
+        success: function (data) { alert("Profile saved successfully.") },
         error: AjaxFailed
     });
 }
@@ -96,7 +152,7 @@ FillEditControls = function (data) {
     }
 }
 
-capitalize=function(string) {
+capitalize = function (string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
@@ -179,5 +235,5 @@ UploadImage = function (input) {
             userImage = e.target.result;
         }
         imageDir.readAsDataURL(input.files[0]);
-    }  
+    }
 }

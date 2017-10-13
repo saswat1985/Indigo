@@ -2321,6 +2321,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="CustomScript\ForgotPassword.js" />
     <Content Include="CustomScript\URLEntry.js" />
     <Content Include="CustomScript\PaymentGetway.js" />
     <Content Include="CustomScript\UserListPage.js" />

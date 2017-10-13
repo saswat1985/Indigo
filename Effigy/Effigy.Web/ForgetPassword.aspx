@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Effigy</title>
-
+    
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css" />
@@ -27,6 +27,7 @@
 
     <!-- Theme JS files -->
     <script type="text/javascript" src="assets/js/core/app.js"></script>
+    <script src="CustomScript/ForgotPassword.js"></script>
 </head>
 <body class="login-container">
 
@@ -79,13 +80,13 @@
                             </div>
 
                             <div class="form-group has-feedback">
-                                <input type="email" class="form-control" placeholder="Your email">
+                                <input type="email" id="txtEmail" class="form-control" placeholder="Your email">
                                 <div class="form-control-feedback">
                                     <i class="icon-mail5 text-muted"></i>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn bg-blue btn-block">Reset password <i class="icon-arrow-right14 position-right"></i></button>
+                            <button type="button" id="btnSave" class="btn bg-blue btn-block">Reset password <i class="icon-arrow-right14 position-right"></i></button>
                             <div class="text-right  marginTop-sm"><a href="Login.aspx" class=""><i class="icon-backward2"></i>Back to Login</a></div>
                         </div>
                     </form>
