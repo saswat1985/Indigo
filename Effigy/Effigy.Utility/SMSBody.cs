@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Effigy.Utility
 {
-    public class SMSBody
+    public static class SMSBody
     {
         public static string UserRegistrationMsg()
         {

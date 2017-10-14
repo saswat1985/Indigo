@@ -39,40 +39,7 @@ namespace Effigy.Utility
             return result;
         }
 
-        private static string APICall(string url)
-        {
-            try
-            {
-                HttpWebRequest httpreq = (HttpWebRequest)WebRequest.Create(url);
-                HttpWebResponse httpResponse = (HttpWebResponse)httpreq.GetResponse();
-                StreamReader objStreamReader = new StreamReader(httpResponse.GetResponseStream());
-                string result = objStreamReader.ReadToEnd();
-                objStreamReader.Close();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static bool SendSingleSMS(string smsElement, string mobileNo)
-        {
-            string result = string.Empty;
-            bool issmssent = false;
-            try
-            {
-                result = APICall("http://" + AppKeyCollection.SmsDomain + "/sendsms.php?username=" + AppKeyCollection.SmsUserName + "&password=" + AppKeyCollection.SmsPwd + "&sender=" + AppKeyCollection.SmsSenderId + "&mobile=" + mobileNo + "&message=" + smsElement + "&route=T");
-                //result = APICall("http://" + AppKeyCollection.SmsDomain + "/SendMsg.aspx?uname=" + AppKeyCollection.SmsUserName + "&pass=" + AppKeyCollection.SmsPwd + "&send=" + AppKeyCollection.SmsSenderId + "&dest=" + mobileNo + "&msg=" + smsElement + "");
-                if (UtilityMethods.IsNumber(result))
-                    issmssent = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return issmssent;
-        }
+       
 
         public static bool IsNumber(string number)
         {

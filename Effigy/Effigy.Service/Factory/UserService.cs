@@ -117,7 +117,10 @@ namespace Effigy.Service
 
                 objDal.SaveUpdateUserDetail(objMaster, objDetail, objBankDetail, objCategory, objUserGenology);
 
-                UtilityMethods.SendSingleSMS(GetSMSBody(objMaster.UserName, objMaster.Password), objDetail.ContactNo);
+                MailSMSHandler.SendSingleSMS(GetSMSBody(objMaster.UserName, objMaster.Password), objDetail.ContactNo);
+
+                new MailSMSHandler(AppKeyCollection.FromMail, objDetail.EmailId,
+                    GetEmailBody(objMaster.UserName, objMaster.Password, objDetail.SelfRefrelCode), true, AppKeyCollection.WelcomeNote).sendMail();
             }
             catch (Exception)
             {
@@ -166,6 +169,19 @@ namespace Effigy.Service
             try
             {
                 string smsbody = SMSBody.UserRegistrationMsg().Replace("@USERID", userId).Replace("@PASSWORD", password).Replace("@WEBSITELINK", AppKeyCollection.WebSiteName).Replace("@HELPDESKNO", AppKeyCollection.HelpDeskNo).TrimString();
+                return smsbody;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private string GetEmailBody(string userId, string password, string referralCode)
+        {
+            try
+            {
+                string smsbody = EmailBody.UserRegistrationEmail().Replace("@userName", userId).Replace("@password", password).Replace("@RCode", referralCode).TrimString();
                 return smsbody;
             }
             catch (Exception)
@@ -278,6 +294,19 @@ namespace Effigy.Service
         public UserData GetUserByEmail(string email)
         {
             return objDal.GetUserByEmail(email);
+        }
+
+        public bool IsRefferalCodeExist(string refferalCode)
+        {
+            try
+            {
+                return objDal.IsRefrelCodeExist(refferalCode);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

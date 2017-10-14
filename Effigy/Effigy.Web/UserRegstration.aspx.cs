@@ -16,7 +16,7 @@ namespace Effigy.Web
     {
         private Common objCom = new Common();
         IMasterService objService = new MasterService();
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,7 +50,57 @@ namespace Effigy.Web
                 Logger.Error(ex);
                 return false;
             }
-           
+
+        }
+
+        [WebMethod]
+        public static bool CheckRefrealCode(string refrealCode)
+        {
+            try
+            {
+                IUserService objUserService = new UserService();
+                return objUserService.IsRefferalCodeExist(refrealCode) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return false;
+            }
+
+        }
+
+        [WebMethod]
+        public static bool IsDuplicateMobile(string mobileNo)
+        {
+            try
+            {
+                IUserService objUserService = new UserService();
+                return objUserService.IsDuplicateMobileNo(mobileNo) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return false;
+            }
+
+        }
+        [WebMethod]
+        public static bool IsDuplicateEmail(string emailId)
+        {
+            try
+            {
+                IUserService objUserService = new UserService();
+                return objUserService.IsDuplicateEmailId(emailId) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return false;
+            }
+
         }
     }
 }

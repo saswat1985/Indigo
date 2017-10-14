@@ -78,7 +78,18 @@ namespace Effigy.Service
         /// <returns></returns>
         bool IsDuplicateEmailId(string emailId, int userId = 0);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         UserData GetUserByEmail(string email);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="refferalCode"></param>
+        /// <returns></returns>
+        bool IsRefferalCodeExist(string refferalCode);
 
     }
 }
