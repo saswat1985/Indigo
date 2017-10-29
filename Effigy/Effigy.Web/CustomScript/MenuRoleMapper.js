@@ -48,6 +48,12 @@
             },
             error: function (e) {
                 console.log(e);
+            },
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
             }
 
         });
@@ -74,6 +80,12 @@ GetMenusChkList = function () {
             console.log(data); },
         error: function (e) {
             console.log(e);
+        },
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
         }
 
     });
@@ -90,7 +102,13 @@ SaveData = function (masterData) {
         success: function () {
             alert('Mapping saved successfully');
         },
-        error: function () { }
+        error: function () { },
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -111,7 +129,13 @@ FillParentMenuDdl = function (data) {
                 });
             }
         },
-        error: function (e) { }
+        error: function (e) { },
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
     
 

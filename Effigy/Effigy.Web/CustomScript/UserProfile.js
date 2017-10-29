@@ -107,7 +107,13 @@ SaveData = function (objData) {
         data: "{'objData':" + JSON.stringify(objData) + "}",
         dataType: "json",
         success: function (data) { alert("Profile saved successfully.") },
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -119,7 +125,13 @@ UserProfile = function () {
         data: "{'userId':'" + 0 + "', 'isLoggedInUser':" + true + "}",
         dataType: "json",
         success: FillEditControls,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -179,7 +191,13 @@ FillDropDown = function (ddl, method, data, key, value, selectedValue) {
                 }
             }
         },
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 

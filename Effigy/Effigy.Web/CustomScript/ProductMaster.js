@@ -18,7 +18,13 @@ FillGridView = function () {
         data: "{}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }
@@ -72,7 +78,13 @@ SaveData = function (productData) {
         data: "{'objProduct':" + JSON.stringify(productData) + "}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }

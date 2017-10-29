@@ -11,9 +11,16 @@ GetMenus = function () {
         success: function (data) {
             $('#divMenu').empty();
             $('#divMenu').append(data.d);
-            console.log(data); },
+            console.log(data);
+        },
         error: function (e) {
             console.log(e);
+        },
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
         }
 
     });

@@ -15,7 +15,7 @@
     <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
     <%--    <script type="text/javascript" src="../assets/js/core/libraries/jquery.min.js"></script>--%>
     <script type="text/javascript" src="../assets/js/plugins/loaders/pace.min.js"></script>
-
+    <script type="text/javascript" src="../Scripts/loader.js"></script>
     <script type="text/javascript" src="../assets/js/core/libraries/bootstrap.min.js"></script>
     <script type="text/javascript" src="../assets/js/plugins/loaders/blockui.min.js"></script>
     <!-- /core JS files -->
@@ -233,7 +233,6 @@
                 <!-- Main sidebar -->
                 <div class="sidebar sidebar-main">
                     <div class="sidebar-content">
-
                         <!-- User menu -->
                         <div class="sidebar-user">
                             <div class="category-content">
@@ -242,20 +241,7 @@
                                         <asp:Image ID="imgMenuSideUser" runat="server" CssClass="img-circle img-sm" /></a>
                                     <div class="media-body">
                                         <asp:Label ID="lblUserName" runat="server" CssClass="media-heading text-semibold"></asp:Label>
-
-                                        <%-- <div class="text-size-mini text-muted">
-                                            <i class="icon-pin text-size-small"></i>&nbsp;Santa Ana, CA
-								
-                                        </div>--%>
                                     </div>
-
-                                    <%--   <div class="media-right media-middle">
-                                        <ul class="icons-list">
-                                            <li>
-                                                <a href="#"><i class="icon-cog3"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>--%>
                                 </div>
                             </div>
                         </div>
@@ -265,25 +251,6 @@
                         <!-- Main navigation -->
                         <div class="sidebar-category sidebar-category-visible">
                             <div id="divMenu" class="category-content no-padding">
-                                <%--<ul class="navigation navigation-main navigation-accordion">
-
-                                   
-                                  
-                                    <li><a href="#"><i class="icon-width"></i><span>Master Entry</span></a>
-                                        <ul>
-                                            <li><a href="../MasterPage/CountryMaster.aspx">Country Master</a></li>
-                                            <li><a href="../MasterPage/StateMaster.aspx">State Master</a></li>
-                                            <li><a href="../MasterPage/CityMaster.aspx">City Master</a><ul><li><a href="../MasterPage/ProductMaster.aspx">Product Master</a></li></ul></li>
-                                            <li><a href="../MasterPage/ProductMaster.aspx">Product Master</a></li>
-
-                                        </ul>
-
-
-                                    </li>
-                                    <!-- /main -->
-
-
-                                </ul>--%>
                             </div>
                         </div>
                         <!-- /main navigation -->
@@ -303,6 +270,10 @@
                                 <h4><i class="icon-arrow-left52 position-left"></i><span class="text-semibold" id="spanHeader" runat="server"></span></h4>
                             </div>
 
+
+                        </div>
+                        <div class="loader">
+                            <img class="loading-image" src="../Images/loading_nice.gif" alt="loading.." />
                         </div>
 
 

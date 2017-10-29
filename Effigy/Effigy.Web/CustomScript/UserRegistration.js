@@ -29,7 +29,13 @@ SaveUserDetail = function (userData) {
         data: "{'objUserData':" + JSON.stringify(userData) + "}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }
@@ -122,7 +128,13 @@ CheckEmailID = function (emailId) {
             success: function (data) {
                 result = data.d;
             },
-            error: AjaxFailed
+            error: AjaxFailed,
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
+            }
         });
     }
     return result;
@@ -144,7 +156,13 @@ CheckPhoneNo = function (phoneno) {
             success: function (data) {
                 result = data.d;
             },
-            error: AjaxFailed
+            error: AjaxFailed,
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
+            }
         });
     }
     return result;
@@ -162,7 +180,13 @@ CheckRefrealCode = function (refrealCode) {
         success: function (data) {
             result = data.d;
         },
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
     return result;

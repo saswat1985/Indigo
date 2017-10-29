@@ -27,7 +27,13 @@ SaveData = function (masterData) {
         data: "{'objStateMaster':" + JSON.stringify(masterData) + "}",
         dataType: "json",
         success: FillGridView,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -39,7 +45,13 @@ FillGridView = function () {
         data: "{}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }

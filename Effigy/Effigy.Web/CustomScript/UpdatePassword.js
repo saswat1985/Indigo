@@ -22,6 +22,12 @@ ChangePassword = function () {
         },
         error: function (e) {
             console.log(e);
+        },
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
         }
 
     });

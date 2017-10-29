@@ -26,7 +26,13 @@ $(document).ready(function () {
             data: "{'id':'" + Id + "'}",
             dataType: "json",
             success: FillEditControls,
-            error: AjaxFailed
+            error: AjaxFailed,
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
+            }
         });
     });
 
@@ -47,7 +53,13 @@ SaveData = function (masterData) {
         data: "{'bankName':'" + masterData + "', 'id':'" + Id + "'}",
         dataType: "json",
         success: FillGridView,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -59,7 +71,13 @@ FillGridView = function () {
         data: "{}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }

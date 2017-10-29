@@ -36,7 +36,13 @@ SaveData = function (masterData, type) {
             data: "{'rawUrls':" + JSON.stringify(finalUrlsToProcess) + "}",
             dataType: "json",
             success: function (data) { FillResultUrls(data, type); },
-            error: AjaxFailed
+            error: AjaxFailed,
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
+            }
         });
     }
 }

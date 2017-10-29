@@ -27,7 +27,13 @@ $(document).ready(function () {
                     FillGridView();
                     alert('Deleted successfully.');
                 },
-                error: AjaxFailed
+                error: AjaxFailed,
+                beforeSend: function () {
+                    showHideLoader(true);
+                },
+                complete: function () {
+                    showHideLoader(false);
+                }
             });
         }
     });
@@ -45,7 +51,13 @@ $(document).ready(function () {
             data: "{'userId':'" + Id + "', 'isLoggedInUser':" + false + "}",
             dataType: "json",
             success: FillEditControls,
-            error: AjaxFailed
+            error: AjaxFailed,
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
+            }
         });
     });
     $('#btnSave').click(function () {
@@ -140,7 +152,13 @@ SaveData = function (objData) {
         data: "{'objData':" + JSON.stringify(objData) + "}",
         dataType: "json",
         success: function (data) { FillGridView(); },
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -197,7 +215,13 @@ FillDropDown = function (ddl, method, data, key, value, selectedValue) {
                 }
             }
         },
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -209,7 +233,13 @@ FillGridView = function () {
         data: "{}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }

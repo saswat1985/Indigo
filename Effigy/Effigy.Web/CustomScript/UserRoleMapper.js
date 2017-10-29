@@ -44,6 +44,12 @@
             },
             error: function (e) {
                 console.log(e);
+            },
+            beforeSend: function () {
+                showHideLoader(true);
+            },
+            complete: function () {
+                showHideLoader(false);
             }
 
         });
@@ -58,7 +64,13 @@ SaveData = function (userId, selectedItems) {
         data: "{'userId': '" + userId + "', 'selectedItems': '" + selectedItems+"'}",
         dataType: "json",
         success: function (data) { },
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 }
 
@@ -90,7 +102,13 @@ FillCheckBoxList = function () {
         data: "{}",
         dataType: "json",
         success: AjaxSucessed,
-        error: AjaxFailed
+        error: AjaxFailed,
+        beforeSend: function () {
+            showHideLoader(true);
+        },
+        complete: function () {
+            showHideLoader(false);
+        }
     });
 
 }
