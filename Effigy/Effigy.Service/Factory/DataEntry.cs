@@ -11,11 +11,11 @@ namespace Effigy.Service
 {
     public class DataEntry : BaseFactory, IDataEntry
     {
-        private readonly clsDALUser objDal;
+        private readonly ClsDALDataEntry objDal;
 
         public DataEntry()
         {
-            objDal = new clsDALUser();
+            objDal = new ClsDALDataEntry();
         }
 
         #region DataEntry

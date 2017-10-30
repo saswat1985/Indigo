@@ -440,24 +440,6 @@ namespace Effigy.DataObject.UnitOfWork
 
         }
 
-        public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, string urls)
-        {
-            try
-            {
-
-                IEnumerable<UrlEntriesVarifiedData> UrlEntriesVarifiedDataList = _context.Database.SqlQuery<UrlEntriesVarifiedData>("USP_RawURLEntry @UserEntryId={0},@RawURLString={1}", userId, urls);
-
-                return UrlEntriesVarifiedDataList.ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                Dispose();
-            }
-
-        }
+       
     }
 }
