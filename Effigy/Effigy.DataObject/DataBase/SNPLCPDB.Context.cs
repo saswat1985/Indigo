@@ -16,7 +16,7 @@ namespace Effigy.DataObject.DataBase
     using System.Data.Objects.DataClasses;
     using System.Linq;
     using Effigy.Entity.DBContext;
-        
+    
     public partial class SNPLCPDBEntities : DbContext
     {
         public SNPLCPDBEntities()
@@ -32,6 +32,7 @@ namespace Effigy.DataObject.DataBase
         public DbSet<aspnet_Roles> aspnet_Roles { get; set; }
         public DbSet<aspnet_UsersInRoles> aspnet_UsersInRoles { get; set; }
         public DbSet<MstBankMaster> MstBankMasters { get; set; }
+        public DbSet<MstBusinessType> MstBusinessTypes { get; set; }
         public DbSet<MstCity> MstCities { get; set; }
         public DbSet<MstCountry> MstCountries { get; set; }
         public DbSet<MstLanguage> MstLanguages { get; set; }
@@ -40,6 +41,7 @@ namespace Effigy.DataObject.DataBase
         public DbSet<MstState> MstStates { get; set; }
         public DbSet<MstUserType> MstUserTypes { get; set; }
         public DbSet<MstUserWorkCategory> MstUserWorkCategories { get; set; }
+        public DbSet<MstWebSiteStatu> MstWebSiteStatus { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<tblMstUserBankDetail> tblMstUserBankDetails { get; set; }
         public DbSet<tblMstUserCategoryMapping> tblMstUserCategoryMappings { get; set; }

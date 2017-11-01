@@ -14,7 +14,7 @@
     <RootNamespace>Effigy.Web</RootNamespace>
     <AssemblyName>Effigy.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -2340,6 +2340,7 @@
     <Content Include="CustomScript\StateMaster.js" />
     <Content Include="CustomScript\UserRegistration.js" />
     <Content Include="DashBoard\DashBoard.aspx" />
+    <Content Include="DataEntry\URLAudit.aspx" />
     <Content Include="DataEntry\UrlEntry.aspx" />
     <Content Include="ForgetPassword.aspx" />
     <Content Include="Images\accent.png" />
@@ -2855,6 +2856,13 @@
     <Compile Include="DashBoard\DashBoard.aspx.designer.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataEntry\URLAudit.aspx.cs">
+      <DependentUpon>URLAudit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataEntry\URLAudit.aspx.designer.cs">
+      <DependentUpon>URLAudit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataEntry\UrlEntry.aspx.cs">
       <DependentUpon>UrlEntry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3127,9 +3135,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3353</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/effigy</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/effigy</IISAppRootUrl>
+          <IISUrl>http://localhost:3353/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

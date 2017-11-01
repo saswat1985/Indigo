@@ -39,6 +39,16 @@
           <Property Name="UserEffectedDate" Type="datetime" />
           <Property Name="UserEntryId" Type="int" />
         </EntityType>
+        <EntityType Name="MstBusinessType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessType" Type="nvarchar(max)" />
+          <Property Name="UserEntryDate" Type="datetime" />
+          <Property Name="UserEffectedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="MstCity">
           <Key>
             <PropertyRef Name="CityId" />
@@ -139,6 +149,16 @@
           <Property Name="UserEntryId" Type="int" />
           <Property Name="UserEntryDate" Type="datetime" />
           <Property Name="UserEffectedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MstWebSiteStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebSiteStatus" Type="nvarchar(max)" />
+          <Property Name="UserEntryDate" Type="datetime" />
+          <Property Name="UserEffectedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -530,6 +550,7 @@
           <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstBankMaster" EntityType="Self.MstBankMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstBusinessType" EntityType="Self.MstBusinessType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstCity" EntityType="Self.MstCity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstCountry" EntityType="Self.MstCountry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstLanguage" EntityType="Self.MstLanguage" Schema="dbo" store:Type="Tables" />
@@ -538,6 +559,7 @@
           <EntitySet Name="MstState" EntityType="Self.MstState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstUserType" EntityType="Self.MstUserType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstUserWorkCategory" EntityType="Self.MstUserWorkCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstWebSiteStatus" EntityType="Self.MstWebSiteStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMstUserBankDetail" EntityType="Self.tblMstUserBankDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMstUserCategoryMapping" EntityType="Self.tblMstUserCategoryMapping" Schema="dbo" store:Type="Tables" />
@@ -682,9 +704,19 @@
             <Parameter Name="SelectedItems" Mode="In" Type="String" />
             <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="InsertUserPaymentDetails">
+            <Parameter Name="TransitionID" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_RawURLEntry">
+            <Parameter Name="UserEntryId" Mode="In" Type="Int32" />
+            <Parameter Name="RawURLString" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="aspnet_Roles" EntityType="SNPLCPDBModel.aspnet_Roles" />
           <EntitySet Name="aspnet_UsersInRoles" EntityType="SNPLCPDBModel.aspnet_UsersInRoles" />
           <EntitySet Name="MstBankMasters" EntityType="SNPLCPDBModel.MstBankMaster" />
+          <EntitySet Name="MstBusinessTypes" EntityType="SNPLCPDBModel.MstBusinessType" />
           <EntitySet Name="MstCities" EntityType="SNPLCPDBModel.MstCity" />
           <EntitySet Name="MstCountries" EntityType="SNPLCPDBModel.MstCountry" />
           <EntitySet Name="MstLanguages" EntityType="SNPLCPDBModel.MstLanguage" />
@@ -693,6 +725,7 @@
           <EntitySet Name="MstStates" EntityType="SNPLCPDBModel.MstState" />
           <EntitySet Name="MstUserTypes" EntityType="SNPLCPDBModel.MstUserType" />
           <EntitySet Name="MstUserWorkCategories" EntityType="SNPLCPDBModel.MstUserWorkCategory" />
+          <EntitySet Name="MstWebSiteStatus" EntityType="SNPLCPDBModel.MstWebSiteStatu" />
           <EntitySet Name="sysdiagrams" EntityType="SNPLCPDBModel.sysdiagram" />
           <EntitySet Name="tblMstUserBankDetails" EntityType="SNPLCPDBModel.tblMstUserBankDetail" />
           <EntitySet Name="tblMstUserCategoryMappings" EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" />
@@ -755,15 +788,6 @@
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructures" />
           </AssociationSet>
-          <FunctionImport Name="InsertUserPaymentDetails">
-            <Parameter Name="TransitionID" Mode="In" Type="String" />
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-            <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="USP_RawURLEntry">
-            <Parameter Name="UserEntryId" Mode="In" Type="Int32" />
-            <Parameter Name="RawURLString" Mode="In" Type="String" />
-          </FunctionImport>
           </EntityContainer>
         <EntityType Name="tblMstUserMaster">
           <Key>
@@ -841,6 +865,16 @@
           <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
           <Property Name="UserEntryId" Type="Int32" />
           <NavigationProperty Name="tblMstUserBankDetails" Relationship="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" FromRole="MstBankMaster" ToRole="tblMstUserBankDetail" />
+        </EntityType>
+        <EntityType Name="MstBusinessType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="MstCity">
           <Key>
@@ -952,6 +986,16 @@
           <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
           <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblMstUserCategoryMappings" Relationship="SNPLCPDBModel.FK_tblMstUserCategoryMapping_MstUserWorkCategory" FromRole="MstUserWorkCategory" ToRole="tblMstUserCategoryMapping" />
+        </EntityType>
+        <EntityType Name="MstWebSiteStatu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebSiteStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1302,6 +1346,8 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="uspMenuRoleMapper" FunctionName="SNPLCPDBModel.Store.uspMenuRoleMapper" />
           <FunctionImportMapping FunctionImportName="uspUserRoleMapper" FunctionName="SNPLCPDBModel.Store.uspUserRoleMapper" />
+          <FunctionImportMapping FunctionImportName="InsertUserPaymentDetails" FunctionName="SNPLCPDBModel.Store.InsertUserPaymentDetails" />
+          <FunctionImportMapping FunctionImportName="USP_RawURLEntry" FunctionName="SNPLCPDBModel.Store.USP_RawURLEntry" />
           <EntitySetMapping Name="aspnet_Roles">
             <EntityTypeMapping TypeName="SNPLCPDBModel.aspnet_Roles">
               <MappingFragment StoreEntitySet="aspnet_Roles">
@@ -1335,6 +1381,17 @@
                 <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MstBusinessTypes">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.MstBusinessType">
+              <MappingFragment StoreEntitySet="MstBusinessType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserEffectedDate" ColumnName="UserEffectedDate" />
+                <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1444,6 +1501,17 @@
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MstWebSiteStatus">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.MstWebSiteStatu">
+              <MappingFragment StoreEntitySet="MstWebSiteStatus">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserEffectedDate" ColumnName="UserEffectedDate" />
+                <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="WebSiteStatus" ColumnName="WebSiteStatus" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1581,8 +1649,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="InsertUserPaymentDetails" FunctionName="SNPLCPDBModel.Store.InsertUserPaymentDetails" />
-          <FunctionImportMapping FunctionImportName="USP_RawURLEntry" FunctionName="SNPLCPDBModel.Store.USP_RawURLEntry" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1607,26 +1673,28 @@
     <Diagrams>
       <Diagram DiagramId="db6213959886435a9f128a9593cd9415" Name="Diagram1">
         <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_Roles" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="3" PointY="9" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstBankMaster" Width="1.5" PointX="9.75" PointY="1.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="10.75" PointY="5.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="5.25" PointY="2.375" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="9.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="0.75" PointY="12.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="3.75" PointY="12.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="6" PointY="8.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3" PointY="2.375" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="10.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="5.75" PointY="8" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="8.75" PointY="8" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="12.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserBankDetail" Width="1.5" PointX="12" PointY="1" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="8" PointY="8.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="11" PointY="8.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="7.5" PointY="1.125" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="7.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="9.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="11.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="12.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="13.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="13.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="9.75" PointY="14.75" />
         <AssociationConnector Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" />

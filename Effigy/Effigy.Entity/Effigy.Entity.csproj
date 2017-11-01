@@ -59,6 +59,9 @@
     <Compile Include="DBContext\MstBankMaster.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\MstBusinessType.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\MstCity.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
@@ -81,6 +84,9 @@
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBContext\MstUserWorkCategory.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\MstWebSiteStatu.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBContext\SNPLCPDB.Designer.cs">
