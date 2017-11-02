@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effigy.Entity", "Effigy.Entity\Effigy.Entity.csproj", "{A26FD866-43D7-449E-9B2E-6DB5DE426F33}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effigy.Service", "Effigy.Service\Effigy.Service.csproj", "{3E5BE00D-8470-4A82-A417-13CFDFDE22A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effigy.DataObject", "Effigy.DataObject\Effigy.DataObject.csproj", "{6C3C264A-6854-472B-BB75-E84CC6081596}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effigy.Web", "Effigy.Web\Effigy.Web.csproj", "{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effigy.Utility", "Effigy.Utility\Effigy.Utility.csproj", "{6A071BCC-CD41-4892-852F-3E4DFAED2AC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effigy.Web", "Effigy.Web\Effigy.Web.csproj", "{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,16 +31,19 @@ Global
 		{6C3C264A-6854-472B-BB75-E84CC6081596}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C3C264A-6854-472B-BB75-E84CC6081596}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C3C264A-6854-472B-BB75-E84CC6081596}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A071BCC-CD41-4892-852F-3E4DFAED2AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A071BCC-CD41-4892-852F-3E4DFAED2AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A071BCC-CD41-4892-852F-3E4DFAED2AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A071BCC-CD41-4892-852F-3E4DFAED2AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B73E0C-3A92-4ADB-90D0-8B4A422ACAE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {435D7CF7-95C2-4B31-B943-9AB0A89F5FD2}
 	EndGlobalSection
 EndGlobal
