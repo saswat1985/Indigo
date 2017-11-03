@@ -28,7 +28,7 @@
 
     <!-- Theme JS files -->
     <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
-
+    <script type="text/javascript" src="../Scripts/loader.js"></script>
     <script type="text/javascript" src="assets/js/core/app.js"></script>
     <script type="text/javascript" src="assets/js/pages/login.js"></script>
     <script type="text/javascript" src="CustomScript/UserRegistration.js"></script>
@@ -158,12 +158,15 @@
                                             <a href="Login.aspx" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i>Back to login form</a>
                                             <button id="btnRegistartion" type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-paperplane"></i></b>Create account</button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-
+                    <div class="loader">
+                        <img class="loading-image" src="../Images/loading_nice.gif" alt="loading.." />
+                    </div>
                     <!-- /registration form -->
 
 

@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
 
     $('#btnRegistartion').click(function () {
+       
         var firstName = $('#txtFirstName').val();
         var lastName = $('#txtLastName').val();
         var mobileNo = $('#txtMobileNo').val();
@@ -13,8 +14,10 @@
 
 
         if (PageValidate(UserData)) {
+          
             SaveUserDetail(UserData);
             resetForm();
+           
         }
 
     });
