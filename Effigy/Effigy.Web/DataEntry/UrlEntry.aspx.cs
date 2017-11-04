@@ -29,10 +29,27 @@ namespace Effigy.Web.DataEntry
                 var objUrlEntriesVarifiedDataList = new List<UrlEntriesVarifiedData>();
                 foreach (var url in rawUrls)
                 {
-                    if (UtilityMethods.UrlIsValid(url))
-                        validUrls.Add(url);
+                    bool urlValidity = false;
+                    string validUrl = string.Empty;
+                    if (!url.Contains("https") && !url.Contains("http"))
+                    {
+                        validUrl = string.Format("{0}://{1}", "https", url);
+                        urlValidity = UtilityMethods.UrlIsValid(validUrl);
+                        if (!urlValidity)
+                        {
+                            validUrl = string.Format("{0}://{1}", "http", url);
+                            urlValidity = UtilityMethods.UrlIsValid(validUrl);
+                        }
+                    }                   
                     else
-                        objUrlEntriesVarifiedDataList.Add(new UrlEntriesVarifiedData { Url = url, MasterId = 0, urlStatus = "R" });
+                    {
+                        validUrl = url;
+                        urlValidity = UtilityMethods.UrlIsValid(validUrl);
+                    }
+                    if (urlValidity)
+                        validUrls.Add(validUrl);
+                    else
+                        objUrlEntriesVarifiedDataList.Add(new UrlEntriesVarifiedData { Url = validUrl, MasterId = 0, urlStatus = "R" });
 
                 }
                 if (validUrls.Count > 0)

@@ -20,9 +20,9 @@
     </ul>
     <div class="navbar-collapse collapse" id="navbar-filter">
         <ul class="nav navbar-nav">
-            <li class=""><a href="#activity" data-toggle="tab" aria-expanded="false"><i class="icon-user position-left"></i>Personal Information</a></li>
+            <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="false"><i class="icon-user position-left"></i>Personal Information</a></li>
             <li class=""><a href="#schedule" data-toggle="tab" aria-expanded="false"><i class="icon-calendar3 position-left"></i>Contact Detail</a></li>
-            <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true"><i class="icon-cog3 position-left"></i>Bank Detail</a></li>
+            <li class=""><a href="#settings" data-toggle="tab" aria-expanded="true"><i class="icon-cog3 position-left"></i>Bank Detail</a></li>
         </ul>
     </div>
 </div>
@@ -42,21 +42,21 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>First Name</label>
-                                                <input type="text" id="txtFirstName" value="Eugene" class="form-control" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Last Name</label>
-                                                <input type="text" id="txtLastName" value="Kopyov" class="form-control" />
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>First Name</label>
+                                            <input type="text" id="txtFirstName" value="Eugene" class="form-control" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Last Name</label>
+                                            <input type="text" id="txtLastName" value="Kopyov" class="form-control" />
                                         </div>
                                     </div>
-                                    <div class="text-right">
-                                        <button type="button" class="btn btn-primary" >Next <i class="icon-arrow-right14 position-right"></i></button>
-                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="button" class="btn btn-primary">Next <i class="icon-arrow-right14 position-right"></i></button>
+                                </div>
                             </div>
                         </div>
                         <!-- /profile info -->
@@ -71,71 +71,72 @@
                             </div>
 
                             <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address line 1</label>
-                                                <input type="text" id="txtAddressLine1" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Address line 2</label>
-                                                <input type="text" id="txtAddressLine2" class="form-control">
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Address line 1</label>
+                                            <input type="text" id="txtAddressLine1" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Address line 2</label>
+                                            <input type="text" id="txtAddressLine2" class="form-control">
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Your country</label>
-                                                <select class="form-control" id="ddlCountry">
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>State/Province</label>
-                                                <select id="ddlState" class="form-control"></select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>City</label>
-                                                <select id="ddlCity" class="form-control"></select>
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Your country</label>
+                                            <select class="form-control" id="ddlCountry">
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>State/Province</label>
+                                            <select id="ddlState" class="form-control"></select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>City</label>
+                                            <select id="ddlCity" class="form-control"></select>
                                         </div>
                                     </div>
+                                </div>
 
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Email</label>
-                                                    <input type="text" id="txtEmail" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>ZIP code</label>
-                                                    <input type="text" id="txtZipCode" class="form-control">
-                                                </div>
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                            <input type="text" id="txtEmail" class="form-control">
                                         </div>
+                                        <div class="col-md-6">
+                                            <label>ZIP code</label>
+                                            <input type="text" id="txtZipCode" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone #</label>
-                                                <input type="text" id="txtPhone" class="form-control">
-                                                <span class="help-block">+99-99-9999-9999</span>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone #</label>
+                                            <input type="text" id="txtPhone" class="form-control">
+                                            <span class="help-block">+99-99-9999-9999</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="display-block">Upload profile image</label>
+                                            <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
+                                            <div class="uploader" style="width: 150px; float: left; margin-right: 2px">
+                                                <input type="file" class="file-styled-primary" onchange="UploadImage(this);" id="filePhoto"><span class="action btn bg-blue" id="fileSpan">Choose File</span>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="display-block">Upload profile image</label>
-                                                <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
-                                                <div class="uploader" style="width:150px;float:left;margin-right:2px">
-                                                    <input type="file" class="file-styled-primary" onchange="UploadImage(this);" id="filePhoto"><span class="action btn bg-blue" id="fileSpan">Choose File</span>
-                                                </div>
-                                                <div style="float:left">
-                                                <button type="button" class="btn btn-primary" id="btnTakePhoto" onclick="TakePicture()">From Camera</button></div>
+                                            <div style="float: left">
+                                                <button type="button" class="btn btn-primary" id="btnTakePhoto" onclick="TakePicture()">From Camera</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-right">
-                                        <button type="button" class="btn btn-primary" >Next <i class="icon-arrow-right14 position-right"></i></button>
-                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="button" class="btn btn-primary">Next <i class="icon-arrow-right14 position-right"></i></button>
+                                </div>
                             </div>
                         </div>
                         <!-- /profile info -->
@@ -149,51 +150,51 @@
                                 </div>
                             </div>
 
-                                <div class="panel-body">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Account Holder</label>
-                                                    <input type="text" id="txtACHolderName" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Account Number</label>
-                                                    <input type="text" id="txtAccountNo" class="form-control">
-                                                </div>
+                            <div class="panel-body">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Account Holder</label>
+                                                <input type="text" id="txtACHolderName" class="form-control">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Bank</label>
-                                                    <select id="ddlBank" class="form-control"></select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Branch Name</label>
-                                                    <input type="text" id="txtBranchName" value="Kopyov" class="form-control">
-                                                </div>
-                                            </div>
-                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>IFSC Code</label>
-                                                    <input type="text" id="txtIFSCCode" value="Kopyov" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>BranchAddress</label>
-                                                    <input type="text" id="txtBranchAddress" value="Kopyov" class="form-control">
-                                                </div>
+                                            <div class="col-md-6">
+                                                <label>Account Number</label>
+                                                <input type="text" id="txtAccountNo" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="text-right">
-                                            <button type="button" id="btnSave" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Bank</label>
+                                                <select id="ddlBank" class="form-control"></select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Branch Name</label>
+                                                <input type="text" id="txtBranchName" value="Kopyov" class="form-control">
+                                            </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>IFSC Code</label>
+                                                <input type="text" id="txtIFSCCode" value="Kopyov" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>BranchAddress</label>
+                                                <input type="text" id="txtBranchAddress" value="Kopyov" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="button" id="btnSave" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                                    </div>
+                                </form>
                             </div>
-                            <!-- /profile info -->
                         </div>
+                        <!-- /profile info -->
                     </div>
                 </div>
             </div>
+        </div>
 
         <div class="col-lg-3">
 
