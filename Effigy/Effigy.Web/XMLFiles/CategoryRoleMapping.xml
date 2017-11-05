@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CategoryRoleMapping>
+  <CategoryRole>
+    <Categoy_Id>1</Categoy_Id>
+    <Role_Id>2</Role_Id>
+  </CategoryRole>
+  <CategoryRole>
+    <Categoy_Id>2</Categoy_Id>
+    <Role_Id>4</Role_Id>
+  </CategoryRole>
+  <CategoryRole>
+    <Categoy_Id>3</Categoy_Id>
+    <Role_Id>5</Role_Id>
+  </CategoryRole>
+</CategoryRoleMapping>

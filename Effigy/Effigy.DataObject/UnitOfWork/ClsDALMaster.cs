@@ -302,17 +302,9 @@ namespace Effigy.DataObject.UnitOfWork
                 throw;
             }
 
-        }
+        }       
 
-        public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            return _context.Set<T>().FirstOrDefault(predicate);
-        }
-
-        public IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            return _context.Set<T>().Where(predicate).ToList();
-        }
+        
 
         public IList<MstBankData> GetAllBanks()
         {

@@ -35,7 +35,10 @@ namespace Effigy.Utility
         public static string HelpDeskNo { get; set; }
 
         public static string PaymentHours { get; set; }
+
         public static string EncryptionValue { get; set; }
+
+        public static string XMLFilePath { get; set; }
 
 
         static AppKeyCollection()
@@ -55,7 +58,7 @@ namespace Effigy.Utility
             HelpDeskNo = ConfigurationManager.AppSettings["HELPDESKNO"].TrimString();
             PaymentHours = ConfigurationManager.AppSettings["PaymentHours"].TrimString();
             EncryptionValue=ConfigurationManager.AppSettings["EncryptionValue"].TrimString();
-            
+            XMLFilePath = ConfigurationManager.AppSettings["XMLPath"].TrimString();
 
         }
 

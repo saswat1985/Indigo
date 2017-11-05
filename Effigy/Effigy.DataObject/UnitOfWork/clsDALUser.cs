@@ -21,7 +21,7 @@ namespace Effigy.DataObject.UnitOfWork
         private GenericRepository<tblMstUserDetail> _userDetail = null;
         private GenericRepository<tblMstUserCategoryMapping> _userCategory = null;
         private GenericRepository<tblMstUserTreeStructure> _userGenology = null;
-
+        private ClsDALMaster _masterDal = null;
 
         public clsDALUser()
         {
@@ -30,6 +30,7 @@ namespace Effigy.DataObject.UnitOfWork
             _userDetail = new GenericRepository<tblMstUserDetail>(_context);
             _userCategory = new GenericRepository<tblMstUserCategoryMapping>(_context);
             _userGenology = new GenericRepository<tblMstUserTreeStructure>(_context);
+            _masterDal = new ClsDALMaster();
         }
 
         public tblMstUserMaster FnCheckLogin(tblMstUserMaster _objVal)
@@ -146,12 +147,17 @@ namespace Effigy.DataObject.UnitOfWork
                 {
                     categoryMapping.UserId = objUserMaster.UserId;
                     SaveUserCategoryDetail(categoryMapping);
+
+                    int roleId = UtilityMethods.GetRoleIdByCategory(categoryMapping.CategoryId.Value);
+
+                    SaveUserRoleMapping(objUserMaster.UserId, roleId.TrimString(), 0);
                 }
                 if (userTreeStructure != null)
                 {
                     userTreeStructure.UserId = objUserMaster.UserId;
                     SaveUserGenology(userTreeStructure);
                 }
+
 
             }
             catch (Exception)
@@ -257,6 +263,52 @@ namespace Effigy.DataObject.UnitOfWork
             }
         }
 
+        private void SaveUserCategoryDetail(tblMstUserCategoryMapping userCategory)
+        {
+            try
+            {
+                using (_context = new SNPLCPDBEntities())
+                {
+                    if (userCategory != null)
+                    {
+                        userCategory.UserEntryDate = DateTime.Now;
+                        _context.tblMstUserCategoryMappings.Add(userCategory);
+                        _context.SaveChanges();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void SaveUserGenology(tblMstUserTreeStructure userGenology)
+        {
+            try
+            {
+                using (_context = new SNPLCPDBEntities())
+                {
+                    if (userGenology != null)
+                    {
+                        userGenology.EntryDate = DateTime.Now;
+                        _context.tblMstUserTreeStructures.Add(userGenology);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void SaveUserRoleMapping(int userId, string selectedItems, int createdBy)
+        {
+            _masterDal.SaveUserRoleMapping(userId, selectedItems, 0);
+        }
         public string GetNextUserCode()
         {
             using (_context = new SNPLCPDBEntities())
@@ -338,48 +390,6 @@ namespace Effigy.DataObject.UnitOfWork
             }
         }
 
-        private void SaveUserCategoryDetail(tblMstUserCategoryMapping userCategory)
-        {
-            try
-            {
-                using (_context = new SNPLCPDBEntities())
-                {
-                    if (userCategory != null)
-                    {
-                        userCategory.UserEntryDate = DateTime.Now;
-                        _context.tblMstUserCategoryMappings.Add(userCategory);
-                        _context.SaveChanges();
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        private void SaveUserGenology(tblMstUserTreeStructure userGenology)
-        {
-            try
-            {
-                using (_context = new SNPLCPDBEntities())
-                {
-                    if (userGenology != null)
-                    {
-                        userGenology.EntryDate = DateTime.Now;
-                        _context.tblMstUserTreeStructures.Add(userGenology);
-                        _context.SaveChanges();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
 
         public string ChangePassword(int userId, string password)
         {
@@ -395,11 +405,6 @@ namespace Effigy.DataObject.UnitOfWork
                 return "success";
             }
             return null;
-        }
-
-        public IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            return _context.Set<T>().Where(predicate).ToList();
         }
 
         /// <summary>
@@ -425,21 +430,16 @@ namespace Effigy.DataObject.UnitOfWork
 
         }
 
-        public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
+        public UserData GetUserByEmail(string email)
         {
-            return _context.Set<T>().FirstOrDefault(predicate);
-        }
-
-        public UserData GetUserByEmail(string email) 
-        {
-            UserData obj= (from a in _context.tblMstUserMasters
-                     join b in _context.tblMstUserDetails on a.UserId equals b.UserId
-                     where b.EmailId == email
-                     select new UserData { FirstName=b.FirstName,LastName=b.LastName,CurrentAddress=a.Password }).FirstOrDefault();
+            UserData obj = (from a in _context.tblMstUserMasters
+                            join b in _context.tblMstUserDetails on a.UserId equals b.UserId
+                            where b.EmailId == email
+                            select new UserData { FirstName = b.FirstName, LastName = b.LastName, CurrentAddress = a.Password }).FirstOrDefault();
             return obj;
 
         }
 
-       
+
     }
 }

@@ -8,7 +8,7 @@ using System.Xml;
 using System.Configuration;
 using System.IO;
 using System.Security.Cryptography;
-
+using System.Web;
 
 namespace Effigy.Utility
 {
@@ -38,8 +38,6 @@ namespace Effigy.Utility
                           .ToArray());
             return result;
         }
-
-       
 
         public static bool IsNumber(string number)
         {
@@ -219,6 +217,35 @@ namespace Effigy.Utility
         }
 
         #endregion
+
+        private static IDictionary<string, string> GetDataFromXml()
+        {
+            XmlDataDocument xmldoc = new XmlDataDocument();
+            IDictionary<string, string> roleCategory = new Dictionary<string, string>();
+
+            XmlNodeList xmlnode; int i = 0; string filepath = null;
+            filepath = HttpContext.Current.Server.MapPath("~") + AppKeyCollection.XMLFilePath;
+            FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read);
+            xmldoc.Load(fs);
+            xmlnode = xmldoc.GetElementsByTagName("CategoryRole");
+            for (i = 0; i <= xmlnode.Count - 1; i++)
+            {
+                roleCategory.Add(new KeyValuePair<string, string>(xmlnode[i].ChildNodes.Item(0).InnerText.TrimString(),
+                    xmlnode[i].ChildNodes.Item(1).InnerText.TrimString()));
+
+            }
+            return roleCategory;
+        }
+
+        public static int GetRoleIdByCategory(int categoryId)
+        {
+            IDictionary<string, string> xmlData = GetDataFromXml();
+            string roleid = string.Empty;
+            if (xmlData.Count > 0)
+                xmlData.TryGetValue(categoryId.TrimString(), out roleid);
+
+            return roleid != null ? Convert.ToInt32(roleid) : 0;
+        }
 
     }
 }
