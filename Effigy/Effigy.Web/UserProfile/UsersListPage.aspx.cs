@@ -13,7 +13,7 @@ using Effigy.Utility;
 
 namespace Effigy.Web.UserProfile
 {
-    public partial class UsersListPage : System.Web.UI.Page
+    public partial class UsersListPage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

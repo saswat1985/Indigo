@@ -91,5 +91,13 @@ namespace Effigy.Service
         /// <returns></returns>
         bool IsRefferalCodeExist(string refferalCode);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fullName"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        string GetForgetPasswordEmailBody(string fullName, string userName, string password);
     }
 }

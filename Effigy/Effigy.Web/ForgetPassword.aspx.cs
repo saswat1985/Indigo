@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using Effigy.Entity;
 using Effigy.Entity.DBContext;
 using Effigy.Service;
+using Effigy.Utility;
 
 namespace Effigy.Web
 {
@@ -18,24 +19,31 @@ namespace Effigy.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
 
         }
-     
+
         [WebMethod]
         public static bool ForgotPassword(string email)
         {
-            string from = "tridev1983@outlook.com";
-            string pwd = "Tridev@1983";
-            IUserService objService = new UserService();
-            UserData  obj=objService.GetUserByEmail(email);
-            var client = new SmtpClient("smtp-mail.outlook.com", 587)
+            bool isMailSend = false;
+            try
             {
-                Credentials = new NetworkCredential(from, pwd),
-                EnableSsl = true
-            };
-            client.Send(from, email, "Reset password for Effigy", "Your password is :"+obj.CurrentAddress);
-            return true;
+                IUserService objService = new UserService();
+                UserData objUser = objService.GetUserByEmail(email);
+                if (objUser != null)
+                {
+                    string fullName = objUser.FirstName + " " + objUser.LastName;
+                    string emailBody = objService.GetForgetPasswordEmailBody(fullName, objUser.UserName, objUser.Password);
+                    isMailSend = new MailSMSHandler(AppKeyCollection.FromMail, objUser.EmailId, emailBody, true, AppKeyCollection.ForgatPassword).sendMail();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+
+            return isMailSend;
         }
 
     }

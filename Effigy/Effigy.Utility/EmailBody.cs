@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Effigy.Utility
 {
-    public class EmailBody
+    public static class EmailBody
     {
         public static string UserRegistrationEmail()
         {
@@ -27,6 +27,32 @@ namespace Effigy.Utility
                 SbMail.AppendLine("<br>This is an auto generated email. Please do not reply to this email.</br>");
                 SbMail.AppendLine("<br>***************************************************</br>");
                 emailContent = SbMail.TrimString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return emailContent;
+        }
+
+        public static string ForgetPassword()
+        {
+            string emailContent = string.Empty;
+            try
+            {
+                StringBuilder sbMail = new StringBuilder();
+                sbMail.AppendLine("<br>Dear @fullName,</br>");
+                sbMail.AppendLine("<br>As requested, please check your user id and password detail below</br>");
+                sbMail.AppendLine("<br>User Name :<b>@userName</b></br>");
+                sbMail.AppendLine("<br>Login Password :<b>@password</b></br>");
+                sbMail.AppendLine("<br>As always, thank you for using Effigy!!</br>");
+                sbMail.AppendLine("<br>Thanks & Regards</br>");
+                sbMail.AppendLine("<br>Effigy Team</br>");
+                sbMail.AppendLine("<br><br>***************************************************</br></br>");
+                sbMail.AppendLine("<br>This is an auto generated email. Please do not reply to this email.</br>");
+                sbMail.AppendLine("<br>***************************************************</br>");
+                emailContent = sbMail.TrimString();
+
             }
             catch (Exception)
             {

@@ -40,6 +40,7 @@ namespace Effigy.Utility
 
         public static string XMLFilePath { get; set; }
 
+        public static string ForgatPassword { get; set; }
 
         static AppKeyCollection()
         {
@@ -59,6 +60,7 @@ namespace Effigy.Utility
             PaymentHours = ConfigurationManager.AppSettings["PaymentHours"].TrimString();
             EncryptionValue=ConfigurationManager.AppSettings["EncryptionValue"].TrimString();
             XMLFilePath = ConfigurationManager.AppSettings["XMLPath"].TrimString();
+            ForgatPassword = ConfigurationManager.AppSettings["ForgatPassword"].TrimString();
 
         }
 

@@ -435,7 +435,15 @@ namespace Effigy.DataObject.UnitOfWork
             UserData obj = (from a in _context.tblMstUserMasters
                             join b in _context.tblMstUserDetails on a.UserId equals b.UserId
                             where b.EmailId == email
-                            select new UserData { FirstName = b.FirstName, LastName = b.LastName, CurrentAddress = a.Password }).FirstOrDefault();
+                            select new UserData
+                            {
+                                FirstName = b.FirstName,
+                                LastName = b.LastName,
+                                Password = a.Password,
+                                UserName=a.UserName,
+                                EmailId=b.EmailId
+
+                            }).FirstOrDefault();
             return obj;
 
         }

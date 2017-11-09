@@ -28,6 +28,7 @@ namespace Effigy.Entity
         public int CityId { get; set; }
         public int StateId { get; set; }
         public int CountryId { get; set; }
-
+        public string Password { get; set; }
+        public string UserName { get; set; }
     }
 }

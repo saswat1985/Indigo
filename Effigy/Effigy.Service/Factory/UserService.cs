@@ -190,6 +190,12 @@ namespace Effigy.Service
             }
         }
 
+        public string GetForgetPasswordEmailBody(string fullName, string userName, string password)
+        {
+            string smsbody = EmailBody.ForgetPassword().Replace("@fullName", fullName).Replace("@userName", userName).Replace("@password", password).TrimString();
+            return smsbody;
+        }
+
 
         public string ChangePassword(int userId, string password)
         {
