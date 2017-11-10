@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Effigy</title>
-    
+
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css" />
@@ -28,6 +28,7 @@
     <!-- Theme JS files -->
     <script type="text/javascript" src="assets/js/core/app.js"></script>
     <script src="CustomScript/ForgotPassword.js"></script>
+    <script type="text/javascript" src="../Scripts/loader.js"></script>
 </head>
 <body class="login-container">
 
@@ -90,6 +91,9 @@
                             <div class="text-right  marginTop-sm"><a href="Login.aspx" class=""><i class="icon-backward2"></i>Back to Login</a></div>
                         </div>
                     </form>
+                    <div class="loader">
+                        <img class="loading-image" src="../Images/loading_nice.gif" alt="loading.." />
+                    </div>
                     <!-- /password recovery -->
 
 
@@ -108,6 +112,6 @@
         </div>
         <!-- /page content -->
     </div>
-    <!-- /page container -->    
+    <!-- /page container -->
 </body>
 </html>

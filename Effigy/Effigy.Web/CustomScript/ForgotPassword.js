@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $('#btnSave').click(function () {
-        var txtEmail = $('#txtEmail').val();  
+        var txtEmail = $('#txtEmail').val();
 
         if (txtEmail === '') {
             alert('Enter email address');
@@ -44,6 +44,9 @@ SaveData = function (masterData) {
 AjaxSucessed = function (data) {
     if (data.d) {
         alert("Password has been sent to your email address.");
+    }
+    else {
+        alert("Email address not found");
     }
 }
 
