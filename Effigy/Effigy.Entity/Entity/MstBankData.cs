@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Effigy.Entity.Entity
+namespace Effigy.Entity.DBContext
 {
-    public class MstBankData
+    public class MstBankData : BaseEntity
     {
         public int Id { get; set; }
-        public string  BankName { get; set; }
+        public string BankName { get; set; }
     }
 }

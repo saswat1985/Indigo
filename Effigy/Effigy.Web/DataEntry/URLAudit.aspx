@@ -10,47 +10,23 @@
                 <div class="col-sm-12">
                     <form class="form-horizontal" action="#">
                         <fieldset class="content-group">
-
-
                             <div class="form-group">
                                 <div class="col-lg-3 col-xs-12">
                                     <input type="text" class="form-control" placeholder="Website Name">
                                 </div>
                                 <div class="col-lg-3 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Website Status</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlWebSiteStatus" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Address</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
+                                    <asp:DropDownList ID="ddlIsAddress" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
 
-                                    </select>
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">City</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlIsCity" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Kind of Business</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
+                                    <asp:DropDownList ID="ddlBusinessType" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
 
-                                    </select>
                                 </div>
 
                             </div>
@@ -65,25 +41,13 @@
                                     <input type="text" class="form-control" placeholder="Phone No.">
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Country">
+                                    <asp:DropDownList ID="ddlIsCountry" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">State</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlIsState" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Company </option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlIsCompanyProfile" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
                                 </div>
 
                             </div>
@@ -91,31 +55,15 @@
 
                             <div class="form-group">
                                 <div class="col-lg-3 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Name of Prod</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlNameProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
+                                   
                                 </div>
                                 <div class="col-lg-3 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Image of Prod</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlImageProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
+                                   
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <select name="select" class="form-control">
-                                        <option value="opt1">Desc. of Prod</option>
-                                        <option value="opt2">Option 2</option>
-                                        <option value="opt3">Option 3</option>
-                                        <option value="opt4">Option 4</option>
-
-                                    </select>
+                                    <asp:DropDownList ID="ddlDescProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>                                   
                                 </div>
                                 <div class="col-lg-4 col-xs-12">
                                     <div class="text-right">
@@ -127,6 +75,7 @@
 
                             </div>
                             <!-- End of row 3 -->
+                        </fieldset>
                     </form>
                 </div>
 

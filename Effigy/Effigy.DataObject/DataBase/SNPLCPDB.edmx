@@ -299,6 +299,30 @@
           <Property Name="IsUnique" Type="bit" />
           <Property Name="UserEntryDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblUniqueURLAudit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueURLId" Type="int" />
+          <Property Name="UniqueURL" Type="nvarchar(max)" />
+          <Property Name="URLStatus" Type="int" />
+          <Property Name="IsAddressExist" Type="bit" />
+          <Property Name="IsCityExist" Type="bit" />
+          <Property Name="BusinessType" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsStateExist" Type="bit" />
+          <Property Name="IsCountryExist" Type="bit" />
+          <Property Name="IsProfileExist" Type="bit" />
+          <Property Name="ProductCount" Type="int" />
+          <Property Name="ProductImageCount" Type="int" />
+          <Property Name="ProductDescCount" Type="int" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="UserEntryId" Type="int" />
+          <Property Name="UserEntryDate" Type="datetime" />
+          <Property Name="UserEffectedDate" Type="datetime" />
+        </EntityType>
         <Association Name="FK_aspnet_UsersInRoles_aspnet_Roles">
           <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
           <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
@@ -571,6 +595,7 @@
           <EntitySet Name="tblRawUniqueURL" EntityType="Self.tblRawUniqueURL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRawURL" EntityType="Self.tblRawURL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRawURLDetail" EntityType="Self.tblRawURLDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUniqueURLAudit" EntityType="Self.tblUniqueURLAudit" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_aspnet_UsersInRoles_aspnet_Roles" Association="Self.FK_aspnet_UsersInRoles_aspnet_Roles">
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
@@ -788,6 +813,7 @@
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructures" />
           </AssociationSet>
+          <EntitySet Name="tblUniqueURLAudits" EntityType="SNPLCPDBModel.tblUniqueURLAudit" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1284,6 +1310,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblUniqueURLAudit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueURLId" Type="Int32" />
+          <Property Name="UniqueURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URLStatus" Type="Int32" />
+          <Property Name="IsAddressExist" Type="Boolean" />
+          <Property Name="IsCityExist" Type="Boolean" />
+          <Property Name="BusinessType" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsStateExist" Type="Boolean" />
+          <Property Name="IsCountryExist" Type="Boolean" />
+          <Property Name="IsProfileExist" Type="Boolean" />
+          <Property Name="ProductCount" Type="Int32" />
+          <Property Name="ProductImageCount" Type="Int32" />
+          <Property Name="ProductDescCount" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryId" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1645,6 +1695,31 @@
                 <ScalarProperty Name="IsUnique" ColumnName="IsUnique" />
                 <ScalarProperty Name="URL" ColumnName="URL" />
                 <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUniqueURLAudits">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.tblUniqueURLAudit">
+              <MappingFragment StoreEntitySet="tblUniqueURLAudit">
+                <ScalarProperty Name="UserEffectedDate" ColumnName="UserEffectedDate" />
+                <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="UserEntryId" ColumnName="UserEntryId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ProductDescCount" ColumnName="ProductDescCount" />
+                <ScalarProperty Name="ProductImageCount" ColumnName="ProductImageCount" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+                <ScalarProperty Name="IsProfileExist" ColumnName="IsProfileExist" />
+                <ScalarProperty Name="IsCountryExist" ColumnName="IsCountryExist" />
+                <ScalarProperty Name="IsStateExist" ColumnName="IsStateExist" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+                <ScalarProperty Name="IsCityExist" ColumnName="IsCityExist" />
+                <ScalarProperty Name="IsAddressExist" ColumnName="IsAddressExist" />
+                <ScalarProperty Name="URLStatus" ColumnName="URLStatus" />
+                <ScalarProperty Name="UniqueURL" ColumnName="UniqueURL" />
+                <ScalarProperty Name="UniqueURLId" ColumnName="UniqueURLId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

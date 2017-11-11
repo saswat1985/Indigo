@@ -39,6 +39,15 @@ namespace Effigy.Web
             if (bindZeroIndex)
                 ddl.Items.Insert(0, new ListItem("--Please Select--", "0"));
         }
+        public static void FillDDL<T>(DropDownList ddl, T listSource, string strid, string strtext, string defaultText, bool bindZeroIndex = true)
+        {
+            ddl.DataSource = listSource;
+            ddl.DataValueField = strid;
+            ddl.DataTextField = strtext;
+            ddl.DataBind();
+            if (bindZeroIndex)
+                ddl.Items.Insert(0, new ListItem(defaultText, "0"));
+        }
         public static void FillGridView<T>(GridView Grdv, T dataSource)
         {
             Grdv.DataSource = dataSource;

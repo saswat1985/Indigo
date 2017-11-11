@@ -247,5 +247,27 @@ namespace Effigy.Utility
             return roleid != null ? Convert.ToInt32(roleid) : 0;
         }
 
+        public static IDictionary<string, string> GetBooleanList()
+        {
+            IDictionary<string, string> boolList = new Dictionary<string, string>();
+            boolList.Add(new KeyValuePair<string, string>("true", "Yes"));
+            boolList.Add(new KeyValuePair<string, string>("false", "No"));
+
+            return boolList;
+        }
+
+        public static IDictionary<string, string> GetProductCount()
+        {
+            IDictionary<string, string> lstCount = new Dictionary<string, string>();
+            lstCount.Add(new KeyValuePair<string, string>("0", "0"));
+            lstCount.Add(new KeyValuePair<string, string>("1", "1"));
+            lstCount.Add(new KeyValuePair<string, string>("2", "2"));
+            lstCount.Add(new KeyValuePair<string, string>("3", "3"));
+
+            return lstCount;
+        }
+
+
+
     }
 }

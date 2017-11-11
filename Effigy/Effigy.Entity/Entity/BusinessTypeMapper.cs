@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Effigy.Entity.DBContext
 {
-    public class UrlEntriesVarifiedData
+    public class BusinessTypeMapper : BaseEntity
     {
-        public int MasterId { get; set; }
-        public string  Url { get; set; }
-        public string urlStatus { get; set; }
+        public int Id{ get; set; }
+
+        public string BusinessType { get; set; }
     }
 }

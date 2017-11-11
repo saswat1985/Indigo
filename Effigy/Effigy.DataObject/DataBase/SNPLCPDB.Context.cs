@@ -53,6 +53,7 @@ namespace Effigy.DataObject.DataBase
         public DbSet<tblRawUniqueURL> tblRawUniqueURLs { get; set; }
         public DbSet<tblRawURL> tblRawURLs { get; set; }
         public DbSet<tblRawURLDetail> tblRawURLDetails { get; set; }
+        public DbSet<tblUniqueURLAudit> tblUniqueURLAudits { get; set; }
     
         public virtual ObjectResult<Nullable<int>> chkLogin(string type, string userName, string password, string transactionPwd, Nullable<int> userLoginId, ObjectParameter outRes, ObjectParameter userID, ObjectParameter roleID, ObjectParameter cultureID, ObjectParameter userEntryDateTime)
         {

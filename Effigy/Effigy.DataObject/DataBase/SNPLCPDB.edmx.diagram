@@ -42,6 +42,7 @@
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserDetail_tblMstUserMaster" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserPaymentDetail_tblMstUserMaster" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserTreeStructure_tblMstUserMaster" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="15.375" PointY="15.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

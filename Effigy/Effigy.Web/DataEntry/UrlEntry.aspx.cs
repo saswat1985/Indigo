@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Effigy.Entity;
 using Effigy.Service;
 using Effigy.Utility;
+using Effigy.Entity.DBContext;
 
 namespace Effigy.Web.DataEntry
 {
@@ -25,7 +26,7 @@ namespace Effigy.Web.DataEntry
             try
             {
                 var validUrls = new List<string>();
-                IDataEntry objService = new Service.DataEntry();
+                IDataEntry objService = new Service.UserDataEntry();
                 var objUrlEntriesVarifiedDataList = new List<UrlEntriesVarifiedData>();
                 foreach (var url in rawUrls)
                 {

@@ -50,7 +50,7 @@
     <Compile Include="Contract\IMasterService.cs" />
     <Compile Include="Contract\IUserService.cs" />
     <Compile Include="Factory\BaseFactory\BaseFactory.cs" />
-    <Compile Include="Factory\DataEntry.cs" />
+    <Compile Include="Factory\UserDataEntry.cs" />
     <Compile Include="Factory\MasterService.cs" />
     <Compile Include="Factory\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

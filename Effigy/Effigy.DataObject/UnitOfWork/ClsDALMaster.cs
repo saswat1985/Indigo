@@ -302,9 +302,9 @@ namespace Effigy.DataObject.UnitOfWork
                 throw;
             }
 
-        }       
+        }
 
-        
+
 
         public IList<MstBankData> GetAllBanks()
         {
@@ -346,7 +346,13 @@ namespace Effigy.DataObject.UnitOfWork
         #region User Roles
         public IList<UserRoleMaster> GetUserRoleList()
         {
-            return _context.aspnet_Roles.Select(P => new UserRoleMaster { Description = P.Description, IsActive = P.IsActive, RoleId = P.RoleId, RoleName = P.RoleName }).ToList();
+            return _context.aspnet_Roles.Select(P => new UserRoleMaster
+            {
+                Description = P.Description,
+                IsActive = P.IsActive,
+                RoleId = P.RoleId,
+                RoleName = P.RoleName
+            }).ToList();
 
         }
 

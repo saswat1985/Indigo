@@ -138,10 +138,14 @@
     <Compile Include="DBContext\tblRawURLDetail.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\tblUniqueURLAudit.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\uspMenuMaster_Result.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\BusinessTypeMapper.cs" />
     <Compile Include="Entity\CityMapper.cs" />
     <Compile Include="Entity\MenuRoleMapper.cs" />
     <Compile Include="Entity\MenuDetails.cs" />
@@ -159,6 +163,7 @@
     <Compile Include="Entity\UserData.cs" />
     <Compile Include="Entity\UserProfileData.cs" />
     <Compile Include="Entity\UserRoleMaster.cs" />
+    <Compile Include="Entity\WebSiteStatusMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

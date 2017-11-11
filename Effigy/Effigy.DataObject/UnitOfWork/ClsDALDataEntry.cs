@@ -1,5 +1,6 @@
 ﻿using Effigy.DataObject.DataBase;
 using Effigy.Entity;
+using Effigy.Entity.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,42 @@ namespace Effigy.DataObject.UnitOfWork
                 IEnumerable<UrlEntriesVarifiedData> UrlEntriesVarifiedDataList = _context.Database.SqlQuery<UrlEntriesVarifiedData>("USP_RawURLEntry @UserEntryId={0},@RawURLString={1}", userId, urls);
 
                 return UrlEntriesVarifiedDataList.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+
+        }
+
+        public IList<MstBusinessType> GetMstBusinessType()
+        {
+            try
+            {
+                IEnumerable<MstBusinessType> lstBusinessType = _context.MstBusinessTypes.Where(k => k.IsActive == true);
+                return lstBusinessType.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+
+        }
+
+        public IList<MstWebSiteStatu> GetWebSiteStatus()
+        {
+            try
+            {
+                IEnumerable<MstWebSiteStatu> lstWebSiteStatus = _context.MstWebSiteStatus.Where(k => k.IsActive == true);
+                return lstWebSiteStatus.ToList();
             }
             catch (Exception)
             {
