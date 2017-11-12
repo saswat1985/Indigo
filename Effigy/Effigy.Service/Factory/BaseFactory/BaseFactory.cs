@@ -11,14 +11,20 @@ namespace Effigy.Service
     public class BaseFactory : IBaseContract
     {
         private readonly clsDALUser objDal;
+        public ClsDALMaster objMaster = null;
 
         public BaseFactory()
         {
             objDal = new clsDALUser();
+            objMaster = new ClsDALMaster();
         }
         public virtual T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
         {
             return objDal.GetSingleRecord<T>(predicate);
+        }
+        public IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class
+        {
+            return objMaster.GetList<T>(predicate);
         }
     }
 }

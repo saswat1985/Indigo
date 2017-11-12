@@ -11,14 +11,8 @@ using Effigy.Entity.Entity;
 
 namespace Effigy.Service
 {
-    public class MasterService : IMasterService
-    {
-        private ClsDALMaster objMaster = null;
-
-        public MasterService()
-        {
-            objMaster = new ClsDALMaster();
-        }
+    public class MasterService : BaseFactory, IMasterService
+    {      
 
         #region  Masters Done By nitin
 
@@ -214,6 +208,7 @@ namespace Effigy.Service
                     CategoryDesc = objMstProduct.CategoryDesc,
                     CatIntroPercentage = objMstProduct.CatIntroPercentage,
                     CatWorkPercentage = objMstProduct.CatWorkPercentage,
+                    WorkPaymentRate = objMstProduct.WorkPaymentRate,
                     UserEntryId = objMstProduct.ModifiedBy,
                     UserEntryDate = DateTime.Now
 
@@ -227,12 +222,7 @@ namespace Effigy.Service
             }
         }
 
-        public T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            return objMaster.GetSingleRecord<T>(predicate);
-        }
         #endregion
-
 
         #region Menu
         public IList<MenuRenderByRole> GetMenuRender(int userId)
@@ -323,11 +313,7 @@ namespace Effigy.Service
         {
             return objMaster.GetSelectedRoles(userId);
         }
-
-        public IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class
-        {
-            return objMaster.GetList<T>(predicate);
-        }
+        
         #endregion
     }
 }

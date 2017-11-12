@@ -2671,6 +2671,7 @@
     <Content Include="assets\locales\ru.json" />
     <Content Include="assets\locales\ua.json" />
     <Content Include="EffigyMaster.Master" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="XMLFiles\CategoryRoleMapping.xml" />
     <None Include="Properties\PublishProfiles\Effigy.Publish.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

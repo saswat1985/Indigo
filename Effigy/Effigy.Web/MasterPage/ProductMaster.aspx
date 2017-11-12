@@ -65,6 +65,12 @@
                             </div>
                         </div>
                         <div class="form-group" style="padding-top: 20px">
+                            <label class="col-lg-3 control-label">Rate per entry: <span class="asterisk" style="color: red">*</span></label>
+                            <div class="col-lg-5">
+                                <input id="txtEntryRate" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-top: 20px">
                             <label class="col-lg-3 control-label">Product Desc: <span class="asterisk" style="color: red">*</span></label>
                             <div class="col-lg-5">
                                 <input id="txtDesc" type="text" class="form-control" />

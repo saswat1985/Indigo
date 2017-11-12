@@ -16,5 +16,13 @@ namespace Effigy.Service
         /// <param name="predicate"></param>
         /// <returns></returns>
         T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class;
+
     }
 }

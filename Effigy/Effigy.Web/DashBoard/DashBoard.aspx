@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EffigyMaster.Master" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="Effigy.Web.DashBoard.DashBoard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript" src="../CustomScript/Dashboard.js"></script>
+    <script type="text/javascript" src="../CustomScript/Dashboard.js"></script>   	
+						
     <!-- Vertical form modal -->
     <div id="modal_form_vertical" class="modal fade">
         <div class="modal-dialog">

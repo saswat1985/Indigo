@@ -47,7 +47,7 @@ namespace Effigy.Service
         int[] GetSelectedRoles(int userId);
         void InsertBankMaster(MstBankMaster objMstBankMaster);
         IList<MstBankData> GetAllBanks();
-        IList<T> GetList<T>(Expression<Func<T, bool>> predicate) where T : class;
+
 
     }
 }

@@ -57,28 +57,42 @@ namespace Effigy.Web
 
             StringBuilder strMenus = new StringBuilder();
 
-            return GetSubMenu(objParentMenuLst, objMenuRenderByRoleLst, strMenus);
+            return GetSubMenu(objParentMenuLst, objMenuRenderByRoleLst, strMenus, true);
 
         }
 
-        private static string GetSubMenu(IList<MenuRenderByRole> parentMenus, IList<MenuRenderByRole> menuList, StringBuilder strMenus)
+        private static string GetSubMenu(IList<MenuRenderByRole> parentMenus, IList<MenuRenderByRole> menuList, StringBuilder strMenus, bool isRoot)
         {
-            strMenus.AppendLine(strMenus.Length > 0 ? "<ul>" : "<ul class=\"navigation navigation-main navigation-accordion\">");
+            if (isRoot)
+                strMenus.AppendLine(strMenus.Length > 0 ? "<ul>" : "<ul class=\"navigation navigation-main navigation-accordion\">");
+            else
+                strMenus.AppendLine("<ul>");
+
+
+            // strMenus.AppendLine(strMenus.Length > 0 ? "<ul>" : "<ul>");
 
             if (parentMenus.Count > 0)
             {
                 foreach (MenuRenderByRole parentMenu in parentMenus)
                 {
-
+                    string line = string.Empty;
                     string parentIcon = parentMenu.ParentID == 0 ? "<i class=\"icon-width\"></i>" : "";
-                    string line = String.Format("<li><a href=\"{0}\" class=\"has-ul\">{1}<span>{2}</span></a>", parentMenu.NavigateURL, parentIcon, parentMenu.MenuText);
+                    if (parentMenu.NavigateURL.Equals("#"))
+                    {
+                        line = String.Format("<li><a href=\"{0}\" class=\"has-ul\">{1}<span>{2}</span></a>", parentMenu.NavigateURL, parentIcon, parentMenu.MenuText);
+                    }
+                    else
+                    {
+                        line = String.Format("<li><a href=\"{0}\">{1}<span>{2}</span></a>", parentMenu.NavigateURL, parentIcon, parentMenu.MenuText);
+                    }
+
                     strMenus.Append(line);
 
                     IList<MenuRenderByRole> subMenuLst = menuList.Where(P => P.ParentID == parentMenu.MenuId).ToList();
                     if (subMenuLst.Count > 0)
                     {
                         var subMenuBuilder = new StringBuilder();
-                        strMenus.Append(GetSubMenu(subMenuLst, menuList, subMenuBuilder));
+                        strMenus.Append(GetSubMenu(subMenuLst, menuList, subMenuBuilder, false));
                     }
                     strMenus.Append("</li>");
                 }
