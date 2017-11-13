@@ -12,7 +12,8 @@
                         <fieldset class="content-group">
                             <div class="form-group">
                                 <div class="col-lg-3 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Website Name">
+                                    <asp:TextBox ID="txtWebSiteName" runat="server" CssClass="form-control" placeholder="Website Name" Enabled="false"></asp:TextBox>
+
                                 </div>
                                 <div class="col-lg-3 col-xs-12">
                                     <asp:DropDownList ID="ddlWebSiteStatus" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
@@ -56,14 +57,14 @@
                             <div class="form-group">
                                 <div class="col-lg-3 col-xs-12">
                                     <asp:DropDownList ID="ddlNameProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
-                                   
+
                                 </div>
                                 <div class="col-lg-3 col-xs-12">
                                     <asp:DropDownList ID="ddlImageProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
-                                   
+
                                 </div>
                                 <div class="col-lg-2 col-xs-12">
-                                    <asp:DropDownList ID="ddlDescProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>                                   
+                                    <asp:DropDownList ID="ddlDescProduct" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:DropDownList>
                                 </div>
                                 <div class="col-lg-4 col-xs-12">
                                     <div class="text-right">
@@ -83,7 +84,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <iframe src="http://www.aajtak.com" style="border: 1px solid #ddd; width: 100%; height: 800px"></iframe>
+                <iframe id="ctrIframe" runat="server" style="border: 1px solid #ddd; width: 100%; height: 800px"></iframe>
             </div>
         </div>
 

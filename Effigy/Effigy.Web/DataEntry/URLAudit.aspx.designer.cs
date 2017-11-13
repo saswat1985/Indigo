@@ -13,6 +13,15 @@ namespace Effigy.Web.DataEntry {
     public partial class URLAudit {
         
         /// <summary>
+        /// txtWebSiteName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWebSiteName;
+        
+        /// <summary>
         /// ddlWebSiteStatus control.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,14 @@ namespace Effigy.Web.DataEntry {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDescProduct;
+        
+        /// <summary>
+        /// ctrIframe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe ctrIframe;
     }
 }

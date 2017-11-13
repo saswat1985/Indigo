@@ -11,6 +11,7 @@ namespace Effigy.Service
     public class BaseFactory : IBaseContract
     {
         private readonly clsDALUser objDal;
+
         public ClsDALMaster objMaster = null;
 
         public BaseFactory()

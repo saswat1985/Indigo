@@ -36,6 +36,23 @@ namespace Effigy.Service
             }
         }
 
+        public IList<UniqueURLMapper> GetUniqueURLRandom(int recordSize, int urlCount)
+        {
+            var lstURL = objDal.RandomUniqueURLs(recordSize);
+            List<UniqueURLMapper> result = new List<UniqueURLMapper>();
+            if (lstURL != null && lstURL.Count > 0)
+            {
+                result = Utility.UtilityMethods.GetRandomSampleURL(lstURL, urlCount).Select(p => new UniqueURLMapper
+                {
+                    Id = p.Id,
+                    MasterId = p.MasterId.Value,
+                    UniqueURL = p.UniqueURL
+
+                }).ToList();
+            }
+            return result;
+        }
+
         public IList<WebSiteStatusMapper> GetWebSiteStatus()
         {
             try

@@ -89,6 +89,7 @@ namespace Effigy.DataObject.UnitOfWork
                 throw;
             }
         }
+
         public MstUserWorkCategory GetUserCategoryMaster(int categoryId)
         {
             try
@@ -99,6 +100,18 @@ namespace Effigy.DataObject.UnitOfWork
             {
                 throw;
             }
+        }
+
+        public string GetNextProductCode()
+        {
+            using (_context = new SNPLCPDBEntities())
+            {
+                var nextNumber = (from tblProduct in _context.MstUserWorkCategories
+                                  select tblProduct.Id).DefaultIfEmpty().Max() + 1;
+
+                return "CP-" + nextNumber;
+            }
+
         }
         #endregion
 
@@ -304,8 +317,6 @@ namespace Effigy.DataObject.UnitOfWork
 
         }
 
-
-
         public IList<MstBankData> GetAllBanks()
         {
             return _context.MstBankMasters.Select(P => new MstBankData { Id = P.Id, BankName = P.BankName }).ToList();
@@ -334,8 +345,6 @@ namespace Effigy.DataObject.UnitOfWork
             }
 
         }
-
-
 
         public MstMenuMaster GetMenuMaster(int menuId)
         {

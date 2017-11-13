@@ -30,5 +30,11 @@ namespace Effigy.Service
         /// </summary>
         /// <returns></returns>
         IList<WebSiteStatusMapper> GetWebSiteStatus();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IList<UniqueURLMapper> GetUniqueURLRandom(int recordSize, int urlCount);
     }
 }

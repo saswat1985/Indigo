@@ -21,8 +21,6 @@
                 <!-- gridview End  -->
             </div>
 
-
-
         </div>
         <!-- /pagination types -->
         <!-- Vertical form modal -->
@@ -37,7 +35,8 @@
                         <div class="form-group" style="padding-top: 20px">
                             <label class="col-lg-3 control-label">Product Code: <span class="asterisk" style="color: red">*</span></label>
                             <div class="col-lg-5">
-                                <input id="txtProductCode" runat="server" type="text" class="form-control" disabled="disabled" />
+                                <asp:TextBox ID="txtProductCode" runat="server" ClientIDMode="Static" CssClass="form-control" Enabled="false"></asp:TextBox>
+
                             </div>
                         </div>
                         <div class="form-group" style="padding-top: 20px">

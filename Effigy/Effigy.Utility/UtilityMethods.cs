@@ -267,7 +267,27 @@ namespace Effigy.Utility
             return lstCount;
         }
 
+        public static IEnumerable<T> GetRandomSampleURL<T>(IList<T> list, int sampleSize)
+        {
+            if (list == null)
+                throw new ArgumentNullException("list");
+            if (sampleSize > list.Count)
+                throw new ArgumentException("sampleSize may not be greater than list count", "sampleSize");
+            var indices = new Dictionary<int, int>();
+            int index;
+            var rnd = new Random();
 
+            for (int i = 0; i < sampleSize; i++)
+            {
+                int j = rnd.Next(i, list.Count);
+                if (!indices.TryGetValue(j, out index)) index = j;
+
+                yield return list[index];
+
+                if (!indices.TryGetValue(i, out index)) index = i;
+                indices[j] = index;
+            }
+        }
 
     }
 }

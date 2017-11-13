@@ -72,5 +72,22 @@ namespace Effigy.DataObject.UnitOfWork
             }
 
         }
+
+        public IList<tblRawUniqueURL> RandomUniqueURLs(int recordSize)
+        {
+            try
+            {
+                var list = (from t in _context.tblRawUniqueURLs
+                            where t.IsValidate == false
+                            orderby t.MasterId
+                            select t).Take(recordSize);
+
+                return list.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

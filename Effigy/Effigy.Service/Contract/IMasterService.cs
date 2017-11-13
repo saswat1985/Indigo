@@ -26,28 +26,41 @@ namespace Effigy.Service
 
         #endregion
         void InsertCountryDetail(MstCountry _objVal);
+
         void InsertStateDetail(MstState _objVal);
+
         void InsertCityDetail(MstCity _objVal);
+
         void InsertProductDetail(ProductMapper objMstProduct);
 
         IList<MenuRenderByRole> GetMenuRender(int userId);
-        void InsertMenuMaster(Entity.DBContext.MstMenuMaster objMstMenuMaster);
+
+        void InsertMenuMaster(MstMenuMaster objMstMenuMaster);
+
         IList<MenuDetails> GetMenuList();
+
         MstMenuMaster GetMenuMaster(int menuId);
 
-        void InsertUserRoleMaster(Entity.DBContext.aspnet_Roles objAspnetRoles);
+        void InsertUserRoleMaster(aspnet_Roles objAspnetRoles);
+
         IList<UserRoleMaster> GetUserRoleList();
+
         aspnet_Roles GetUserRoleMaster(int roleId);
 
         string SaveMenuRoleMapping(MenuRoleMapper objMenuRoleMapper);
+
         IList<MstUserMaster> GetUsersBasicDetailList();
+
         string SaveUserRoleMapping(int userId, string selectedItems, int createdBy);
 
         int?[] GetSelectedMenus(int roleId);
+
         int[] GetSelectedRoles(int userId);
+
         void InsertBankMaster(MstBankMaster objMstBankMaster);
+
         IList<MstBankData> GetAllBanks();
 
-
+        string GetNextProductCode();
     }
 }

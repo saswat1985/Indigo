@@ -40,6 +40,18 @@ namespace Effigy.Service
             }
         }
 
+        public string GetNextProductCode()
+        {
+            try
+            {
+                return objMaster.GetNextProductCode();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public IList<CountryMapper> GetCountry()
         {
             try
@@ -170,6 +182,7 @@ namespace Effigy.Service
                 throw;
             }
         }
+
         public void InsertStateDetail(Entity.DBContext.MstState objMstState)
         {
             try

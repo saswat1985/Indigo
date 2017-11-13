@@ -3,8 +3,13 @@
 
     $('#btnSave').click(function () {
 
-        var productData = new Product(0, $('#txtProductName').val(), $('#txtDesc').val(), $('#txtJoiningPrice').val(), $('#txtInroPercentage').val(), $('#txtWorkPer').val(), $('#txtEntryRate').val());
+        var productData = new Product(0, $('#txtProductCode').val(),
+            $('#txtProductName').val(), $('#txtDesc').val(),
+            $('#txtJoiningPrice').val(), $('#txtInroPercentage').val(),
+            $('#txtWorkPer').val(), $('#txtEntryRate').val());
+
         SaveData(productData);
+        ResetPage();
         // ResetForm();
     });
 });
@@ -89,12 +94,22 @@ SaveData = function (productData) {
 
 }
 
-Product = function (id, categoryName, categoryDesc, categoryPrice, catIntroPercentage, catWorkPercentage, workRate) {
+Product = function (id, categoryCode, categoryName, categoryDesc, categoryPrice, catIntroPercentage, catWorkPercentage, workRate) {
     this.Id = id;
+    this.CategoryCode = categoryCode;
     this.CategoryName = categoryName;
     this.CategoryDesc = categoryDesc;
     this.CategoryPrice = categoryPrice;
     this.CatIntroPercentage = catIntroPercentage;
     this.CatWorkPercentage = catWorkPercentage;
     this.WorkPaymentRate = workRate;
+}
+
+ResetPage = function () {
+    $('#txtProductName').val('');
+    $('#txtDesc').val('');
+    $('#txtJoiningPrice').val('');
+    $('#txtInroPercentage').val('');
+    $('#txtWorkPer').val('');
+    $('#txtEntryRate').val('');
 }

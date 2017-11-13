@@ -18,7 +18,7 @@ namespace Effigy.Web.MasterPage
         {
             if (!IsPostBack)
             {
-                txtProductCode.Value = "TP-2";                
+                txtProductCode.Text = objMstService.GetNextProductCode();
             }
         }
 
@@ -40,7 +40,7 @@ namespace Effigy.Web.MasterPage
                 Logger.Error(ex);
                 return null;
             }
-          
+
 
         }
 
@@ -59,7 +59,7 @@ namespace Effigy.Web.MasterPage
                 Logger.Error(ex);
                 return false;
             }
-        
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Effigy.Service;
 using System;
+using Effigy.Entity.DBContext;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,6 +27,13 @@ namespace Effigy.Web.DataEntry
                 Common.FillDDL(ddlDescProduct, Utility.UtilityMethods.GetProductCount(), "Key", "Value", "Desc of Product", true);
                 Common.FillDDL(ddlWebSiteStatus, objServive.GetWebSiteStatus(), "Id", "WebSiteStatus", "WebSite status", true);
                 Common.FillDDL(ddlBusinessType, objServive.GetMstBusinessType(), "Id", "BusinessType", "Kind of Business", true);
+
+                UniqueURLMapper url = objServive.GetUniqueURLRandom(4, 1).FirstOrDefault();
+                if (url != null)
+                {
+                    txtWebSiteName.Text = url.UniqueURL;
+                    ctrIframe.Attributes.Add("src", url.UniqueURL);
+                }
             }
         }
     }
