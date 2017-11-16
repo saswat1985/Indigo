@@ -149,7 +149,7 @@
                                             <div class="checkbox">
                                                 <label>
                                                     <input id="chkAccept" type="checkbox" class="styled" />
-                                                    Accept <a href="#">terms of service</a>
+                                                    Accept <a href="PrivacyPolicy.html" target="_blank">terms of service</a>
                                                 </label>
                                             </div>
                                         </div>

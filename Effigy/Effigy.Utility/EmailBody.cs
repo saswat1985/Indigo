@@ -10,19 +10,23 @@ namespace Effigy.Utility
     {
         public static string UserRegistrationEmail()
         {
-            string emailContent = string.Empty;            
+            string emailContent = string.Empty;
             try
             {
-
                 StringBuilder SbMail = new StringBuilder();
+
                 SbMail.AppendLine("<br>Dear User,</br>");
-                SbMail.AppendLine("<br>Please find your Login detail below</br></P>");
-                SbMail.AppendLine("<P><br>User Name :@userName</br>");
-                SbMail.AppendLine("<br>Login Password :@password</br></br></P>");
-                SbMail.AppendLine("<br>ReferralCode:@RCode</br></br></P>");
-                SbMail.AppendLine("<P><br>Please login to " + AppKeyCollection.WebSiteName + " for access portal.</P>");
+                SbMail.AppendLine("<br>Welcome to SNPL counted as a reputed service provider, With years of experience and our expertise we are engaged to outsource various genuine and long term projects, </br>");
+                SbMail.AppendLine("<br>we have plenty of satisfied vendors and delivery associates in pan India.Below are the your login credentials, please use the same while login</br>");
+                SbMail.AppendLine("<br>Please find your Login detail below</br>");
+                SbMail.AppendLine("<br>User Name :<b>@userName</b></br>");
+                SbMail.AppendLine("<br>Login Password :<b>@password</b></br>");
+                SbMail.AppendLine("<br>ReferralCode:<b>@RCode</b>(Please use or share the same while engaging the some one else with our system)</br>");
+                SbMail.AppendLine("<br>Please login to " + AppKeyCollection.WebSiteName + " for access portal.");
+                SbMail.AppendLine("<br>To read terms & conditions and privacy policy <a href='#'>click here</a></br>");
+                SbMail.AppendLine("<br>For any query feel free to call our customer care no i.e " + AppKeyCollection.HelpDeskNo + " (10am-7pm)</br>");
                 SbMail.AppendLine("<br>Thanks & Regards</br>");
-                SbMail.AppendLine("<br>Effigy Team</br>");
+                SbMail.AppendLine("<br>SNPL Team</br>");
                 SbMail.AppendLine("<br><br>***************************************************</br></br>");
                 SbMail.AppendLine("<br>This is an auto generated email. Please do not reply to this email.</br>");
                 SbMail.AppendLine("<br>***************************************************</br>");
