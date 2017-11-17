@@ -3,14 +3,36 @@
 
     $('#btnSave').click(function () {
 
-        var productData = new Product(0, $('#txtProductCode').val(),
-            $('#txtProductName').val(), $('#txtDesc').val(),
+        var txtTax = $('#txtTax').val();
+        var productCode = $('#txtProductCode').val();
+        alert(txtTax + '' + productCode);
+        var productData = new Product(0, productCode, $('#txtProductName').val(), $('#txtDesc').val(),
             $('#txtJoiningPrice').val(), $('#txtInroPercentage').val(),
-            $('#txtWorkPer').val(), $('#txtEntryRate').val());
+            $('#txtWorkPer').val(), $('#txtEntryRate').val(), txtTax);
 
         SaveData(productData);
         ResetPage();
         // ResetForm();
+    });
+
+    $("#txtTax").keyup(function () {
+        var tax = $('#txtTax').val();
+        var joiningPrice = $('#txtJoiningPrice').val();
+        var totalPrice = parseFloat(joiningPrice) + parseFloat(joiningPrice * (tax / 100));
+        $('#txtTotalPrice').val(totalPrice);
+
+
+    });
+
+    $("#txtJoiningPrice").keyup(function () {
+        var tax = $('#txtTax').val();
+        var joiningPrice = $('#txtJoiningPrice').val();
+        var totalPrice = parseFloat(joiningPrice) + parseFloat(joiningPrice * (tax / 100));
+        $('#txtTotalPrice').val(totalPrice);
+    });
+
+    $('#btnReset').click(function () {
+        ResetPage();
     });
 });
 
@@ -53,6 +75,8 @@ LoadGrid = function (data) {
     item += "<th class='sorting' tabindex='0' aria-controls='DataTables_Table_0' rowspan='1' colspan='1'>Joining Price</th>";
     item += "<th class='sorting' tabindex='0' aria-controls='DataTables_Table_0' rowspan='1' colspan='1'>Member Intro %</th>";
     item += "<th class='sorting' tabindex='0' aria-controls='DataTables_Table_0' rowspan='1' colspan='1'>Member Work %</th>";
+    item += "<th class='sorting' tabindex='0' aria-controls='DataTables_Table_0' rowspan='1' colspan='1'>Total Tax(GST)</th>";
+    item += "<th class='sorting' tabindex='0' aria-controls='DataTables_Table_0' rowspan='1' colspan='1'>Total Amount</th>";
     item += "<th class='text-center sorting_disabled' rowspan='1' colspan='1' style='width: 100px;' aria-label='Actions'>Actions</th></tr></thead>";
     item += "<tbody>";
     for (var i = 0; i < data.d.length; i++) {
@@ -63,6 +87,8 @@ LoadGrid = function (data) {
         item += "<td>" + data.d[i]["CategoryPrice"] + "</td>";
         item += "<td>" + data.d[i]["CatIntroPercentage"] + "</td>";
         item += "<td>" + data.d[i]["CatWorkPercentage"] + "</td>";
+        item += "<td>" + data.d[i]["Tax"] + "</td>";
+        item += "<td>" + data.d[i]["TotalAmount"] + "</td>";
         item += "<td class='text-center'><a href='#' data-toggle='modal' data-target='#modal_form_vertical'><i class='icon-pencil'></i></a></td>";
         item += "</tr>";
     }
@@ -88,13 +114,14 @@ SaveData = function (productData) {
             showHideLoader(true);
         },
         complete: function () {
+            FillGridView();
             showHideLoader(false);
         }
     });
 
 }
 
-Product = function (id, categoryCode, categoryName, categoryDesc, categoryPrice, catIntroPercentage, catWorkPercentage, workRate) {
+Product = function (id, categoryCode, categoryName, categoryDesc, categoryPrice, catIntroPercentage, catWorkPercentage, workRate, tax) {
     this.Id = id;
     this.CategoryCode = categoryCode;
     this.CategoryName = categoryName;
@@ -103,13 +130,16 @@ Product = function (id, categoryCode, categoryName, categoryDesc, categoryPrice,
     this.CatIntroPercentage = catIntroPercentage;
     this.CatWorkPercentage = catWorkPercentage;
     this.WorkPaymentRate = workRate;
+    this.Tax = tax;
 }
 
 ResetPage = function () {
-    $('#txtProductName').val('');
-    $('#txtDesc').val('');
-    $('#txtJoiningPrice').val('');
-    $('#txtInroPercentage').val('');
-    $('#txtWorkPer').val('');
-    $('#txtEntryRate').val('');
+    $("#txtProductName").val('');
+    $("#txtDesc").val('');
+    $("#txtJoiningPrice").val('');
+    $("#txtInroPercentage").val('');
+    $("#txtWorkPer").val('');
+    $("#txtEntryRate").val('');
+    $("#txtTax").val('');
+    $('#txtTotalPrice').val('');
 }

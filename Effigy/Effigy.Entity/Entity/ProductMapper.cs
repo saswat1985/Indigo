@@ -12,10 +12,12 @@ namespace Effigy.Entity.DBContext
         public string CategoryCode { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDesc { get; set; }
-        public Nullable<decimal> CategoryPrice { get; set; }
+        public decimal? CategoryPrice { get; set; }
         public Nullable<int> CatIntroPercentage { get; set; }
         public Nullable<int> CatWorkPercentage { get; set; }
         public Nullable<int> WorkPaymentRate { get; set; }
+        public int Tax { get; set; }
+        public decimal? TotalAmount { get; set; }
 
     }
 }

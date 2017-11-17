@@ -12,7 +12,7 @@ using Effigy.Entity.Entity;
 namespace Effigy.Service
 {
     public class MasterService : BaseFactory, IMasterService
-    {      
+    {
 
         #region  Masters Done By nitin
 
@@ -28,7 +28,9 @@ namespace Effigy.Service
                     CategoryPrice = item.CategoryPrice,
                     CatIntroPercentage = item.CatIntroPercentage,
                     CatWorkPercentage = item.CatWorkPercentage,
-                    WorkPaymentRate = item.WorkPaymentRate
+                    WorkPaymentRate = item.WorkPaymentRate,
+                    Tax = item.Tax.Value,
+                    TotalAmount = item.TotalPrice.Value
 
                 }).ToList();
 
@@ -223,7 +225,9 @@ namespace Effigy.Service
                     CatWorkPercentage = objMstProduct.CatWorkPercentage,
                     WorkPaymentRate = objMstProduct.WorkPaymentRate,
                     UserEntryId = objMstProduct.ModifiedBy,
-                    UserEntryDate = DateTime.Now
+                    UserEntryDate = DateTime.Now,
+                    Tax = objMstProduct.Tax,
+                    TotalPrice = objMstProduct.CategoryPrice + (objMstProduct.CategoryPrice * (Convert.ToDecimal(objMstProduct.Tax) / 100))
 
                 };
 
@@ -326,7 +330,7 @@ namespace Effigy.Service
         {
             return objMaster.GetSelectedRoles(userId);
         }
-        
+
         #endregion
     }
 }

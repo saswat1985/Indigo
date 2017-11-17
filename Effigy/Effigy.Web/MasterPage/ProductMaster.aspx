@@ -51,6 +51,18 @@
                                 <input id="txtJoiningPrice" type="text" class="form-control" />
                             </div>
                         </div>
+                         <div class="form-group" style="padding-top: 20px">
+                            <label class="col-lg-3 control-label">Tax: <span class="asterisk" style="color: red">*</span></label>
+                            <div class="col-lg-5">
+                                <input id="txtTax" type="text" class="form-control" />
+                            </div>
+                        </div>
+                         <div class="form-group" style="padding-top: 20px">
+                            <label class="col-lg-3 control-label">Total Price: <span class="asterisk" style="color: red">*</span></label>
+                            <div class="col-lg-5">
+                                <input id="txtTotalPrice" type="text" class="form-control" disabled="disabled" />
+                            </div>
+                        </div>
                         <div class="form-group" style="padding-top: 20px">
                             <label class="col-lg-3 control-label">Member Intro Per.: <span class="asterisk" style="color: red">*</span></label>
                             <div class="col-lg-5">
@@ -79,7 +91,7 @@
                     </div>
 
                     <div class="modal-footer" style="padding-right: 30px">
-                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button id="btnReset" type="button" class="btn btn-link" data-dismiss="modal">Close</button>
                         <button id="btnSave" type="button" class="btn btn-primary">Save<i class="icon-arrow-right14 position-right"></i></button>
                     </div>
 
