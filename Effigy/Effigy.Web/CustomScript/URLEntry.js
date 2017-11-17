@@ -29,21 +29,29 @@ SaveData = function (masterData, type) {
             }
         }
 
-        $.ajax({
-            type: "POST",
-            url: "UrlEntry.aspx/ProcessRawUrls",
-            contentType: "application/json; charset=utf-8",
-            data: "{'rawUrls':" + JSON.stringify(finalUrlsToProcess) + "}",
-            dataType: "json",
-            success: function (data) { FillResultUrls(data, type); },
-            error: AjaxFailed,
-            beforeSend: function () {
-                showHideLoader(true);
-            },
-            complete: function () {
-                showHideLoader(false);
-            }
-        });
+        if (finalUrlsToProcess.length>30) {
+            alert('URL count should be less then or equal to 30');
+            return;
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "UrlEntry.aspx/ProcessRawUrls",
+                contentType: "application/json; charset=utf-8",
+                data: "{'rawUrls':" + JSON.stringify(finalUrlsToProcess) + "}",
+                dataType: "json",
+                success: function (data) { FillResultUrls(data, type); },
+                error: AjaxFailed,
+                beforeSend: function () {
+                    showHideLoader(true);
+                },
+                complete: function () {
+                    showHideLoader(false);
+                }
+            });
+        }
+
+
     }
 }
 
@@ -180,7 +188,7 @@ GetJson = function (jsondata) {/*Function used to convert the JSON array to Html
         }
     }
 
-    setTimeout(function () { capitalize($('#fileSpan').empty().append($("#excelfile").val().split('\\').pop())+' uploaded click to save'); }, 2000);
+    setTimeout(function () { capitalize($('#fileSpan').empty().append($("#excelfile").val().split('\\').pop()) + ' uploaded click to save'); }, 2000);
 }
 
 BindHeader = function (jsondata) {/*Function used to get all column names from JSON and bind the html table header*/

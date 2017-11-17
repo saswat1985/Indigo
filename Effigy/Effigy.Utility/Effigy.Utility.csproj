@@ -50,6 +50,9 @@
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MailSMSHandler.cs" />
+    <Compile Include="MyClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMSBody.cs" />
     <Compile Include="UtilityMethods.cs" />
