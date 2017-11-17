@@ -16,6 +16,7 @@ namespace Effigy.Entity.DBContext
     {
         public int id { get; set; }
         public string WebSiteStatus { get; set; }
+        public Nullable<bool> IsValidatonRequired { get; set; }
         public Nullable<System.DateTime> UserEntryDate { get; set; }
         public Nullable<System.DateTime> UserEffectedDate { get; set; }
         public Nullable<bool> IsActive { get; set; }

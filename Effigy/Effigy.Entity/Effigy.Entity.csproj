@@ -89,6 +89,16 @@
     <Compile Include="DBContext\MstWebSiteStatu.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\SNPLCPDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNPLCPDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SNPLCPDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNPLCPDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\SNPLCPDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,6 +208,18 @@
       <Project>{6a071bcc-cd41-4892-852f-3e4dfaed2ac7}</Project>
       <Name>Effigy.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBContext\SNPLCPDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SNPLCPDB.Context.cs</LastGenOutput>
+      <DependentUpon>SNPLCPDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="DBContext\SNPLCPDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SNPLCPDB.cs</LastGenOutput>
+      <DependentUpon>SNPLCPDB.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

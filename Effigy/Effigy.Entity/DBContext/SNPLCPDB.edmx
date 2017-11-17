@@ -143,6 +143,8 @@
           <Property Name="CategoryName" Type="nvarchar(max)" />
           <Property Name="CategoryDesc" Type="nvarchar(max)" />
           <Property Name="CategoryPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CatIntroPercentage" Type="int" />
           <Property Name="CatWorkPercentage" Type="int" />
           <Property Name="WorkPaymentRate" Type="int" />
@@ -156,6 +158,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="WebSiteStatus" Type="nvarchar(max)" />
+          <Property Name="IsValidatonRequired" Type="bit" />
           <Property Name="UserEntryDate" Type="datetime" />
           <Property Name="UserEffectedDate" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
@@ -761,6 +764,7 @@
           <EntitySet Name="tblRawUniqueURLs" EntityType="SNPLCPDBModel.tblRawUniqueURL" />
           <EntitySet Name="tblRawURLs" EntityType="SNPLCPDBModel.tblRawURL" />
           <EntitySet Name="tblRawURLDetails" EntityType="SNPLCPDBModel.tblRawURLDetail" />
+          <EntitySet Name="tblUniqueURLAudits" EntityType="SNPLCPDBModel.tblUniqueURLAudit" />
           <AssociationSet Name="FK_aspnet_UsersInRoles_aspnet_Roles" Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles">
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
@@ -813,7 +817,6 @@
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructures" />
           </AssociationSet>
-          <EntitySet Name="tblUniqueURLAudits" EntityType="SNPLCPDBModel.tblUniqueURLAudit" />
           </EntityContainer>
         <EntityType Name="tblMstUserMaster">
           <Key>
@@ -1005,6 +1008,8 @@
           <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CategoryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CategoryPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CatIntroPercentage" Type="Int32" />
           <Property Name="CatWorkPercentage" Type="Int32" />
           <Property Name="WorkPaymentRate" Type="Int32" />
@@ -1019,6 +1024,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="WebSiteStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsValidatonRequired" Type="Boolean" />
           <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
           <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
@@ -1153,6 +1159,30 @@
           <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsUnique" Type="Boolean" />
           <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblUniqueURLAudit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueURLId" Type="Int32" />
+          <Property Name="UniqueURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URLStatus" Type="Int32" />
+          <Property Name="IsAddressExist" Type="Boolean" />
+          <Property Name="IsCityExist" Type="Boolean" />
+          <Property Name="BusinessType" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsStateExist" Type="Boolean" />
+          <Property Name="IsCountryExist" Type="Boolean" />
+          <Property Name="IsProfileExist" Type="Boolean" />
+          <Property Name="ProductCount" Type="Int32" />
+          <Property Name="ProductImageCount" Type="Int32" />
+          <Property Name="ProductDescCount" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryId" Type="Int32" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_aspnet_UsersInRoles_aspnet_Roles">
           <End Type="SNPLCPDBModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="1" />
@@ -1310,30 +1340,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tblUniqueURLAudit">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UniqueURLId" Type="Int32" />
-          <Property Name="UniqueURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="URLStatus" Type="Int32" />
-          <Property Name="IsAddressExist" Type="Boolean" />
-          <Property Name="IsCityExist" Type="Boolean" />
-          <Property Name="BusinessType" Type="Int32" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsStateExist" Type="Boolean" />
-          <Property Name="IsCountryExist" Type="Boolean" />
-          <Property Name="IsProfileExist" Type="Boolean" />
-          <Property Name="ProductCount" Type="Int32" />
-          <Property Name="ProductImageCount" Type="Int32" />
-          <Property Name="ProductDescCount" Type="Int32" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UserEntryId" Type="Int32" />
-          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
-          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1546,6 +1552,8 @@
                 <ScalarProperty Name="WorkPaymentRate" ColumnName="WorkPaymentRate" />
                 <ScalarProperty Name="CatWorkPercentage" ColumnName="CatWorkPercentage" />
                 <ScalarProperty Name="CatIntroPercentage" ColumnName="CatIntroPercentage" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
                 <ScalarProperty Name="CategoryPrice" ColumnName="CategoryPrice" />
                 <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -1560,6 +1568,7 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UserEffectedDate" ColumnName="UserEffectedDate" />
                 <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="IsValidatonRequired" ColumnName="IsValidatonRequired" />
                 <ScalarProperty Name="WebSiteStatus" ColumnName="WebSiteStatus" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -1748,28 +1757,29 @@
     <Diagrams>
       <Diagram DiagramId="db6213959886435a9f128a9593cd9415" Name="Diagram1">
         <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_Roles" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="3" PointY="12.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstBankMaster" Width="1.5" PointX="9.75" PointY="1.625" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="9.75" PointY="5.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="5.25" PointY="2.375" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="10.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="3.75" PointY="12.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="6" PointY="8.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="3" PointY="8.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3" PointY="2.375" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="8.75" PointY="8" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="12.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="7.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="9.75" PointY="11.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserBankDetail" Width="1.5" PointX="12" PointY="1" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="11" PointY="8.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="8" PointY="8.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="7.5" PointY="1.125" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="7.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="12.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="13.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="14.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="13.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="5.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="7.75" PointY="14.75" />
         <AssociationConnector Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" />
@@ -1778,7 +1788,6 @@
         <AssociationConnector Association="SNPLCPDBModel.FK_MstState_MstCountry" />
         <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_MstMenuMaster" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserCategoryMapping_MstUserWorkCategory" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="12.375" PointY="14.75" />
       </Diagram>
     </Diagrams>
   </Designer>

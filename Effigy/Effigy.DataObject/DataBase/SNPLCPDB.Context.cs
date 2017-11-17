@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Effigy.DataObject.DataBase
+namespace Effigy.DataObject
 {
     using System;
     using System.Data.Entity;
@@ -16,7 +16,7 @@ namespace Effigy.DataObject.DataBase
     using System.Data.Objects.DataClasses;
     using System.Linq;
     using Effigy.Entity.DBContext;
-    
+
     public partial class SNPLCPDBEntities : DbContext
     {
         public SNPLCPDBEntities()
