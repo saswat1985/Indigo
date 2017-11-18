@@ -19,7 +19,7 @@ namespace Effigy.Web.DataEntry
             objMstService = new MasterService();
             if (!IsPostBack)
             {
-                ResetControls();
+                ResetControls(true);
             }
         }
 
@@ -28,8 +28,8 @@ namespace Effigy.Web.DataEntry
             //MstWebSiteStatu obj = objMstService.GetSingleRecord<MstWebSiteStatu>(P => P.WebSiteStatus == ddlWebSiteStatus.SelectedItem.Text);
             //if (obj!=null)
             //{
-            string skipValidationWebStus = "Not Working,Domain Expired,Under Construction";
-            if (skipValidationWebStus.Contains(ddlWebSiteStatus.SelectedItem.Text))
+            string skipValidationWebStus = "2,3,5";
+            if (skipValidationWebStus.Contains(ddlWebSiteStatus.SelectedValue))
             {
                 ddlBusinessType.SelectedValue = "0";
                 ddlIsAddress.SelectedValue = "false";
@@ -42,6 +42,10 @@ namespace Effigy.Web.DataEntry
                 ddlNameProduct.SelectedItem.Text = "0";
                 txtEmail.Text = "";
                 txtPhone.Text = "";
+            }
+            else
+            {
+                ResetControls(false);
             }
             //}
         }
@@ -62,15 +66,15 @@ namespace Effigy.Web.DataEntry
             obj.ProductImageCount = Convert.ToInt32(ddlImageProduct.SelectedValue);
             obj.UniqueURL = txtWebSiteName.Text;
             objServive.InsertUniqueURLAudit(obj);
-            ResetControls();
+            ResetControls(true);
 
         }
         protected void ResetClick(object sender, EventArgs e)
         {
-            ResetControls();
+            ResetControls(true);
         }
 
-        private void ResetControls()
+        private void ResetControls(bool changeUrl )
         {
             Common.FillDDL(ddlIsAddress, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "Address", true);
             Common.FillDDL(ddlIsCity, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "City", true);
@@ -83,13 +87,15 @@ namespace Effigy.Web.DataEntry
             Common.FillDDL(ddlWebSiteStatus, objServive.GetWebSiteStatus(), "Id", "WebSiteStatus", "WebSite status", true);
             Common.FillDDL(ddlBusinessType, objServive.GetMstBusinessType(), "Id", "BusinessType", "Kind of Business", true);
 
-            UniqueURLMapper url = objServive.GetUniqueURLRandom(4, 1).FirstOrDefault();
-            if (url != null)
+            if (changeUrl)
             {
-                txtWebSiteName.Text = url.UniqueURL;
-                ctrIframe.Attributes.Add("src", url.UniqueURL);
+                UniqueURLMapper url = objServive.GetUniqueURLRandom(4, 1).FirstOrDefault();
+                if (url != null)
+                {
+                    txtWebSiteName.Text = url.UniqueURL;
+                    ctrIframe.Attributes.Add("src", url.UniqueURL);
+                }
             }
-
         }
     }
 }
