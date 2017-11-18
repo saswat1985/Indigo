@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Effigy.Entity;
+using Effigy.Service;
+using System;
 using System.Configuration;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
-using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Effigy.Entity;
-using Effigy.Service;
 
 namespace Effigy.Web.Payment
 {
@@ -57,9 +52,10 @@ namespace Effigy.Web.Payment
 
             IUserService objBal = new UserService();
             UserData user = objBal.GetUserDataById(userid);
-            txtAmount.Text = Amount = Convert.ToString(user.CategoryAmount);
+            txtAmount.Text = Convert.ToString(user.CategoryAmount);
+            Amount = txtAmount.Text;
             txtProductInfo.Text = Product = user.ProductCategory;
-            MarchantEmail = "mail.nitinJain2012@gmail.com";
+            MarchantEmail = "mail.nitinjain2012@gmail.com";
             MarchantMobile = "9810489652";
 
         }
@@ -128,7 +124,7 @@ namespace Effigy.Web.Payment
                             }
                             else if (hash_var == "txtAmount")
                             {
-                                hash_string = hash_string + Amount;
+                                hash_string = hash_string + "1";
                                 hash_string = hash_string + '|';
                             }
                             else if (hash_var == "txtProductInfo")
