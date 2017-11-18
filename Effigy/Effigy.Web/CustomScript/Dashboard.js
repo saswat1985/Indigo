@@ -16,7 +16,10 @@ CheckPayment = function () {
 
 AjaxSucessed = function (data) {
     if (data.d.UserType == 2 && data.d.IsMemberShipTaken == false) {
-        $('#modal_form_vertical').modal('show');
+        $('#modal_form_vertical').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
         if (parseInt(data.d.TimeRemaining) <= 24)
             $("#btnClose").show();
         else
