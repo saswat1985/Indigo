@@ -36,5 +36,7 @@ namespace Effigy.Service
         /// </summary>
         /// <returns></returns>
         IList<UniqueURLMapper> GetUniqueURLRandom(int recordSize, int urlCount);
+
+        void InsertUniqueURLAudit(tblUniqueURLAudit objUniqueURLAudit);
     }
 }
