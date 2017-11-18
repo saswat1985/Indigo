@@ -59,8 +59,8 @@ namespace Effigy.Web.Payment
             UserData user = objBal.GetUserDataById(userid);
             txtAmount.Text = Amount = Convert.ToString(user.CategoryAmount);
             txtProductInfo.Text = Product = user.ProductCategory;
-            MarchantEmail = "saswatwhorule@gmail.com";
-            MarchantMobile = "9643087168";
+            MarchantEmail = "mail.nitinJain2012@gmail.com";
+            MarchantMobile = "9810489652";
 
         }
         public string Generatehash512(string text)

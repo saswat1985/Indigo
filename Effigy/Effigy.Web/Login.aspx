@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Effigy</title>
+    <title>Traderz Planet</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css" />
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
     <!-- /core JS files -->
-
+    <link rel="shortcut icon" type="image/x-icon" href="Images/tp_icon_Febicon.ico" />
     <!-- Theme JS files -->
     <script type="text/javascript" src="assets/js/core/app.js"></script>
     <!-- /theme JS files -->
@@ -32,8 +32,9 @@
         <!-- Main navbar -->
         <div class="navbar navbar-inverse">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">
-                    <img src="assets/images/logo_light.png" alt=""></a>
+                <a class="navbar-brand" href="#">
+                    <img src="Images/traderzPlanet.png" title="" alt="" width="90" />
+                </a>
 
                 <ul class="nav navbar-nav pull-right visible-xs-block">
                     <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
