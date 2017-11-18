@@ -6,96 +6,65 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using Effigy.Utility;
 
 namespace Effigy.Web.DataEntry
 {
     public partial class URLAudit : BasePage
     {
-        private IDataEntry objServive = null;
-        private IMasterService objMstService = null;
-        protected void Page_Load(object sender, EventArgs e)
+
+        [WebMethod]
+        public static string Save(tblUniqueURLAudit obj)
         {
-            objServive = new UserDataEntry();
-            objMstService = new MasterService();
-            if (!IsPostBack)
+            try
             {
-                ResetControls(true);
+                UserDataEntry objService = new UserDataEntry();
+                objService.InsertUniqueURLAudit(obj);
+                return "success";
             }
-        }
-
-        protected void WebSiteStatusChange(object sender, EventArgs e)
-        {
-            //MstWebSiteStatu obj = objMstService.GetSingleRecord<MstWebSiteStatu>(P => P.WebSiteStatus == ddlWebSiteStatus.SelectedItem.Text);
-            //if (obj!=null)
-            //{
-            string skipValidationWebStus = "2,3,5";
-            if (skipValidationWebStus.Contains(ddlWebSiteStatus.SelectedValue))
+            catch (Exception ex)
             {
-                ddlBusinessType.SelectedValue = "0";
-                ddlIsAddress.SelectedValue = "false";
-                ddlIsCity.SelectedValue = "false";
-                ddlIsCompanyProfile.SelectedValue = "false";
-                ddlIsCountry.SelectedValue = "false";
-                ddlIsState.SelectedValue = "false";
-                ddlDescProduct.SelectedItem.Text = "0";
-                ddlImageProduct.SelectedItem.Text = "0";
-                ddlNameProduct.SelectedItem.Text = "0";
-                txtEmail.Text = "";
-                txtPhone.Text = "";
+                Logger.Error(ex);
+                return null;
             }
-            else
+
+        }
+
+        [WebMethod]
+        public static UrlAuditMasterData GetMastersData()
+        {
+            try
             {
-                ResetControls(false);
-            }
-            //}
-        }
-
-        protected void SubmitClick(object sender, EventArgs e)
-        {
-            tblUniqueURLAudit obj = new tblUniqueURLAudit();
-            obj.BusinessType = Convert.ToInt32(ddlBusinessType.SelectedValue);
-            obj.Email = txtEmail.Text;
-            obj.IsAddressExist = ddlIsAddress.SelectedValue == "0" ? false : Convert.ToBoolean(ddlIsAddress.SelectedValue);
-            obj.IsCityExist = ddlIsCity.SelectedValue == "0" ? false : Convert.ToBoolean(ddlIsCity.SelectedValue);
-            obj.IsCountryExist = ddlIsCountry.SelectedValue == "0" ? false : Convert.ToBoolean(ddlIsCountry.SelectedValue);
-            obj.IsProfileExist = ddlIsCompanyProfile.SelectedValue == "0" ? false : Convert.ToBoolean(ddlIsCompanyProfile.SelectedValue);
-            obj.IsStateExist = ddlIsState.SelectedValue == "0" ? false : Convert.ToBoolean(ddlIsState.SelectedValue);
-            obj.PhoneNo = txtPhone.Text;
-            obj.ProductCount = Convert.ToInt32(ddlNameProduct.SelectedValue);
-            obj.ProductDescCount = Convert.ToInt32(ddlDescProduct.SelectedValue);
-            obj.ProductImageCount = Convert.ToInt32(ddlImageProduct.SelectedValue);
-            obj.UniqueURL = txtWebSiteName.Text;
-            objServive.InsertUniqueURLAudit(obj);
-            ResetControls(true);
-
-        }
-        protected void ResetClick(object sender, EventArgs e)
-        {
-            ResetControls(true);
-        }
-
-        private void ResetControls(bool changeUrl )
-        {
-            Common.FillDDL(ddlIsAddress, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "Address", true);
-            Common.FillDDL(ddlIsCity, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "City", true);
-            Common.FillDDL(ddlIsCountry, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "Country", true);
-            Common.FillDDL(ddlIsState, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "State", true);
-            Common.FillDDL(ddlIsCompanyProfile, Utility.UtilityMethods.GetBooleanList(), "Key", "Value", "Company Profile", true);
-            Common.FillDDL(ddlNameProduct, Utility.UtilityMethods.GetProductCount(), "Key", "Value", "Name of Product", true);
-            Common.FillDDL(ddlImageProduct, Utility.UtilityMethods.GetProductCount(), "Key", "Value", "Image of Product", true);
-            Common.FillDDL(ddlDescProduct, Utility.UtilityMethods.GetProductCount(), "Key", "Value", "Desc of Product", true);
-            Common.FillDDL(ddlWebSiteStatus, objServive.GetWebSiteStatus(), "Id", "WebSiteStatus", "WebSite status", true);
-            Common.FillDDL(ddlBusinessType, objServive.GetMstBusinessType(), "Id", "BusinessType", "Kind of Business", true);
-
-            if (changeUrl)
-            {
-                UniqueURLMapper url = objServive.GetUniqueURLRandom(4, 1).FirstOrDefault();
+                UserDataEntry objService = new UserDataEntry();
+                UrlAuditMasterData obj = new UrlAuditMasterData();
+                obj.BooleanDropDownData = Utility.UtilityMethods.GetBooleanList().ToList();
+                obj.ProductCountList = Utility.UtilityMethods.GetProductCount().ToList();
+                obj.BusinessTypeList = objService.GetMstBusinessType();
+                obj.WebSiteStatusList = objService.GetWebSiteStatus();
+                UniqueURLMapper url = objService.GetUniqueURLRandom(4, 1).FirstOrDefault();
                 if (url != null)
                 {
-                    txtWebSiteName.Text = url.UniqueURL;
-                    ctrIframe.Attributes.Add("src", url.UniqueURL);
+                    obj.UniqueURLRandom = url.UniqueURL;
                 }
+
+                return obj;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
             }
         }
+    }
+    public class UrlAuditMasterData
+    {
+        public List<KeyValuePair<string, string>> BooleanDropDownData { get; set; }
+        public List<KeyValuePair<string, string>> ProductCountList { get; set; }
+        public IList<WebSiteStatusMapper> WebSiteStatusList { get; set; }
+        public IList<BusinessTypeMapper> BusinessTypeList { get; set; }
+        public string UniqueURLRandom { get; set; }
+
     }
 }
