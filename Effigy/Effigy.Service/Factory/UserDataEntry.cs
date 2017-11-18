@@ -71,6 +71,19 @@ namespace Effigy.Service
             }
         }
 
+        public void InsertUniqueURLAudit(tblUniqueURLAudit objUniqueURLAudit)
+        {
+            try
+            {
+                objDal.InsertUniqueURLAudit(objUniqueURLAudit);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         #region DataEntry
 
         public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, List<string> urls)

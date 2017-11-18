@@ -89,5 +89,21 @@ namespace Effigy.DataObject.UnitOfWork
                 throw;
             }
         }
+
+        public void InsertUniqueURLAudit(tblUniqueURLAudit objUniqueURLAudit)
+        {
+            if (objUniqueURLAudit != null)
+            {
+                tblRawUniqueURL obj = _context.tblRawUniqueURLs.Where(P => P.UniqueURL == objUniqueURLAudit.UniqueURL).FirstOrDefault();
+                if (obj != null)
+                {
+                    obj.IsValidate = true;
+                    objUniqueURLAudit.UniqueURLId = obj.Id;
+                    _context.Entry(obj).State = System.Data.EntityState.Modified;
+                    _context.tblUniqueURLAudits.Add(objUniqueURLAudit);
+                    _context.SaveChanges();
+                }
+            }
+        }
     }
 }
