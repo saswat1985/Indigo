@@ -22,6 +22,11 @@ namespace Effigy.Web
         {           
 
         }
+        /// <summary>
+        /// comment for login page screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             try
