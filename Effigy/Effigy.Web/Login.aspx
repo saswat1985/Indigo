@@ -73,7 +73,7 @@
                     <div class="content">
 
                         <!-- Simple login form -->
-                        <form action="index.html">
+                        <form action="#">
                             <div class="panel panel-body login-form">
                                 <div class="text-center">
                                     <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
