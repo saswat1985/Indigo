@@ -25,7 +25,7 @@
     <script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
 
     <!-- /core JS files -->
-
+    <link rel="shortcut icon" type="image/x-icon" href="Images/tp_icon_Febicon.ico" />
     <!-- Theme JS files -->
     <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
     <script type="text/javascript" src="../Scripts/loader.js"></script>
@@ -38,8 +38,9 @@
     <!-- Main navbar -->
     <div class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/images/logo_light.png" alt=""></a>
+           <a class="navbar-brand" href="#">
+                    <img src="Images/traderzPlanet.png" title="" alt="" width="90" />
+                </a>
 
             <ul class="nav navbar-nav pull-right visible-xs-block">
                 <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
