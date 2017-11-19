@@ -11,5 +11,7 @@ namespace Effigy.Entity.DBContext
         public int Id { get; set; }
 
         public string WebSiteStatus { get; set; }
+
+        public bool IsValidationRequired { get; set; }
     }
 }

@@ -15,11 +15,36 @@ namespace Effigy.Web.DataEntry
     {
 
         [WebMethod]
+        public static string GetRandomUrl()
+        {
+            try
+            {
+                UserDataEntry objService = new UserDataEntry();
+                UniqueURLMapper url = objService.GetUniqueURLRandom(4, 1).FirstOrDefault();
+                if (url != null)
+                {
+                    return url.UniqueURL;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
+
+        }
+
+
+        [WebMethod]
         public static string Save(tblUniqueURLAudit obj)
         {
             try
             {
                 UserDataEntry objService = new UserDataEntry();
+                obj.UserEffectedDate = DateTime.Now;
+                obj.UserEntryDate = DateTime.Now;
+                obj.UserEntryId = SessionWrapper.UserId;
                 objService.InsertUniqueURLAudit(obj);
                 return "success";
             }

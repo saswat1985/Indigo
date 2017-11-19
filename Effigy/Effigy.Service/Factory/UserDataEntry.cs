@@ -60,7 +60,8 @@ namespace Effigy.Service
                 return objDal.GetWebSiteStatus().Select(k => new WebSiteStatusMapper
                 {
                     Id = k.id,
-                    WebSiteStatus = k.WebSiteStatus
+                    WebSiteStatus = k.WebSiteStatus,
+                    IsValidationRequired = k.IsValidatonRequired.GetValueOrDefault(true)
 
                 }).ToList();
 
