@@ -12,12 +12,12 @@ namespace Effigy.Service
 {
     public class UserService : BaseFactory, IUserService
     {
-        private readonly clsDALUser objDal;
+        private readonly ClsDALUser objDal;
         private readonly ClsDALMaster objDalMaster;
 
         public UserService()
         {
-            objDal = new clsDALUser();
+            objDal = new ClsDALUser();
             objDalMaster = new ClsDALMaster();
         }
 
@@ -120,7 +120,7 @@ namespace Effigy.Service
                 MailSMSHandler.SendSingleSMS(GetSMSBody(objMaster.UserName, objMaster.Password), objDetail.ContactNo);
 
                 new MailSMSHandler(AppKeyCollection.FromMail, objDetail.EmailId,
-                    GetEmailBody(objMaster.UserName, objMaster.Password, objDetail.SelfRefrelCode), true, AppKeyCollection.WelcomeNote).sendMail();
+                    GetEmailBody(objMaster.UserName, objMaster.Password, objDetail.SelfRefrelCode), true, AppKeyCollection.WelcomeNote).SendMailFromYahoo();
             }
             catch (Exception)
             {
@@ -237,26 +237,7 @@ namespace Effigy.Service
         {
             try
             {
-                bool result = false;
-                if (userId == 0)
-                {
-                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.ContactNo == mobileNo);
-                    if (userData == null)
-                        result = false;
-                    else
-                        result = true;
-
-                }
-                else
-                {
-                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.ContactNo == mobileNo & k.UserId != userId);
-                    if (userData == null)
-                        result = false;
-                    else
-                        result = true;
-                }
-
-                return result;
+                return objDal.IsDuplicateMobileNo(mobileNo, userId);
             }
             catch (Exception)
             {
@@ -270,26 +251,8 @@ namespace Effigy.Service
 
             try
             {
-                bool result = false;
-                if (userId == 0)
-                {
-                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.EmailId == emailId);
-                    if (userData == null)
-                        result = false;
-                    else
-                        result = true;
 
-                }
-                else
-                {
-                    var userData = GetSingleRecord<tblMstUserDetail>(k => k.EmailId == emailId & k.UserId != userId);
-                    if (userData == null)
-                        result = false;
-                    else
-                        result = true;
-                }
-
-                return result;
+                return objDal.IsDuplicateEmailId(emailId, userId);
             }
             catch (Exception)
             {

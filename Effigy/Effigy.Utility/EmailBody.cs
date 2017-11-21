@@ -49,9 +49,9 @@ namespace Effigy.Utility
                 sbMail.AppendLine("<br>As requested, please check your user id and password detail below</br>");
                 sbMail.AppendLine("<br>User Name :<b>@userName</b></br>");
                 sbMail.AppendLine("<br>Login Password :<b>@password</b></br>");
-                sbMail.AppendLine("<br>As always, thank you for using Effigy!!</br>");
+                sbMail.AppendLine("<br>As always, thank you for using TraderzPlanet!!</br>");
                 sbMail.AppendLine("<br>Thanks & Regards</br>");
-                sbMail.AppendLine("<br>Effigy Team</br>");
+                sbMail.AppendLine("<br>TraderzPlanet Team</br>");
                 sbMail.AppendLine("<br><br>***************************************************</br></br>");
                 sbMail.AppendLine("<br>This is an auto generated email. Please do not reply to this email.</br>");
                 sbMail.AppendLine("<br>***************************************************</br>");

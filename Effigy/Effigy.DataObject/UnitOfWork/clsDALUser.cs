@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Effigy.DataObject;
-using Effigy.DataObject.DataBase;
+﻿using Effigy.Entity;
 using Effigy.Entity.DBContext;
-using System.Data.SqlClient;
-using System.Data;
 using Effigy.Utility;
-using System.Linq.Expressions;
-using Effigy.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace Effigy.DataObject.UnitOfWork
 {
-    public class clsDALUser : ClsBaseDAL
+    public class ClsDALUser : ClsBaseDAL
     {
         private SNPLCPDBEntities _context = null;
         private GenericRepository<tblMstUserMaster> _userMaster = null;
@@ -23,7 +18,7 @@ namespace Effigy.DataObject.UnitOfWork
         private GenericRepository<tblMstUserTreeStructure> _userGenology = null;
         private ClsDALMaster _masterDal = null;
 
-        public clsDALUser()
+        public ClsDALUser()
         {
             _context = new SNPLCPDBEntities();
             _userMaster = new GenericRepository<tblMstUserMaster>(_context);
@@ -307,6 +302,7 @@ namespace Effigy.DataObject.UnitOfWork
         {
             _masterDal.SaveUserRoleMapping(userId, selectedItems, 0);
         }
+
         public string GetNextUserCode()
         {
             using (_context = new SNPLCPDBEntities())
@@ -438,8 +434,8 @@ namespace Effigy.DataObject.UnitOfWork
                                 FirstName = b.FirstName,
                                 LastName = b.LastName,
                                 Password = a.Password,
-                                UserName=a.UserName,
-                                EmailId=b.EmailId
+                                UserName = a.UserName,
+                                EmailId = b.EmailId
 
                             }).FirstOrDefault();
             return obj;
@@ -447,5 +443,85 @@ namespace Effigy.DataObject.UnitOfWork
         }
 
 
+        public bool IsDuplicateMobileNo(string mobileNo, int userId = 0)
+        {
+            try
+            {
+                bool result = false;
+                if (userId == 0)
+                {
+                    var isContectExist = (from master in _context.tblMstUserMasters
+                                          join detail in _context.tblMstUserDetails on master.UserId equals detail.UserId
+                                          where master.IsActive == true && detail.ContactNo == mobileNo
+                                          select new UserData
+                                          {
+                                              ContactNo = detail.ContactNo
+
+                                          }).FirstOrDefault();
+                    result = isContectExist == null ? false : true;
+                }
+                else
+                {
+                    var isContectExist = (from master in _context.tblMstUserMasters
+                                          join detail in _context.tblMstUserDetails on master.UserId equals detail.UserId
+                                          where master.IsActive == true && detail.ContactNo == mobileNo && master.UserId != userId
+                                          select new UserData
+                                          {
+                                              ContactNo = detail.ContactNo
+
+                                          }).FirstOrDefault();
+
+                    result = isContectExist == null ? false : true;
+                }
+
+                return result;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public bool IsDuplicateEmailId(string emailId, int userId = 0)
+        {
+            try
+            {
+                bool result = false;
+                if (userId == 0)
+                {
+                    var isUserExist = (from master in _context.tblMstUserMasters
+                                          join detail in _context.tblMstUserDetails on master.UserId equals detail.UserId
+                                          where master.IsActive == true && detail.EmailId == emailId
+                                          select new UserData
+                                          {
+                                              EmailId = detail.EmailId
+
+                                          }).FirstOrDefault();
+                    result = isUserExist == null ? false : true;
+                }
+                else
+                {
+                    var isUserExist = (from master in _context.tblMstUserMasters
+                                          join detail in _context.tblMstUserDetails on master.UserId equals detail.UserId
+                                          where master.IsActive == true && detail.EmailId == emailId && master.UserId != userId
+                                          select new UserData
+                                          {
+                                              EmailId = detail.EmailId
+
+                                          }).FirstOrDefault();
+
+                    result = isUserExist == null ? false : true;
+                }
+
+                return result;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

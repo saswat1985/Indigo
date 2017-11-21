@@ -42,6 +42,12 @@ namespace Effigy.Utility
 
         public static string ForgatPassword { get; set; }
 
+        public static string EmailServer { get; set; }
+
+        public static string EmailPassword { get; set; }
+
+        public static int EmailPort { get; set; }
+
         static AppKeyCollection()
         {
             WebSiteName = ConfigurationManager.AppSettings["WEBSITENAME"].TrimString();
@@ -61,6 +67,9 @@ namespace Effigy.Utility
             EncryptionValue=ConfigurationManager.AppSettings["EncryptionValue"].TrimString();
             XMLFilePath = ConfigurationManager.AppSettings["XMLPath"].TrimString();
             ForgatPassword = ConfigurationManager.AppSettings["ForgatPassword"].TrimString();
+            EmailPort = Convert.ToInt32(ConfigurationManager.AppSettings["EmailPort"].TrimString());
+            EmailServer = ConfigurationManager.AppSettings["EmailServer"].TrimString();
+            EmailPassword = ConfigurationManager.AppSettings["EmailPassword"].TrimString();
 
         }
 

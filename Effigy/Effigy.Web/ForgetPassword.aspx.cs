@@ -35,7 +35,7 @@ namespace Effigy.Web
                 {
                     string fullName = objUser.FirstName + " " + objUser.LastName;
                     string emailBody = objService.GetForgetPasswordEmailBody(fullName, objUser.UserName, objUser.Password);
-                    isMailSend = new MailSMSHandler(AppKeyCollection.FromMail, objUser.EmailId, emailBody, true, AppKeyCollection.ForgatPassword).sendMail();
+                    isMailSend = new MailSMSHandler(AppKeyCollection.FromMail, objUser.EmailId, emailBody, true, AppKeyCollection.ForgatPassword).SendMailFromYahoo();
                 }
             }
             catch (Exception ex)

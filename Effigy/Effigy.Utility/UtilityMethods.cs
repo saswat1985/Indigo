@@ -41,8 +41,7 @@ namespace Effigy.Utility
 
         public static bool IsNumber(string number)
         {
-            int result;
-            int.TryParse(number, out result);
+            int.TryParse(number, out int result);
             return result == 0 ? false : true;
 
         }

@@ -2676,7 +2676,6 @@
     <Content Include="EffigyMaster.Master" />
     <Content Include="PrivacyPolicy.html" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="UserControl\UC_UserProfileNew.ascx" />
     <Content Include="XMLFiles\CategoryRoleMapping.xml" />
     <None Include="Properties\PublishProfiles\Effigy.Publish.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -3013,13 +3012,6 @@
     </Compile>
     <Compile Include="UserControl\UC_UserProfile.ascx.designer.cs">
       <DependentUpon>UC_UserProfile.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\UC_UserProfileNew.ascx.cs">
-      <DependentUpon>UC_UserProfileNew.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControl\UC_UserProfileNew.ascx.designer.cs">
-      <DependentUpon>UC_UserProfileNew.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserProfile\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
