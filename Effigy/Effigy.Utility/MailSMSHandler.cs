@@ -42,7 +42,7 @@ namespace Effigy.Utility
             this.Body = m_Body;
         }
 
-        public bool sendMail()
+        public bool SendMail()
         {
             SmtpClient smtpClient = new SmtpClient();
             MailMessage message = new MailMessage();
@@ -71,6 +71,39 @@ namespace Effigy.Utility
             }
 
             return status;
+        }
+
+        public bool SendMailFromYahoo()
+        {
+            bool status = false;
+            try
+            {
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress(FromMail, "", Encoding.UTF8);
+                    mail.To.Add(ToMail);
+                    mail.Subject = Subject;
+                    mail.Body = Body;
+                    mail.IsBodyHtml = true;
+                    // Can set to false, if you are sending pure text.
+
+
+                    using (SmtpClient smtp = new SmtpClient(AppKeyCollection.EmailServer, AppKeyCollection.EmailPort))
+                    {
+                        smtp.Credentials = new NetworkCredential(FromMail, AppKeyCollection.EmailPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
+                status = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return status;
+
         }
 
         private static string APICall(string url)
@@ -106,7 +139,7 @@ namespace Effigy.Utility
                 throw;
             }
             return issmssent;
-        }        
+        }
 
     }
 }
