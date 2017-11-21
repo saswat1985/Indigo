@@ -119,7 +119,7 @@
 
                         <!-- Footer -->
                         <div class="footer text-muted text-center">
-                            &copy; 2017. <a href="#">Powered</a> by <a href="#" target="_blank">Effigy</a>
+                            &copy; Copyright 2018. <a href="#">Powered</a> by <a href="#" target="_blank">TraderzPlanet</a>
                         </div>
                         <!-- /footer -->
 
@@ -134,36 +134,7 @@
 
         </div>
         <!-- /page container -->
-
-        <!-- Vertical form modal -->
-        <%--<div id="modal_form_vertical" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"aria-label="Close">X</button>                    
-                    <h5 class="modal-title">Payment Information</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul style="margin-left: 10px;">
-                                    <li>your Payment is pending till now. Kindly Click For Payment</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>                   
-                   
-
-                </div>
-            </div>
-        </div>
-    </div>--%>
-        <!-- /vertical form modal -->
+       
 
     </form>
 </body>
