@@ -173,7 +173,7 @@
 
                     <!-- Footer -->
                     <div class="footer text-muted text-center">
-                        &copy; 2017. <a href="#">Powered</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Effigy</a>
+                        &copy;Copyright 2018 <a href="#">Powered</a> by <a href="#" target="_blank">TraderzPlanet</a>
                     </div>
                     <!-- /footer -->
 
