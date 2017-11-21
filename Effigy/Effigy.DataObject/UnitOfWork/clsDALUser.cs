@@ -189,8 +189,6 @@ namespace Effigy.DataObject.UnitOfWork
                     }
 
                 }
-
-
             }
             catch (Exception)
             {
