@@ -523,5 +523,35 @@ namespace Effigy.DataObject.UnitOfWork
                 throw;
             }
         }
+
+        public int SavePaymentDetail(PaymentDetails _objVal)
+        {
+            int Result = 0;
+            try
+            {
+                SqlParameter[] sqlParam =
+                {
+                    new SqlParameter("@Type",_objVal.Type),
+                    new SqlParameter("@TransitionID",_objVal.TransitionID),
+                    new SqlParameter("@UserID",_objVal.UserID),
+                    new SqlParameter("@PaidAmount",_objVal.PaidAmount),
+                    new SqlParameter("@IsGstInvoice",_objVal.IsGstInvoice),
+                    new SqlParameter("@GstNumber",_objVal.GstNumber),
+                    new SqlParameter("@GstHolderName",_objVal.GstHolderName),
+                    new SqlParameter("@GstHolderAddress",_objVal.GstHolderAddress),
+                };
+                Result = _objSql.ExecuteNonQuery(CommandType.StoredProcedure, "InsertUserPaymentDetails", sqlParam);
+
+                return Result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+        }
     }
 }

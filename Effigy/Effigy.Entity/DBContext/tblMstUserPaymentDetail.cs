@@ -18,6 +18,10 @@ namespace Effigy.Entity.DBContext
         public string TransitionID { get; set; }
         public int UserID { get; set; }
         public decimal PaidAmount { get; set; }
+        public bool IsGstInvoice { get; set; }
+        public Nullable<int> GstNumber { get; set; }
+        public string GstHolderName { get; set; }
+        public string GstHolderAddress { get; set; }
         public System.DateTime CreatedDate { get; set; }
     
         public virtual tblMstUserMaster tblMstUserMaster { get; set; }

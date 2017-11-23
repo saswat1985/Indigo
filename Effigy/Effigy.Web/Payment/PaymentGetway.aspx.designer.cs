@@ -49,6 +49,15 @@ namespace Effigy.Web.Payment {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden txnid;
         
         /// <summary>
+        /// txtUserID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtUserID;
+        
+        /// <summary>
         /// enforce_paymethod control.
         /// </summary>
         /// <remarks>
@@ -263,6 +272,42 @@ namespace Effigy.Web.Payment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFailerURI;
+        
+        /// <summary>
+        /// chkGstInvoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkGstInvoice;
+        
+        /// <summary>
+        /// txtGSTNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGSTNumber;
+        
+        /// <summary>
+        /// txtGSTHolderName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGSTHolderName;
+        
+        /// <summary>
+        /// txtGstAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGstAddress;
         
         /// <summary>
         /// btnPayment control.

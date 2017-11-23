@@ -1,4 +1,16 @@
 ﻿$(document).ready(function () {    
+    $("#divGstNo").hide();
+    $("#divGstaddress").hide();
+    $("#chkGstInvoice").change(function () {       
+        if ($(this).is(':checked')) {
+            $("#divGstNo").show();
+            $("#divGstaddress").show();
+        }
+        else {
+            $("#divGstNo").hide();
+            $("#divGstaddress").hide();
+        }
+    });
    /// GetUserDetails();
 });
 

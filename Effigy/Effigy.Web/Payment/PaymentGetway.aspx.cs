@@ -28,6 +28,7 @@ namespace Effigy.Web.Payment
                     if (!IsPostBack)
                     {
                         frmError.Visible = false; // error form
+                        txtUserID.Value = Request.QueryString["UserID"].Trim();
                         GetUserDetail(Convert.ToInt32(Request.QueryString["UserID"].Trim()));
                     }
                     else
@@ -36,9 +37,6 @@ namespace Effigy.Web.Payment
                     }
 
                 }
-
-                //txtProductInfo.Text = "CP2";
-                //txtAmount.Text = "10.00";
 
             }
             catch (Exception ex)
@@ -124,7 +122,7 @@ namespace Effigy.Web.Payment
                             }
                             else if (hash_var == "txtAmount")
                             {
-                                hash_string = hash_string + "1";
+                                hash_string = hash_string + txtAmount.Text;
                                 hash_string = hash_string + '|';
                             }
                             else if (hash_var == "txtProductInfo")
@@ -134,7 +132,7 @@ namespace Effigy.Web.Payment
                             }
                             else if (hash_var == "txtEmail")
                             {
-                                hash_string = hash_string + MarchantEmail;
+                                hash_string = hash_string + "mail.nitinjain2012@gmail.com";
                                 hash_string = hash_string + '|';
                             }
                             else
@@ -165,19 +163,20 @@ namespace Effigy.Web.Payment
                 {
                     hash.Value = hash1;
                     txnid.Value = txnid1;
-                    string Sucessurl = String.Format("http://traderzplanet.in/PaymentSuccess.aspx?Tv={0}&EI={1}&MN={2}&FN={3}&LN={4}", ViewState["txnid"].ToString(), txtEmail.Text.Trim(), txtMobile.Text.Trim(), txtfirstName.Text.Trim(), txtLastName.Text.Trim());
-                    string Failureurl = String.Format("http://traderzplanet.in/PaymentFailure.aspx?Tv={0}&EI={1}&MN={2}&FN={3}&LN={4}", ViewState["txnid"].ToString(), txtEmail.Text.Trim(), txtMobile.Text.Trim(), txtfirstName.Text.Trim(), txtLastName.Text.Trim());
+
+                    string Sucessurl = String.Format("http://traderzplanet.in/PaymentSuccess.aspx?TN={0}&UI={1}&GN={2}&GI={3}&AM={4}&GHN={5}&GHA={6}", ViewState["txnid"].ToString(), txtUserID.Value, txtGSTNumber.Text, "1", txtAmount.Text, txtGSTHolderName.Text, txtGstAddress.Text);
+                    string Failureurl = String.Format("http://traderzplanet.in/PaymentFailure.aspx");
                     System.Collections.Hashtable data = new System.Collections.Hashtable(); // adding values in gash table for data post
                     data.Add("hash", hash.Value);
                     //data.Add("abc", hash_string);
                     data.Add("txnid", txnid.Value);
                     data.Add("key", key.Value);
-                    string AmountForm = Convert.ToDecimal(txtAmount.Text.Trim()).ToString("g29");// eliminating trailing zeros
-                    txtAmount.Text = AmountForm;
-                    data.Add("amount", AmountForm);
+                    //string AmountForm = Convert.ToDecimal(txtAmount.Text.Trim()).ToString("g29");// eliminating trailing zeros
+                    //txtAmount.Text = AmountForm;
+                    data.Add("amount", txtAmount.Text.Trim());
                     data.Add("firstname", txtfirstName.Text.Trim());
-                    data.Add("email", MarchantEmail);
-                    data.Add("phone", MarchantMobile);
+                    data.Add("email", "mail.nitinjain2012@gmail.com");
+                    data.Add("phone", "8588815199");
                     data.Add("productinfo", txtProductInfo.Text);
                     data.Add("surl", Sucessurl);
                     data.Add("furl", Failureurl);
@@ -247,31 +246,11 @@ namespace Effigy.Web.Payment
 
         protected void btncancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ViewPlan");
+            Response.Redirect("~/PaymentCancel.aspx");
         }
 
-        //private void insertPaymentDetails(string TransationID, string Mobile, string email, string FirstName, string lastName, bool isPaymentSuccess, string Planname, Double Amount)
-        //{
-        //    DAL objDal = new DAL();
-        //    bool istrue = objDal.PaymentDetail(TransationID, Mobile, email, FirstName, lastName, isPaymentSuccess, Planname, Amount);
-        //    if (istrue)
-        //    {
-        //        Response.Redirect(String.Format("PaymentSuc?TN={0}&MN={1}&EI={2}&FN={3}&LN={4}&PN={5}&AM={6}", TransationID, Mobile, email, FirstName, lastName, Planname, Amount));
-        //    }
-        //}
 
-        //protected void btnTemppayment_Click(object sender, EventArgs e)
-        //{
-        //    string hash_string = string.Empty;
-        //    string TransId = string.Empty;
-        //    if (string.IsNullOrEmpty(Request.Form["txnid"])) // generating txnid
-        //    {
-        //        Random rnd = new Random();
-        //        string strHash = Generatehash512(rnd.ToString() + DateTime.Now);
-        //        TransId = strHash.ToString().Substring(0, 20);
-        //    }
-        //    insertPaymentDetails(TransId, txtUDF1.Text.Trim(), txtUDF2.Text.Trim(), txtfirstName.Text.Trim(), txtLastName.Text.Trim(), true, productInfo, Convert.ToDouble(Amount));
 
-        //}
+
     }
 }

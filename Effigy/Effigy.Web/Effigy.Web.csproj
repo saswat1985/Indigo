@@ -2358,6 +2358,8 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\payment-fail-img.png" />
+    <Content Include="Images\payment-suc-img.png" />
     <Content Include="Images\Spinner.gif" />
     <Content Include="Images\tp_icon_Febicon.ico" />
     <Content Include="Images\traderzPlanet.png" />

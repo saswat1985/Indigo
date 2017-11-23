@@ -263,6 +263,10 @@
           <Property Name="TransitionID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="PaidAmount" Type="money" Nullable="false" />
+          <Property Name="IsGstInvoice" Type="bit" Nullable="false" />
+          <Property Name="GstNumber" Type="int" />
+          <Property Name="GstHolderName" Type="varchar" MaxLength="100" />
+          <Property Name="GstHolderAddress" Type="varchar" MaxLength="500" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMstUserTreeStructure">
@@ -499,6 +503,10 @@
           <Parameter Name="TransitionID" Type="varchar" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="PaidAmount" Type="money" Mode="In" />
+          <Parameter Name="IsGstInvoice" Type="bit" Mode="In" />
+          <Parameter Name="GstNumber" Type="int" Mode="In" />
+          <Parameter Name="GstHolderName" Type="varchar" Mode="In" />
+          <Parameter Name="GstHolderAddress" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -735,6 +743,10 @@
             <Parameter Name="TransitionID" Mode="In" Type="String" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="IsGstInvoice" Mode="In" Type="Boolean" />
+            <Parameter Name="GstNumber" Mode="In" Type="Int32" />
+            <Parameter Name="GstHolderName" Mode="In" Type="String" />
+            <Parameter Name="GstHolderAddress" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USP_RawURLEntry">
             <Parameter Name="UserEntryId" Mode="In" Type="Int32" />
@@ -1119,6 +1131,10 @@
           <Property Name="TransitionID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="PaidAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IsGstInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="GstNumber" Type="Int32" />
+          <Property Name="GstHolderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GstHolderAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="tblMstUserMaster" Relationship="SNPLCPDBModel.FK_tblMstUserPaymentDetail_tblMstUserMaster" FromRole="tblMstUserPaymentDetail" ToRole="tblMstUserMaster" />
         </EntityType>
@@ -1660,6 +1676,10 @@
             <EntityTypeMapping TypeName="SNPLCPDBModel.tblMstUserPaymentDetail">
               <MappingFragment StoreEntitySet="tblMstUserPaymentDetail">
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="GstHolderAddress" ColumnName="GstHolderAddress" />
+                <ScalarProperty Name="GstHolderName" ColumnName="GstHolderName" />
+                <ScalarProperty Name="GstNumber" ColumnName="GstNumber" />
+                <ScalarProperty Name="IsGstInvoice" ColumnName="IsGstInvoice" />
                 <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="TransitionID" ColumnName="TransitionID" />

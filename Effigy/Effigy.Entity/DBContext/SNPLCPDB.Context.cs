@@ -295,7 +295,7 @@ namespace Effigy.Entity.DBContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspUserRoleMapper", userIdParameter, selectedItemsParameter, createdByParameter);
         }
     
-        public virtual int InsertUserPaymentDetails(string transitionID, Nullable<int> userID, Nullable<decimal> paidAmount)
+        public virtual int InsertUserPaymentDetails(string transitionID, Nullable<int> userID, Nullable<decimal> paidAmount, Nullable<bool> isGstInvoice, Nullable<int> gstNumber, string gstHolderName, string gstHolderAddress)
         {
             var transitionIDParameter = transitionID != null ?
                 new ObjectParameter("TransitionID", transitionID) :
@@ -309,7 +309,23 @@ namespace Effigy.Entity.DBContext
                 new ObjectParameter("PaidAmount", paidAmount) :
                 new ObjectParameter("PaidAmount", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserPaymentDetails", transitionIDParameter, userIDParameter, paidAmountParameter);
+            var isGstInvoiceParameter = isGstInvoice.HasValue ?
+                new ObjectParameter("IsGstInvoice", isGstInvoice) :
+                new ObjectParameter("IsGstInvoice", typeof(bool));
+    
+            var gstNumberParameter = gstNumber.HasValue ?
+                new ObjectParameter("GstNumber", gstNumber) :
+                new ObjectParameter("GstNumber", typeof(int));
+    
+            var gstHolderNameParameter = gstHolderName != null ?
+                new ObjectParameter("GstHolderName", gstHolderName) :
+                new ObjectParameter("GstHolderName", typeof(string));
+    
+            var gstHolderAddressParameter = gstHolderAddress != null ?
+                new ObjectParameter("GstHolderAddress", gstHolderAddress) :
+                new ObjectParameter("GstHolderAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserPaymentDetails", transitionIDParameter, userIDParameter, paidAmountParameter, isGstInvoiceParameter, gstNumberParameter, gstHolderNameParameter, gstHolderAddressParameter);
         }
     
         public virtual int USP_RawURLEntry(Nullable<int> userEntryId, string rawURLString)
