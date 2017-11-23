@@ -163,6 +163,7 @@
     <Compile Include="Entity\ClsStateMaster.cs" />
     <Compile Include="Entity\CountryMapper.cs" />
     <Compile Include="Entity\MstBankData.cs" />
+    <Compile Include="Entity\PaymentDetails.cs" />
     <Compile Include="Entity\UniqueURLMapper.cs" />
     <Compile Include="Entity\UrlEntriesVarifiedData.cs" />
     <Compile Include="Entity\MstCityData.cs" />

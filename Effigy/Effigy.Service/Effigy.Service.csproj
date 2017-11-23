@@ -48,10 +48,12 @@
     <Compile Include="Contract\BaseContract\IBaseContract.cs" />
     <Compile Include="Contract\IDataEntry.cs" />
     <Compile Include="Contract\IMasterService.cs" />
+    <Compile Include="Contract\IUserPaymentService.cs" />
     <Compile Include="Contract\IUserService.cs" />
     <Compile Include="Factory\BaseFactory\BaseFactory.cs" />
     <Compile Include="Factory\UserDataEntry.cs" />
     <Compile Include="Factory\MasterService.cs" />
+    <Compile Include="Factory\UserPayment.cs" />
     <Compile Include="Factory\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

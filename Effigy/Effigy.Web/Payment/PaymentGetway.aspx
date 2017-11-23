@@ -23,6 +23,14 @@
 
     <!-- Theme JS files -->
     <script type="text/javascript" src="../assets/js/core/app.js"></script>
+     <script type="text/javascript">
+         function validate(key) {
+             var keycode = (key.which) ? key.which : key.keyCode;
+             if ((keycode < 48 || keycode > 57)) {
+                 return false;
+             }
+         }
+    </script>  
     <!-- /theme JS files -->
 </head>
 <body>
@@ -39,6 +47,7 @@
                         <input type="hidden" runat="server" id="key" name="key" />
                         <input type="hidden" runat="server" id="hash" name="hash" />
                         <input type="hidden" runat="server" id="txnid" name="txnid" />
+                        <input type="hidden" runat="server" id="txtUserID" name="txtUserID" />
                         <input type="hidden" runat="server" id="enforce_paymethod" name="enforce_paymethod" />
                         <div class="row">
                             <div class="col-lg-6 col-lg-offset-3">
@@ -57,13 +66,13 @@
                                                 <label>Product :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <asp:Label ID="txtProductInfo" runat="server"></asp:Label>
+                                                <asp:Label ID="txtProductInfo" runat="server" TabIndex="1"></asp:Label>
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Amount:</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <asp:Label ID="txtAmount" runat="server"></asp:Label>
+                                                <asp:Label ID="txtAmount" runat="server" TabIndex="2" ></asp:Label>
                                             </div>
                                         </div>
                                         <div class="row" style="padding-top:10px">
@@ -71,13 +80,13 @@
                                                 <label>Mobile:<span class="asterisk" style="color: red">*</span></label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="" TabIndex="4"></asp:TextBox>
+                                                <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="" TabIndex="3"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Email:<span class="asterisk" style="color: red">*</span></label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="" TabIndex="3"></asp:TextBox>
+                                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="" TabIndex="4"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="row" style="padding-top:10px">
@@ -86,13 +95,13 @@
                                                 <label>First Name:<span class="asterisk" style="color: red">*</span></label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <asp:TextBox ID="txtfirstName" runat="server" CssClass="form-control" placeholder="" TabIndex="2"></asp:TextBox>
+                                                <asp:TextBox ID="txtfirstName" runat="server" CssClass="form-control" placeholder="" TabIndex="5"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Last Name:</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control" placeholder="" TabIndex="9"></asp:TextBox>
+                                                <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control" placeholder="" TabIndex="6"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="row" style="padding-top:10px;display:none">                                            
@@ -210,6 +219,36 @@
                                                 <asp:TextBox ID="txtFailerURI" runat="server" CssClass="form-control" placeholder="" TabIndex="7"></asp:TextBox>
 
                                             </div>
+                                        </div>
+                                        <div class="row" style="padding-top:10px">                                            
+                                            <div class="col-sm-6" >
+                                                <asp:CheckBox ID="chkGstInvoice" runat="server" Text="Are You want GST Number Invoice? Then Please check checkbox" />
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row" style="padding-top:10px" id="divGstNo">
+                                            <div class="col-sm-2" >
+                                               GST Number:                             
+                                            </div>
+                                            <div class="col-sm-4" >
+                                                <asp:TextBox ID="txtGSTNumber" runat="server" CssClass="form-control" placeholder="" onkeypress="return validate(event)"  TabIndex="8"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                GST Holder Name:
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <asp:TextBox ID="txtGSTHolderName" runat="server" CssClass="form-control" placeholder="" TabIndex="9" MaxLength="200"></asp:TextBox>
+
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-top:10px" id="divGstaddress">
+                                            <div class="col-sm-2">
+                                                GST Holder Address:                             
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <asp:TextBox ID="txtGstAddress" runat="server" CssClass="form-control" placeholder="" TabIndex="10" MaxLength="500" TextMode="MultiLine"></asp:TextBox>
+                                            </div>                                            
                                         </div>
                                         <div class="text-right" style="padding-top:10px">
                                             <asp:Button ID="btnPayment" runat="server" class="btn btn-primary" Text="Confirm Payment" OnClick="btnPayment_Click"  />                      
