@@ -35,12 +35,13 @@ namespace Effigy.Web.Payment
                     AMOUNT = Convert.ToDecimal(Request.QueryString["AM"].ToString());
                     GstHolderName = Request.QueryString["GHN"].ToString();
                     GstHolderAddress = Request.QueryString["GHA"].ToString();
+                    insertPaymentDetails(TransationID, UserID, AMOUNT, IsGstInvoice, GstNumber, GstHolderName, GstHolderAddress);
                 }
             }
 
         }
 
-        private void insertPaymentDetails(string TransationID, int UserID, decimal PaidAmount, bool IsGstInvoice, int GstNumber, string GstHolderName, string GstHolderAddress)
+        private void insertPaymentDetails(string TransationID, int UserID, decimal PaidAmount, bool IsGstInvoice, string GstNumber, string GstHolderName, string GstHolderAddress)
         {
             UserPayment objUserPayment = new UserPayment();
             PaymentDetails objPayment = new PaymentDetails();

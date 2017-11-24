@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using System.Net;
-using System.Xml;
 using System.Configuration;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web;
+using System.Xml;
 
 namespace Effigy.Utility
 {
     public static class UtilityMethods
     {
         private static byte[] saltByte = Encoding.ASCII.GetBytes("o8101982dAtApAtH");
+        private static int result;
 
         public static string CreatePassword(int length)
         {
@@ -41,7 +42,8 @@ namespace Effigy.Utility
 
         public static bool IsNumber(string number)
         {
-            int.TryParse(number, out int result);
+            int result;
+            int.TryParse(number, out result);
             return result == 0 ? false : true;
 
         }
@@ -51,7 +53,7 @@ namespace Effigy.Utility
             bool result = false;
             try
             {
-                
+
                 if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
                 {
                     //HttpWebRequest request = HttpWebRequest.Create(url) as HttpWebRequest;
