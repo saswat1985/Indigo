@@ -531,7 +531,7 @@ namespace Effigy.DataObject.UnitOfWork
             {
                 SqlParameter[] sqlParam =
                 {
-                    new SqlParameter("@Type",_objVal.Type),
+                    
                     new SqlParameter("@TransitionID",_objVal.TransitionID),
                     new SqlParameter("@UserID",_objVal.UserID),
                     new SqlParameter("@PaidAmount",_objVal.PaidAmount),
