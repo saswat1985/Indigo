@@ -15,7 +15,6 @@ namespace Effigy.Utility
     public static class UtilityMethods
     {
         private static byte[] saltByte = Encoding.ASCII.GetBytes("o8101982dAtApAtH");
-        private static int result;
 
         public static string CreatePassword(int length)
         {
@@ -56,22 +55,6 @@ namespace Effigy.Utility
 
                 if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
                 {
-                    //HttpWebRequest request = HttpWebRequest.Create(url) as HttpWebRequest;
-                    //request.Timeout = 5000; //set the timeout to 5 seconds to keep the user from waiting too long for the page to load
-                    //request.Method = "HEAD"; //Get only the header information -- no need to download any content
-
-                    //HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-
-                    //int statusCode = (int)response.StatusCode;
-                    //if (statusCode >= 100 && statusCode < 400) //Good requests
-                    //{
-                    //    return true;
-                    //}
-                    //else if (statusCode >= 500 && statusCode <= 510) //Server Errors
-                    //{
-                    //    // log.Warn(String.Format("The remote server has thrown an internal error. Url is not valid: {0}", url));
-                    //    return false;
-                    //}
                     using (var client = new MyClient())
                     {
                         client.HeadOnly = true;
