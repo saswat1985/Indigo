@@ -1,18 +1,20 @@
 ﻿using Effigy.Entity.DBContext;
 using Effigy.Service.Factory;
 using System;
+using Effigy.Utility;
+using Effigy.Service.Contract;
 
 namespace Effigy.Web.Payment
 {
-    public partial class PaymentSuccess : System.Web.UI.Page
+    public partial class PaymentSuccess : BasePage
     {
-        string TransationID = string.Empty;
-        int UserID;
-        string GstNumber = string.Empty;
-        bool IsGstInvoice;
-        decimal AMOUNT;
-        string GstHolderName = string.Empty;
-        string GstHolderAddress = string.Empty;
+        private string transectionId = string.Empty;
+        private int userID;
+        private string gstNumber = string.Empty;
+        private bool isGstInvoice;
+        private decimal amount;
+        private string gstHolderName = string.Empty;
+        private string gstHolderAddress = string.Empty;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,35 +30,41 @@ namespace Effigy.Web.Payment
                     Request.QueryString["GHA"] != null
                     )
                 {
-                    TransationID = Request.QueryString["TN"].ToString();
-                    UserID = Convert.ToInt32(Request.QueryString["UI"].ToString());
-                    GstNumber = Request.QueryString["GN"].ToString();
-                    IsGstInvoice = Convert.ToBoolean(Request.QueryString["GI"].ToString());
-                    AMOUNT = Convert.ToDecimal(Request.QueryString["AM"].ToString());
-                    GstHolderName = Request.QueryString["GHN"].ToString();
-                    GstHolderAddress = Request.QueryString["GHA"].ToString();
-                    insertPaymentDetails(TransationID, UserID, AMOUNT, IsGstInvoice, GstNumber, GstHolderName, GstHolderAddress);
+                    transectionId = Request.QueryString["TN"].TrimString();
+                    userID = Convert.ToInt32(Request.QueryString["UI"].TrimString());
+                    gstNumber = Request.QueryString["GN"].TrimString();
+                    isGstInvoice = Convert.ToBoolean(Request.QueryString["GI"].TrimString() == "1");
+                    amount = Convert.ToDecimal(Request.QueryString["AM"].TrimString());
+                    gstHolderName = Request.QueryString["GHN"].TrimString();
+                    gstHolderAddress = Request.QueryString["GHA"].TrimString();
+                    InsertPaymentDetails(transectionId, userID, amount, isGstInvoice, gstNumber, gstHolderName, gstHolderAddress);
                 }
             }
 
         }
 
-        private void insertPaymentDetails(string TransationID, int UserID, decimal PaidAmount, bool IsGstInvoice, string GstNumber, string GstHolderName, string GstHolderAddress)
+        private void InsertPaymentDetails(string TransationID, int UserID, decimal PaidAmount, bool IsGstInvoice, string GstNumber, string GstHolderName, string GstHolderAddress)
         {
-            UserPayment objUserPayment = new UserPayment();
-            PaymentDetails objPayment = new PaymentDetails();
-            objPayment.TransitionID = TransationID;
-            objPayment.UserID = UserID;
-            objPayment.PaidAmount = PaidAmount;
-            objPayment.IsGstInvoice = IsGstInvoice;
-            objPayment.GstNumber = GstNumber;
-            objPayment.GstHolderName = GstHolderName;
-            objPayment.GstHolderAddress = GstHolderAddress;
-            int istrue = objUserPayment.SavePaymentDetail(objPayment);
-            if (istrue == 1)
+            try
             {
-
+                IUserPaymentService objUserPayment = new UserPayment();
+                PaymentDetails objPayment = new PaymentDetails();
+                objPayment.TransitionID = TransationID;
+                objPayment.UserID = UserID;
+                objPayment.PaidAmount = PaidAmount;
+                objPayment.IsGstInvoice = IsGstInvoice;
+                objPayment.GstNumber = GstNumber;
+                objPayment.GstHolderName = GstHolderName;
+                objPayment.GstHolderAddress = GstHolderAddress;
+                objPayment.PaymentDateTime = DateTime.Now;
+                int istrue = objUserPayment.SavePaymentDetail(objPayment);
             }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+           
+            
         }
     }
 }

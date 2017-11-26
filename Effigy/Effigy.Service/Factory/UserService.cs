@@ -154,7 +154,8 @@ namespace Effigy.Service
                     EmailId = user.EmailId,
                     UserPhoto = user.UserImage,
                     CategoryAmount = productCategory != null ? productCategory.CategoryPrice.Value : 0,
-                    ProductCategory = productCategory != null ? productCategory.CategoryCode : string.Empty
+                    ProductCategory = productCategory != null ? productCategory.CategoryCode : string.Empty,
+                    TotalPrice = productCategory != null ? productCategory.TotalPrice.Value : 0
                 };
 
             }

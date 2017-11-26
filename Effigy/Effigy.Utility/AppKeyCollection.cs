@@ -48,28 +48,63 @@ namespace Effigy.Utility
 
         public static int EmailPort { get; set; }
 
+        public static string MarchantEmail { get; set; }
+
+        public static string MarchantMobile { get; set; }
+
+        public static string MERCHANT_KEY { get; set; }
+
+        public static string PAYU_BASE_URL { get; set; }
+        
         static AppKeyCollection()
         {
             WebSiteName = ConfigurationManager.AppSettings["WEBSITENAME"].TrimString();
+
             SmsUserName = ConfigurationManager.AppSettings["SMSUSERNAME"].TrimString();
+
             SmsPwd = ConfigurationManager.AppSettings["SMSPWD"].TrimString();
+
             SmsSenderId = ConfigurationManager.AppSettings["SMSSENDERID"].TrimString();
+
             SmsDomain = ConfigurationManager.AppSettings["SMSDOMAIN"].TrimString();
+
             FromMail = ConfigurationManager.AppSettings["FromMailID"].TrimString();
+
             Subject = ConfigurationManager.AppSettings["ForgatPassword"].TrimString();
+
             MobNoCheck = ConfigurationManager.AppSettings["MOBNOCHECK"].TrimString();
+
             WelcomeNote = ConfigurationManager.AppSettings["WelcomeNote"].TrimString();
+
             LocationAPI = ConfigurationManager.AppSettings["LOCATIONAPI"].TrimString();
+
             NotificationSubject = ConfigurationManager.AppSettings["NOTIFICATION"].TrimString();
+
             CoupneCodeLength = Convert.ToInt32(ConfigurationManager.AppSettings["CoupneCodeLength"].TrimString());
+
             HelpDeskNo = ConfigurationManager.AppSettings["HELPDESKNO"].TrimString();
+
             PaymentHours = ConfigurationManager.AppSettings["PaymentHours"].TrimString();
+
             EncryptionValue=ConfigurationManager.AppSettings["EncryptionValue"].TrimString();
+
             XMLFilePath = ConfigurationManager.AppSettings["XMLPath"].TrimString();
+
             ForgatPassword = ConfigurationManager.AppSettings["ForgatPassword"].TrimString();
+
             EmailPort = Convert.ToInt32(ConfigurationManager.AppSettings["EmailPort"].TrimString());
+
             EmailServer = ConfigurationManager.AppSettings["EmailServer"].TrimString();
+
             EmailPassword = ConfigurationManager.AppSettings["EmailPassword"].TrimString();
+
+            MarchantEmail = ConfigurationManager.AppSettings["MarchantEmail"].TrimString();
+
+            MarchantMobile = ConfigurationManager.AppSettings["MarchantMobile"].TrimString();
+
+            MERCHANT_KEY = ConfigurationManager.AppSettings["MERCHANT_KEY"].TrimString();
+
+            PAYU_BASE_URL = ConfigurationManager.AppSettings["PAYU_BASE_URL"].TrimString();
 
         }
 

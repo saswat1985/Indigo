@@ -13,13 +13,17 @@ namespace Effigy.Service.Factory
 {
     public class UserPayment : BaseFactory, IUserPaymentService
     {
-        ClsDALUser objclsDALUser = new ClsDALUser();
         public int SavePaymentDetail(PaymentDetails objVALLoginDetail)
         {
             int result = 0;
             try
             {
-                result = objclsDALUser.SavePaymentDetail(objVALLoginDetail);
+                result = objPayment.SavePaymentDetail(objVALLoginDetail);
+
+                if (result != 0)
+                {
+                    objPayment.UpdateUserAfterPayment(objVALLoginDetail.UserID, objVALLoginDetail.PaymentDateTime);
+                }
             }
             catch (Exception)
             {

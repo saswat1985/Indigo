@@ -11,7 +11,7 @@ namespace Effigy.DataObject.UnitOfWork
 {
     public class ClsDALUser : ClsBaseDAL
     {
-        private SNPLCPDBEntities _context = null;
+        
         private GenericRepository<tblMstUserMaster> _userMaster = null;
         private GenericRepository<tblMstUserDetail> _userDetail = null;
         private GenericRepository<tblMstUserCategoryMapping> _userCategory = null;
@@ -524,34 +524,6 @@ namespace Effigy.DataObject.UnitOfWork
             }
         }
 
-        public int SavePaymentDetail(PaymentDetails _objVal)
-        {
-            int Result = 0;
-            try
-            {
-                SqlParameter[] sqlParam =
-                {
-                    
-                    new SqlParameter("@TransitionID",_objVal.TransitionID),
-                    new SqlParameter("@UserID",_objVal.UserID),
-                    new SqlParameter("@PaidAmount",_objVal.PaidAmount),
-                    new SqlParameter("@IsGstInvoice",_objVal.IsGstInvoice),
-                    new SqlParameter("@GstNumber",_objVal.GstNumber),
-                    new SqlParameter("@GstHolderName",_objVal.GstHolderName),
-                    new SqlParameter("@GstHolderAddress",_objVal.GstHolderAddress),
-                };
-                Result = _objSql.ExecuteNonQuery(CommandType.StoredProcedure, "InsertUserPaymentDetails", sqlParam);
-
-                return Result;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                Dispose();
-            }
-        }
+        
     }
 }
