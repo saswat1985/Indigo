@@ -212,6 +212,7 @@
           <Property Name="AlteranateContact" Type="nvarchar(max)" />
           <Property Name="IsWelcomeMailSend" Type="bit" />
           <Property Name="IsMemberShipTaken" Type="bit" />
+          <Property Name="IsMemberShipExpired" Type="bit" />
           <Property Name="UserType" Type="int" />
           <Property Name="PersonalIdType" Type="int" />
           <Property Name="PersonalIdNo" Type="nvarchar(max)" />
@@ -221,6 +222,7 @@
           <Property Name="CityId" Type="int" />
           <Property Name="RegisterRefrelCode" Type="nvarchar" MaxLength="50" />
           <Property Name="SelfRefrelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastPaymentDate" Type="datetime" />
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
           <Property Name="UserEntryId" Type="int" />
@@ -285,6 +287,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MasterId" Type="int" />
           <Property Name="UniqueURL" Type="nvarchar(max)" />
+          <Property Name="DomainName" Type="nvarchar(max)" />
           <Property Name="IsValidate" Type="bit" />
         </EntityType>
         <EntityType Name="tblRawURL">
@@ -1093,6 +1096,7 @@
           <Property Name="AlteranateContact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsWelcomeMailSend" Type="Boolean" />
           <Property Name="IsMemberShipTaken" Type="Boolean" />
+          <Property Name="IsMemberShipExpired" Type="Boolean" />
           <Property Name="UserType" Type="Int32" />
           <Property Name="PersonalIdType" Type="Int32" />
           <Property Name="PersonalIdNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1102,6 +1106,7 @@
           <Property Name="CityId" Type="Int32" />
           <Property Name="RegisterRefrelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SelfRefrelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastPaymentDate" Type="DateTime" Precision="3" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="UserEntryId" Type="Int32" />
@@ -1155,6 +1160,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MasterId" Type="Int32" />
           <Property Name="UniqueURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DomainName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsValidate" Type="Boolean" />
         </EntityType>
         <EntityType Name="tblRawURL">
@@ -1635,6 +1641,7 @@
                 <ScalarProperty Name="UserEntryId" ColumnName="UserEntryId" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="LastPaymentDate" ColumnName="LastPaymentDate" />
                 <ScalarProperty Name="SelfRefrelCode" ColumnName="SelfRefrelCode" />
                 <ScalarProperty Name="RegisterRefrelCode" ColumnName="RegisterRefrelCode" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
@@ -1644,6 +1651,7 @@
                 <ScalarProperty Name="PersonalIdNo" ColumnName="PersonalIdNo" />
                 <ScalarProperty Name="PersonalIdType" ColumnName="PersonalIdType" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="IsMemberShipExpired" ColumnName="IsMemberShipExpired" />
                 <ScalarProperty Name="IsMemberShipTaken" ColumnName="IsMemberShipTaken" />
                 <ScalarProperty Name="IsWelcomeMailSend" ColumnName="IsWelcomeMailSend" />
                 <ScalarProperty Name="AlteranateContact" ColumnName="AlteranateContact" />
@@ -1701,6 +1709,7 @@
             <EntityTypeMapping TypeName="SNPLCPDBModel.tblRawUniqueURL">
               <MappingFragment StoreEntitySet="tblRawUniqueURL">
                 <ScalarProperty Name="IsValidate" ColumnName="IsValidate" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
                 <ScalarProperty Name="UniqueURL" ColumnName="UniqueURL" />
                 <ScalarProperty Name="MasterId" ColumnName="MasterId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1777,29 +1786,29 @@
     <Diagrams>
       <Diagram DiagramId="db6213959886435a9f128a9593cd9415" Name="Diagram1">
         <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_Roles" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="3" PointY="12.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstBankMaster" Width="1.5" PointX="9.75" PointY="1.625" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="10.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="5.25" PointY="2.375" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="10.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="3.75" PointY="12.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="6" PointY="8.625" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3" PointY="2.375" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="8.75" PointY="8" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="12.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="5.25" PointY="2.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="7.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="9.75" PointY="11.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserBankDetail" Width="1.5" PointX="12" PointY="1" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="11" PointY="8.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="8" PointY="8.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="7.5" PointY="1.125" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="7.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="12.75" PointY="11.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="13.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="14.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="9.75" PointY="14.75" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="14.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="13.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="13.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="13.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="5.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="7.75" PointY="14.75" />
         <AssociationConnector Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" />

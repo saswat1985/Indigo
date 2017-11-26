@@ -17,6 +17,7 @@ namespace Effigy.Entity.DBContext
         public int Id { get; set; }
         public Nullable<int> MasterId { get; set; }
         public string UniqueURL { get; set; }
+        public string DomainName { get; set; }
         public Nullable<bool> IsValidate { get; set; }
     }
 }

@@ -11,13 +11,15 @@ namespace Effigy.Service
     public class BaseFactory : IBaseContract
     {
         private readonly ClsDALUser objDal;
-
         public ClsDALMaster objMaster = null;
+        public CLSDALPayment objPayment = null;
 
         public BaseFactory()
         {
             objDal = new ClsDALUser();
             objMaster = new ClsDALMaster();
+            objPayment = new CLSDALPayment();
+
         }
         public virtual T GetSingleRecord<T>(Expression<Func<T, bool>> predicate) where T : class
         {

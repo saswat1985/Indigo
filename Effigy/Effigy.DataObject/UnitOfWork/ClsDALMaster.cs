@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Effigy.Entity.DBContext;
-using Effigy.DataObject.DataBase;
-using System.Data.SqlClient;
 using Effigy.Entity.Entity;
-using System.Data.Entity;
-using System.Data.Objects.DataClasses;
-using System.Linq.Expressions;
-using Effigy.Entity;
 
 namespace Effigy.DataObject.UnitOfWork
 {
     public class ClsDALMaster : ClsBaseDAL
     {
-        #region private variables
-        private SNPLCPDBEntities _context = null;
+        #region private variables        
         private GenericRepository<MstUserWorkCategory> _product = null;
         private GenericRepository<MstCountry> _country = null;
         private GenericRepository<MstCity> _city = null;

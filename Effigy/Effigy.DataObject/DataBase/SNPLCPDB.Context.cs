@@ -341,5 +341,14 @@ namespace Effigy.DataObject
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_RawURLEntry", userEntryIdParameter, rawURLStringParameter);
         }
+    
+        public virtual int USP_GetDomain(string uRL, ObjectParameter domainName)
+        {
+            var uRLParameter = uRL != null ?
+                new ObjectParameter("URL", uRL) :
+                new ObjectParameter("URL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_GetDomain", uRLParameter, domainName);
+        }
     }
 }

@@ -212,6 +212,7 @@
           <Property Name="AlteranateContact" Type="nvarchar(max)" />
           <Property Name="IsWelcomeMailSend" Type="bit" />
           <Property Name="IsMemberShipTaken" Type="bit" />
+          <Property Name="IsMemberShipExpired" Type="bit" />
           <Property Name="UserType" Type="int" />
           <Property Name="PersonalIdType" Type="int" />
           <Property Name="PersonalIdNo" Type="nvarchar(max)" />
@@ -221,6 +222,7 @@
           <Property Name="CityId" Type="int" />
           <Property Name="RegisterRefrelCode" Type="nvarchar" MaxLength="50" />
           <Property Name="SelfRefrelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastPaymentDate" Type="datetime" />
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
           <Property Name="UserEntryId" Type="int" />
@@ -285,6 +287,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MasterId" Type="int" />
           <Property Name="UniqueURL" Type="nvarchar(max)" />
+          <Property Name="DomainName" Type="nvarchar(max)" />
           <Property Name="IsValidate" Type="bit" />
         </EntityType>
         <EntityType Name="tblRawURL">
@@ -548,6 +551,10 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="USP_GetDomain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="URL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DomainName" Type="nvarchar(max)" Mode="InOut" />
         </Function>
         <Function Name="USP_RawURLEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserEntryId" Type="int" Mode="In" />
@@ -829,6 +836,10 @@
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructures" />
           </AssociationSet>
+          <FunctionImport Name="USP_GetDomain">
+            <Parameter Name="URL" Mode="In" Type="String" />
+            <Parameter Name="DomainName" Mode="InOut" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1073,6 +1084,7 @@
           <Property Name="AlteranateContact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsWelcomeMailSend" Type="Boolean" />
           <Property Name="IsMemberShipTaken" Type="Boolean" />
+          <Property Name="IsMemberShipExpired" Type="Boolean" />
           <Property Name="UserType" Type="Int32" />
           <Property Name="PersonalIdType" Type="Int32" />
           <Property Name="PersonalIdNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1082,6 +1094,7 @@
           <Property Name="CityId" Type="Int32" />
           <Property Name="RegisterRefrelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SelfRefrelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastPaymentDate" Type="DateTime" Precision="3" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="UserEntryId" Type="Int32" />
@@ -1155,6 +1168,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MasterId" Type="Int32" />
           <Property Name="UniqueURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DomainName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsValidate" Type="Boolean" />
         </EntityType>
         <EntityType Name="tblRawURL">
@@ -1619,6 +1633,7 @@
                 <ScalarProperty Name="UserEntryId" ColumnName="UserEntryId" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="LastPaymentDate" ColumnName="LastPaymentDate" />
                 <ScalarProperty Name="SelfRefrelCode" ColumnName="SelfRefrelCode" />
                 <ScalarProperty Name="RegisterRefrelCode" ColumnName="RegisterRefrelCode" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
@@ -1628,6 +1643,7 @@
                 <ScalarProperty Name="PersonalIdNo" ColumnName="PersonalIdNo" />
                 <ScalarProperty Name="PersonalIdType" ColumnName="PersonalIdType" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="IsMemberShipExpired" ColumnName="IsMemberShipExpired" />
                 <ScalarProperty Name="IsMemberShipTaken" ColumnName="IsMemberShipTaken" />
                 <ScalarProperty Name="IsWelcomeMailSend" ColumnName="IsWelcomeMailSend" />
                 <ScalarProperty Name="AlteranateContact" ColumnName="AlteranateContact" />
@@ -1701,6 +1717,7 @@
             <EntityTypeMapping TypeName="SNPLCPDBModel.tblRawUniqueURL">
               <MappingFragment StoreEntitySet="tblRawUniqueURL">
                 <ScalarProperty Name="IsValidate" ColumnName="IsValidate" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
                 <ScalarProperty Name="UniqueURL" ColumnName="UniqueURL" />
                 <ScalarProperty Name="MasterId" ColumnName="MasterId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1753,6 +1770,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_GetDomain" FunctionName="SNPLCPDBModel.Store.USP_GetDomain" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

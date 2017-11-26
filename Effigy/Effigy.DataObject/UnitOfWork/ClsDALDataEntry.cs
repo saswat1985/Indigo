@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 namespace Effigy.DataObject.UnitOfWork
 {
     public class ClsDALDataEntry : ClsBaseDAL
-    {
-        private SNPLCPDBEntities _context = null;
+    {        
 
         public ClsDALDataEntry()
         {

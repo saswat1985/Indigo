@@ -11,7 +11,7 @@ namespace Effigy.DataObject
     public class ClsBaseDAL : IDisposable
     {
         public SqlDataAccessLayer _objSql = null;
-        private SNPLCPDBEntities _context = null;
+        public SNPLCPDBEntities _context = null;
         public ClsBaseDAL()
         {
             _objSql = new SqlDataAccessLayer();

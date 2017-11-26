@@ -1,4 +1,6 @@
-﻿namespace Effigy.Entity.DBContext
+﻿using System;
+
+namespace Effigy.Entity.DBContext
 {
     public class PaymentDetails : BaseEntity
     {
@@ -11,7 +13,7 @@
         public string GstNumber { get; set; }
         public string GstHolderName { get; set; }
         public string GstHolderAddress { get; set; }
-
+        public DateTime? PaymentDateTime { get; set; }
 
     }
 }

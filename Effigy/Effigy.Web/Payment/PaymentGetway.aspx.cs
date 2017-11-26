@@ -1,5 +1,6 @@
 ﻿using Effigy.Entity;
 using Effigy.Service;
+using Effigy.Utility;
 using System;
 using System.Configuration;
 using System.Security.Cryptography;
@@ -31,10 +32,6 @@ namespace Effigy.Web.Payment
                         txtUserID.Value = Request.QueryString["UserID"].Trim();
                         GetUserDetail(Convert.ToInt32(Request.QueryString["UserID"].Trim()));
                     }
-                    else
-                    {
-                        //frmError.Visible = true;
-                    }
 
                 }
 
@@ -42,6 +39,7 @@ namespace Effigy.Web.Payment
             catch (Exception ex)
             {
                 Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+                Logger.Error(ex);
             }
         }
 
@@ -50,11 +48,11 @@ namespace Effigy.Web.Payment
 
             IUserService objBal = new UserService();
             UserData user = objBal.GetUserDataById(userid);
-            txtAmount.Text = Convert.ToString(user.CategoryAmount);
+            txtAmount.Text = user.TotalPrice.TrimString();
             Amount = txtAmount.Text;
             txtProductInfo.Text = Product = user.ProductCategory;
-            MarchantEmail = "mail.nitinjain2012@gmail.com";
-            MarchantMobile = "9810489652";
+            MarchantEmail = AppKeyCollection.MarchantEmail;
+            MarchantMobile = AppKeyCollection.MarchantMobile;
 
         }
         public string Generatehash512(string text)
@@ -90,7 +88,7 @@ namespace Effigy.Web.Payment
                 if (string.IsNullOrEmpty(Request.Form["hash"])) // generating hash value
                 {
                     if (
-                        string.IsNullOrEmpty(ConfigurationManager.AppSettings["MERCHANT_KEY"]) ||
+                        string.IsNullOrEmpty(AppKeyCollection.MERCHANT_KEY) ||
                         string.IsNullOrEmpty(txnid1) ||
                         string.IsNullOrEmpty(Request.Form["txtfirstName"])
                         || string.IsNullOrEmpty(Request.Form["txtMobile"]) ||
@@ -155,7 +153,7 @@ namespace Effigy.Web.Payment
                 else if (!string.IsNullOrEmpty(Request.Form["hash"]))
                 {
                     hash1 = Request.Form["hash"];
-                    action1 = ConfigurationManager.AppSettings["PAYU_BASE_URL"] + "/_payment";
+                    action1 = AppKeyCollection.PAYU_BASE_URL + "/_payment";
 
                 }
 
@@ -164,8 +162,8 @@ namespace Effigy.Web.Payment
                     hash.Value = hash1;
                     txnid.Value = txnid1;
 
-                    string Sucessurl = String.Format("http://traderzplanet.in/Payment/PaymentSuccess.aspx?TN={0}&UI={1}&GN={2}&GI={3}&AM={4}&GHN={5}&GHA={6}", ViewState["txnid"].ToString(), txtUserID.Value, txtGSTNumber.Text, "1", txtAmount.Text, txtGSTHolderName.Text, txtGstAddress.Text);
-                    string Failureurl = String.Format("http://traderzplanet.in/Payment/PaymentFailure.aspx");
+                    string Sucessurl = String.Format("{7}/Payment/PaymentSuccess.aspx?TN={0}&UI={1}&GN={2}&GI={3}&AM={4}&GHN={5}&GHA={6}", ViewState["txnid"].ToString(), txtUserID.Value, txtGSTNumber.Text, "1", txtAmount.Text, txtGSTHolderName.Text, txtGstAddress.Text, AppKeyCollection.WebSiteName);
+                    string Failureurl = String.Format("{0}/Payment/PaymentFailure.aspx", AppKeyCollection.WebSiteName);
                     System.Collections.Hashtable data = new System.Collections.Hashtable(); // adding values in gash table for data post
                     data.Add("hash", hash.Value);
                     //data.Add("abc", hash_string);
@@ -181,7 +179,7 @@ namespace Effigy.Web.Payment
                     data.Add("surl", Sucessurl);
                     data.Add("furl", Failureurl);
                     data.Add("lastname", txtLastName.Text.Trim());
-                    data.Add("curl", "http://traderzplanet.in/PaymentCancel.aspx");
+                    data.Add("curl", string.Format("{0}/PaymentCancel.aspx", AppKeyCollection.WebSiteName));
                     data.Add("address1", txtAddress1.Text.Trim());
                     data.Add("address2", txtAddress2.Text.Trim());
                     data.Add("city", txtCity.Text.Trim());
@@ -200,56 +198,59 @@ namespace Effigy.Web.Payment
 
                 }
 
-                else
-                {
-                    //no hash
-                }
-
             }
 
             catch (Exception ex)
             {
+                Logger.Error(ex);
                 Response.Write("<span style='color:red'>" + ex.Message + "</span>");
             }
         }
 
         private string PreparePOSTForm(string url, System.Collections.Hashtable data)      // post form
         {
-            //Set a name for the form
-            string formID = "PostForm";
-            //Build the form using the specified data to be posted.
-            StringBuilder strForm = new StringBuilder();
-            strForm.Append("<form id=\"" + formID + "\" name=\"" +
-                           formID + "\" action=\"" + url +
-                           "\" method=\"POST\">");
-
-            foreach (System.Collections.DictionaryEntry key in data)
+            try
             {
+                //Set a name for the form
+                string formID = "PostForm";
+                //Build the form using the specified data to be posted.
+                StringBuilder strForm = new StringBuilder();
+                strForm.Append("<form id=\"" + formID + "\" name=\"" +
+                               formID + "\" action=\"" + url +
+                               "\" method=\"POST\">");
 
-                strForm.Append("<input type=\"hidden\" name=\"" + key.Key +
-                               "\" value=\"" + key.Value + "\">");
+                foreach (System.Collections.DictionaryEntry key in data)
+                {
+
+                    strForm.Append("<input type=\"hidden\" name=\"" + key.Key +
+                                   "\" value=\"" + key.Value + "\">");
+                }
+
+
+                strForm.Append("</form>");
+                //Build the JavaScript which will do the Posting operation.
+                StringBuilder strScript = new StringBuilder();
+                strScript.Append("<script language='javascript'>");
+                strScript.Append("var v" + formID + " = document." +
+                                 formID + ";");
+                strScript.Append("v" + formID + ".submit();");
+                strScript.Append("</script>");
+                //Return the form and the script concatenated.
+                //(The order is important, Form then JavaScript)
+                return strForm.ToString() + strScript.ToString();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return string.Empty;
             }
 
-
-            strForm.Append("</form>");
-            //Build the JavaScript which will do the Posting operation.
-            StringBuilder strScript = new StringBuilder();
-            strScript.Append("<script language='javascript'>");
-            strScript.Append("var v" + formID + " = document." +
-                             formID + ";");
-            strScript.Append("v" + formID + ".submit();");
-            strScript.Append("</script>");
-            //Return the form and the script concatenated.
-            //(The order is important, Form then JavaScript)
-            return strForm.ToString() + strScript.ToString();
         }
 
         protected void btncancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/PaymentCancel.aspx");
         }
-
-
 
 
     }

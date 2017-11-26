@@ -20,9 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-
     <IntermediateOutputPath>C:\Users\SASWAT~1\AppData\Local\Temp\vsF87F.tmp\Debug\</IntermediateOutputPath>
-
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +29,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -67,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\ClsDALDataEntry.cs" />
     <Compile Include="UnitOfWork\ClsDALMaster.cs" />
+    <Compile Include="UnitOfWork\CLSDALPayment.cs" />
     <Compile Include="UnitOfWork\clsDALUser.cs" />
     <Compile Include="UnitOfWork\UnityOfWork.cs" />
   </ItemGroup>

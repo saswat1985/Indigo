@@ -23,6 +23,7 @@ namespace Effigy.Entity.DBContext
         public string AlteranateContact { get; set; }
         public Nullable<bool> IsWelcomeMailSend { get; set; }
         public Nullable<bool> IsMemberShipTaken { get; set; }
+        public Nullable<bool> IsMemberShipExpired { get; set; }
         public Nullable<int> UserType { get; set; }
         public Nullable<int> PersonalIdType { get; set; }
         public string PersonalIdNo { get; set; }
@@ -32,6 +33,7 @@ namespace Effigy.Entity.DBContext
         public Nullable<int> CityId { get; set; }
         public string RegisterRefrelCode { get; set; }
         public string SelfRefrelCode { get; set; }
+        public Nullable<System.DateTime> LastPaymentDate { get; set; }
         public Nullable<System.DateTime> EntryDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<int> UserEntryId { get; set; }
