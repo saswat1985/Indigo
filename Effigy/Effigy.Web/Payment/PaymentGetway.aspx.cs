@@ -164,8 +164,8 @@ namespace Effigy.Web.Payment
                     hash.Value = hash1;
                     txnid.Value = txnid1;
 
-                    string Sucessurl = String.Format("http://traderzplanet.in/PaymentSuccess.aspx?TN={0}&UI={1}&GN={2}&GI={3}&AM={4}&GHN={5}&GHA={6}", ViewState["txnid"].ToString(), txtUserID.Value, txtGSTNumber.Text, "1", txtAmount.Text, txtGSTHolderName.Text, txtGstAddress.Text);
-                    string Failureurl = String.Format("http://traderzplanet.in/PaymentFailure.aspx");
+                    string Sucessurl = String.Format("http://traderzplanet.in/Payment/PaymentSuccess.aspx?TN={0}&UI={1}&GN={2}&GI={3}&AM={4}&GHN={5}&GHA={6}", ViewState["txnid"].ToString(), txtUserID.Value, txtGSTNumber.Text, "1", txtAmount.Text, txtGSTHolderName.Text, txtGstAddress.Text);
+                    string Failureurl = String.Format("http://traderzplanet.in/Payment/PaymentFailure.aspx");
                     System.Collections.Hashtable data = new System.Collections.Hashtable(); // adding values in gash table for data post
                     data.Add("hash", hash.Value);
                     //data.Add("abc", hash_string);
