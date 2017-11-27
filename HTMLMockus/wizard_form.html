@@ -39,7 +39,43 @@
 </head>
 
 <body>
+<script>
 
+$(document).ready(function(){
+ $("#basic-next").on("click", function(){
+  if($("#step3").css('display') !== 'none')
+{
+
+$('.btn-save').removeClass('hidden')
+$('.btn-info').addClass('hidden')
+}
+else
+{
+
+$('.btn-save').addClass('hidden')
+$('.btn-info').removeClass('hidden')
+}
+ })
+ 
+ 
+ $("#basic-back").on("click", function(){
+ 
+  if($("#step4").css('display') === 'block')
+{
+
+$('.btn-save').addClass('hidden')
+$('.btn-info').removeClass('hidden')
+}
+else
+{
+
+<!-- $('.btn-save').addClass('hidden') -->
+<!-- $('.btn-info').removeClass('hidden') -->
+}
+ })
+})
+
+</script>
 	
 
 	<!-- Page container -->
@@ -495,6 +531,7 @@
 							<div class="form-wizard-actions">
 								<button class="btn btn-default" id="basic-back" type="reset">Back</button>
 								<button class="btn btn-info" id="basic-next" type="submit">Next</button>
+								<button class="btn btn-success btn-save hidden" id="basic-save" type="submit">Save</button>
 							</div>
 						</form>
 		            </div>
