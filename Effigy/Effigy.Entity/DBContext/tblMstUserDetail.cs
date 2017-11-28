@@ -21,6 +21,8 @@ namespace Effigy.Entity.DBContext
         public string EmailId { get; set; }
         public string ContactNo { get; set; }
         public string AlteranateContact { get; set; }
+        public string Gender { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<bool> IsWelcomeMailSend { get; set; }
         public Nullable<bool> IsMemberShipTaken { get; set; }
         public Nullable<bool> IsMemberShipExpired { get; set; }

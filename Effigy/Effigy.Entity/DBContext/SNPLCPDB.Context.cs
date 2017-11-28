@@ -38,6 +38,7 @@ namespace Effigy.Entity.DBContext
         public DbSet<MstLanguage> MstLanguages { get; set; }
         public DbSet<MstMenuMaster> MstMenuMasters { get; set; }
         public DbSet<MstMenuRoleMaster> MstMenuRoleMasters { get; set; }
+        public DbSet<MstPersonalIDType> MstPersonalIDTypes { get; set; }
         public DbSet<MstState> MstStates { get; set; }
         public DbSet<MstUserType> MstUserTypes { get; set; }
         public DbSet<MstUserWorkCategory> MstUserWorkCategories { get; set; }
@@ -339,6 +340,24 @@ namespace Effigy.Entity.DBContext
                 new ObjectParameter("RawURLString", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_RawURLEntry", userEntryIdParameter, rawURLStringParameter);
+        }
+    
+        public virtual int USP_GetDomain(string uRL, ObjectParameter domainName)
+        {
+            var uRLParameter = uRL != null ?
+                new ObjectParameter("URL", uRL) :
+                new ObjectParameter("URL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_GetDomain", uRLParameter, domainName);
+        }
+    
+        public virtual ObjectResult<USP_LoadDashBoard_Result> USP_LoadDashBoard(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_LoadDashBoard_Result>("USP_LoadDashBoard", userIdParameter);
         }
     }
 }

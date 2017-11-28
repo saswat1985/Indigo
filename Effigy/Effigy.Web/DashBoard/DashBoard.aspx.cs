@@ -29,22 +29,50 @@ namespace Effigy.Web.DashBoard
         {
             Response.Redirect(String.Format("../Payment/PaymentGetway.aspx?UserID={0}", SessionWrapper.UserId));
         }
+
         [WebMethod]
         public static UserData CheckPayment()
         {
-            IUserService objBal = new UserService();
-            UserData user = objBal.GetUserDataById(SessionWrapper.UserId);
-            int allowedHours = Convert.ToInt32(AppKeyCollection.PaymentHours);
-            if (user != null)
+            try
             {
-                TimeSpan difference = DateTime.Now.Subtract((DateTime)user.UserEntryDate);
-                if (difference.TotalHours > 0)
+                IUserService objBal = new UserService();
+                UserData user = objBal.GetUserDataById(SessionWrapper.UserId);
+                int allowedHours = Convert.ToInt32(AppKeyCollection.PaymentHours);
+                if (user != null)
                 {
-                    user.TimeRemaining = difference.TotalHours;
+                    TimeSpan difference = DateTime.Now.Subtract((DateTime)user.UserEntryDate);
+                    if (difference.TotalHours > 0)
+                    {
+                        user.TimeRemaining = difference.TotalHours;
+                    }
                 }
+                return user;
             }
-            return user;
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
 
+
+
+        }
+
+        [WebMethod]
+        public static UserDashBoardMapper GetDashboardData()
+        {
+            try
+            {
+                IUserService objBal = new UserService();
+                UserDashBoardMapper dashboardData = objBal.GetDashBoardData(SessionWrapper.UserId).FirstOrDefault();
+                return dashboardData;
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return null;
+            }
         }
 
 

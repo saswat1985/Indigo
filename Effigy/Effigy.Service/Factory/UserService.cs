@@ -278,5 +278,18 @@ namespace Effigy.Service
             }
 
         }
+
+        public IList<UserDashBoardMapper> GetDashBoardData(int userId)
+        {
+            try
+            {
+                return objDal.GetDashBoardData(userId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }

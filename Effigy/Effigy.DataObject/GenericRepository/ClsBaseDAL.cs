@@ -12,6 +12,7 @@ namespace Effigy.DataObject
     {
         public SqlDataAccessLayer _objSql = null;
         public SNPLCPDBEntities _context = null;
+
         public ClsBaseDAL()
         {
             _objSql = new SqlDataAccessLayer();

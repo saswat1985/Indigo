@@ -8,28 +8,29 @@
         <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_Roles" Width="1.5" PointX="10.75" PointY="5" />
         <EntityTypeShape EntityType="SNPLCPDBModel.aspnet_UsersInRoles" Width="1.5" PointX="13" PointY="8.875" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstBankMaster" Width="1.5" PointX="10.75" PointY="13.875" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="7.75" PointY="14" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="1.5" PointY="1" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstBusinessType" Width="1.5" PointX="5.75" PointY="16" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstCity" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstCountry" Width="1.5" PointX="1.5" PointY="4.25" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstLanguage" Width="1.5" PointX="0.75" PointY="10.625" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuMaster" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="SNPLCPDBModel.MstMenuRoleMaster" Width="1.5" PointX="13" PointY="5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="0.75" PointY="5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="0.75" PointY="15" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="6" PointY="3.625" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="7.75" PointY="17" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="9.75" PointY="17" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstPersonalIDType" Width="1.5" PointX="7.75" PointY="16" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstState" Width="1.5" PointX="3.75" PointY="4.125" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserType" Width="1.5" PointX="9.75" PointY="17" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstUserWorkCategory" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.MstWebSiteStatu" Width="1.5" PointX="15.75" PointY="3" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.sysdiagram" Width="1.5" PointX="15.75" PointY="6" />
         <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserBankDetail" Width="1.5" PointX="13" PointY="13.25" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="8.25" PointY="10.375" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="5.25" PointY="8.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="15.75" PointY="3" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserMaster" Width="1.5" PointX="3" PointY="9.5" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="5.25" PointY="20.875" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="5.25" PointY="18.125" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="0.75" PointY="18" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="15.75" PointY="7" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="15.75" PointY="10" />
-        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="15.75" PointY="13" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserCategoryMapping" Width="1.5" PointX="5.25" PointY="12.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserDetail" Width="1.5" PointX="8.25" PointY="8.5" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserLoginDetail" Width="1.5" PointX="15.75" PointY="9" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserMaster" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserPaymentDetail" Width="1.5" PointX="5.25" PointY="8.75" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblMstUserTreeStructure" Width="1.5" PointX="5.25" PointY="22.375" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawUniqueURL" Width="1.5" PointX="15.75" PointY="13" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURL" Width="1.5" PointX="11.75" PointY="18" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblRawURLDetail" Width="1.5" PointX="15.75" PointY="16" />
+        <EntityTypeShape EntityType="SNPLCPDBModel.tblUniqueURLAudit" Width="1.5" PointX="13.75" PointY="19" />
         <AssociationConnector Association="SNPLCPDBModel.FK_aspnet_UsersInRoles_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" />
         <AssociationConnector Association="SNPLCPDBModel.FK_tblMstUserBankDetail_MstBankMaster" />
