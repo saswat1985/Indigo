@@ -113,6 +113,16 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="Active_Flag" Type="bit" />
         </EntityType>
+        <EntityType Name="MstPersonalIDType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonalIdType" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserEntryDate" Type="datetime" />
+          <Property Name="UserEffectedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="MstState">
           <Key>
             <PropertyRef Name="StateID" />
@@ -210,6 +220,8 @@
           <Property Name="EmailId" Type="nvarchar(max)" />
           <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
           <Property Name="AlteranateContact" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="datetime" />
           <Property Name="IsWelcomeMailSend" Type="bit" />
           <Property Name="IsMemberShipTaken" Type="bit" />
           <Property Name="IsMemberShipExpired" Type="bit" />
@@ -556,6 +568,9 @@
           <Parameter Name="URL" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="DomainName" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="USP_LoadDashBoard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_RawURLEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserEntryId" Type="int" Mode="In" />
           <Parameter Name="RawURLString" Type="nvarchar(max)" Mode="In" />
@@ -598,6 +613,7 @@
           <EntitySet Name="MstLanguage" EntityType="Self.MstLanguage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstMenuMaster" EntityType="Self.MstMenuMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstMenuRoleMaster" EntityType="Self.MstMenuRoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstPersonalIDType" EntityType="Self.MstPersonalIDType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstState" EntityType="Self.MstState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstUserType" EntityType="Self.MstUserType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MstUserWorkCategory" EntityType="Self.MstUserWorkCategory" Schema="dbo" store:Type="Tables" />
@@ -759,6 +775,10 @@
             <Parameter Name="UserEntryId" Mode="In" Type="Int32" />
             <Parameter Name="RawURLString" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="USP_GetDomain">
+            <Parameter Name="URL" Mode="In" Type="String" />
+            <Parameter Name="DomainName" Mode="InOut" Type="String" />
+          </FunctionImport>
           <EntitySet Name="aspnet_Roles" EntityType="SNPLCPDBModel.aspnet_Roles" />
           <EntitySet Name="aspnet_UsersInRoles" EntityType="SNPLCPDBModel.aspnet_UsersInRoles" />
           <EntitySet Name="MstBankMasters" EntityType="SNPLCPDBModel.MstBankMaster" />
@@ -768,6 +788,7 @@
           <EntitySet Name="MstLanguages" EntityType="SNPLCPDBModel.MstLanguage" />
           <EntitySet Name="MstMenuMasters" EntityType="SNPLCPDBModel.MstMenuMaster" />
           <EntitySet Name="MstMenuRoleMasters" EntityType="SNPLCPDBModel.MstMenuRoleMaster" />
+          <EntitySet Name="MstPersonalIDTypes" EntityType="SNPLCPDBModel.MstPersonalIDType" />
           <EntitySet Name="MstStates" EntityType="SNPLCPDBModel.MstState" />
           <EntitySet Name="MstUserTypes" EntityType="SNPLCPDBModel.MstUserType" />
           <EntitySet Name="MstUserWorkCategories" EntityType="SNPLCPDBModel.MstUserWorkCategory" />
@@ -836,9 +857,8 @@
             <End Role="tblMstUserMaster" EntitySet="tblMstUserMasters" />
             <End Role="tblMstUserTreeStructure" EntitySet="tblMstUserTreeStructures" />
           </AssociationSet>
-          <FunctionImport Name="USP_GetDomain">
-            <Parameter Name="URL" Mode="In" Type="String" />
-            <Parameter Name="DomainName" Mode="InOut" Type="String" />
+          <FunctionImport Name="USP_LoadDashBoard" ReturnType="Collection(SNPLCPDBModel.USP_LoadDashBoard_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -979,6 +999,16 @@
           <NavigationProperty Name="aspnet_Roles" Relationship="SNPLCPDBModel.FK_MstMenuRoleMaster_aspnet_Roles" FromRole="MstMenuRoleMaster" ToRole="aspnet_Roles" />
           <NavigationProperty Name="MstMenuMaster" Relationship="SNPLCPDBModel.FK_MstMenuRoleMaster_MstMenuMaster" FromRole="MstMenuRoleMaster" ToRole="MstMenuMaster" />
         </EntityType>
+        <EntityType Name="MstPersonalIDType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonalIdType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserEffectedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
         <EntityType Name="MstState">
           <Key>
             <PropertyRef Name="StateID" />
@@ -1082,6 +1112,8 @@
           <Property Name="EmailId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AlteranateContact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
           <Property Name="IsWelcomeMailSend" Type="Boolean" />
           <Property Name="IsMemberShipTaken" Type="Boolean" />
           <Property Name="IsMemberShipExpired" Type="Boolean" />
@@ -1370,6 +1402,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="USP_LoadDashBoard_Result">
+          <Property Type="Int32" Name="TotalMember" Nullable="true" />
+          <Property Type="Int32" Name="TotalDataEntry" Nullable="true" />
+          <Property Type="Int32" Name="TotalCorrectData" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1418,6 +1455,7 @@
           <FunctionImportMapping FunctionImportName="uspUserRoleMapper" FunctionName="SNPLCPDBModel.Store.uspUserRoleMapper" />
           <FunctionImportMapping FunctionImportName="InsertUserPaymentDetails" FunctionName="SNPLCPDBModel.Store.InsertUserPaymentDetails" />
           <FunctionImportMapping FunctionImportName="USP_RawURLEntry" FunctionName="SNPLCPDBModel.Store.USP_RawURLEntry" />
+          <FunctionImportMapping FunctionImportName="USP_GetDomain" FunctionName="SNPLCPDBModel.Store.USP_GetDomain" />
           <EntitySetMapping Name="aspnet_Roles">
             <EntityTypeMapping TypeName="SNPLCPDBModel.aspnet_Roles">
               <MappingFragment StoreEntitySet="aspnet_Roles">
@@ -1534,6 +1572,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MstPersonalIDTypes">
+            <EntityTypeMapping TypeName="SNPLCPDBModel.MstPersonalIDType">
+              <MappingFragment StoreEntitySet="MstPersonalIDType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserEffectedDate" ColumnName="UserEffectedDate" />
+                <ScalarProperty Name="UserEntryDate" ColumnName="UserEntryDate" />
+                <ScalarProperty Name="PersonalIdType" ColumnName="PersonalIdType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MstStates">
             <EntityTypeMapping TypeName="SNPLCPDBModel.MstState">
               <MappingFragment StoreEntitySet="MstState">
@@ -1646,6 +1695,8 @@
                 <ScalarProperty Name="IsMemberShipExpired" ColumnName="IsMemberShipExpired" />
                 <ScalarProperty Name="IsMemberShipTaken" ColumnName="IsMemberShipTaken" />
                 <ScalarProperty Name="IsWelcomeMailSend" ColumnName="IsWelcomeMailSend" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="AlteranateContact" ColumnName="AlteranateContact" />
                 <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
                 <ScalarProperty Name="EmailId" ColumnName="EmailId" />
@@ -1770,7 +1821,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="USP_GetDomain" FunctionName="SNPLCPDBModel.Store.USP_GetDomain" />
+          <FunctionImportMapping FunctionImportName="USP_LoadDashBoard" FunctionName="SNPLCPDBModel.Store.USP_LoadDashBoard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SNPLCPDBModel.USP_LoadDashBoard_Result">
+                <ScalarProperty Name="TotalMember" ColumnName="TotalMember" />
+                <ScalarProperty Name="TotalDataEntry" ColumnName="TotalDataEntry" />
+                <ScalarProperty Name="TotalCorrectData" ColumnName="TotalCorrectData" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

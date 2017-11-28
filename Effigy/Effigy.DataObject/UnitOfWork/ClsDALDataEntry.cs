@@ -16,6 +16,7 @@ namespace Effigy.DataObject.UnitOfWork
         {
             _context = new SNPLCPDBEntities();
         }
+
         public IList<UrlEntriesVarifiedData> ProcessRawUrls(int userId, string urls)
         {
             try

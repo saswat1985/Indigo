@@ -55,15 +55,16 @@ namespace Effigy.Utility
 
                 if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
                 {
-                    using (var client = new MyClient())
-                    {
-                        client.HeadOnly = true;
-                        // fine, no content downloaded
-                        string s1 = client.DownloadString(url);
-                        // throws 404
-                        // string s2 = client.DownloadString("http://google.com/silly");
-                        result = true;
-                    }
+                    result = true;//for tempropry basis
+                    //using (var client = new MyClient())
+                    //{
+                    //    client.HeadOnly = true;
+                    //    // fine, no content downloaded
+                    //    string s1 = client.DownloadString(url);
+                    //    // throws 404
+                    //    // string s2 = client.DownloadString("http://google.com/silly");
+                    //    result = true;
+                    //}
 
                 }
                 else

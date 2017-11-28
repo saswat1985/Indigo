@@ -77,6 +77,9 @@
     <Compile Include="DBContext\MstMenuRoleMaster.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\MstPersonalIDType.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\MstState.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
@@ -154,6 +157,9 @@
     <Compile Include="DBContext\uspMenuMaster_Result.cs">
       <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\USP_LoadDashBoard_Result.cs">
+      <DependentUpon>SNPLCPDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\BusinessTypeMapper.cs" />
     <Compile Include="Entity\CityMapper.cs" />
@@ -171,6 +177,7 @@
     <Compile Include="Entity\MstUserMaster.cs" />
     <Compile Include="Entity\ProductMapper.cs" />
     <Compile Include="Entity\tblMstUserMaster.cs" />
+    <Compile Include="Entity\UserDashBoardMapper.cs" />
     <Compile Include="Entity\UserListData.cs" />
     <Compile Include="Entity\UserData.cs" />
     <Compile Include="Entity\UserProfileData.cs" />

@@ -99,5 +99,12 @@ namespace Effigy.Service
         /// <param name="password"></param>
         /// <returns></returns>
         string GetForgetPasswordEmailBody(string fullName, string userName, string password);
+
+        /// <summary>
+        /// get dashboard Data
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        IList<UserDashBoardMapper> GetDashBoardData(int userId);
     }
 }

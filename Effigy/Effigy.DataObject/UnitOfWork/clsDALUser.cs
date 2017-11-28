@@ -19,8 +19,7 @@ namespace Effigy.DataObject.UnitOfWork
         private ClsDALMaster _masterDal = null;
 
         public ClsDALUser()
-        {
-            _context = new SNPLCPDBEntities();
+        {            
             _userMaster = new GenericRepository<tblMstUserMaster>(_context);
             _userDetail = new GenericRepository<tblMstUserDetail>(_context);
             _userCategory = new GenericRepository<tblMstUserCategoryMapping>(_context);
@@ -524,6 +523,24 @@ namespace Effigy.DataObject.UnitOfWork
             }
         }
 
-        
+        public IList<UserDashBoardMapper> GetDashBoardData(int userId)
+        {
+            try
+            {
+
+                IEnumerable<UserDashBoardMapper> lstUserDashBoardData = _context.Database.SqlQuery<UserDashBoardMapper>("USP_LoadDashBoard @UserId={0}", userId);
+
+                return lstUserDashBoardData.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+
+        }
     }
 }
